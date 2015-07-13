@@ -29,6 +29,7 @@ public class MainActivity extends Activity {
     private TextView email;
     private TextView senha;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
