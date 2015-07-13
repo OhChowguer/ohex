@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
     private TextView nome;
     private TextView login;
     private TextView email;
-    private TextView senha;
+    private TextView senha2;
     //Tseteteeteteeteteeteteetetehttps://github.com/OhChowguer/ohexhttps://github.com/OhChowguer/ohexhttps://github.com/OhChowguer/ohexhttps://github.com/OhChowguer/ohex
 
     @Override
@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
         nome = (TextView) findViewById(R.id.tvNome);
         login = (TextView) findViewById(R.id.tvLogin);
         email = (TextView) findViewById(R.id.tvEmail);
-        senha = (TextView) findViewById(R.id.tvSenha);
+        senha2 = (TextView) findViewById(R.id.tvSenha);
 
 
         requestQueue = Volley.newRequestQueue(MainActivity.this);
@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
         params.put("email", email.getText().toString());
         params.put("nome", nome.getText().toString());
         params.put("sNome", "Rafael");
-        params.put("senha", senha.getText().toString());
+        params.put("senha", senha2.getText().toString());
         params.put("login", login.getText().toString());
 
 
@@ -117,7 +117,7 @@ public class MainActivity extends Activity {
                 params.put("email", email.getText().toString());
                 params.put("nome", nome.getText().toString());
                 params.put("sNome", "Rafael");
-                params.put("senha", senha.getText().toString());
+                params.put("senha", senha2.getText().toString());
                 params.put("login", login.getText().toString());
 
                 return (params);
