@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Oh!</string>
+
+    <string name="hello_world">Oh!Express!</string>
+    <string name="action_settings">Configuracoes</string>
+    <string name="action_settings2">Contato</string>
+    <string name="action_settings3">Minha Conta</string>
+    <string name="action_settings4">Sair</string>
+
+</resources>
