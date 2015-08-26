@@ -107,7 +107,7 @@ public class LoginActivity extends  AccountAuthenticatorActivity {
         user.setLogin(((EditText) findViewById(R.id.et_login_act)).getText().toString());
         user.setSenha(((EditText) findViewById(R.id.tvDataExpCard)).getText().toString());
 
-        RestAdapter restAdapterUser = new RestAdapter.Builder().setEndpoint("http://10.0.3.2:8080/ohexpress/phone").build();
+        RestAdapter restAdapterUser = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
 
         UserService userService = restAdapterUser.create(UserService.class);
 

@@ -26,7 +26,6 @@ public class LojaFragment extends Fragment implements RecyclerViewOnClickListene
     private RecyclerView mRecyclerView;
     private List<Loja> lista ;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

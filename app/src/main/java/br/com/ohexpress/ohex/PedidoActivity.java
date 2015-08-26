@@ -23,6 +23,7 @@ import br.com.ohexpress.ohex.fragment.BodyPedidoFragment;
 import br.com.ohexpress.ohex.interfaces.PedidoService;
 import br.com.ohexpress.ohex.model.ItemPedido;
 import br.com.ohexpress.ohex.model.Pedido;
+import br.com.ohexpress.ohex.util.Constant;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -113,7 +114,7 @@ public class PedidoActivity extends ActionBarActivity {
 
 
 
-        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("http://10.0.3.2:8080/ohexpress/phone").build();
+        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
 
         PedidoService pedidoService = restAdapter.create(PedidoService.class);
 

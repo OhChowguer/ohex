@@ -14,21 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.software.shell.fab.ActionButton;
-
-
 import java.util.ArrayList;
 import java.util.List;
-
 import br.com.ohexpress.ohex.adapters.CestaMenuAdapter;
-import br.com.ohexpress.ohex.dao.DatabaseHelper;
-import br.com.ohexpress.ohex.dao.ItemPedidoDao;
-import br.com.ohexpress.ohex.dao.ProdutoDao;
 import br.com.ohexpress.ohex.fragment.DestaqueFragment;
-
 import br.com.ohexpress.ohex.model.Loja;
 import br.com.ohexpress.ohex.model.Produto;
 import br.com.ohexpress.ohex.model.Usuario;
@@ -41,15 +32,8 @@ public class LojaActivity extends ActionBarActivity {
     private Loja loja;
     private TextView tvLoja;
     private TextView tvCatLoja;
-    //private TextView tvCidadeLoja;
     private TextView tvEndLoja;
-    private ItemPedidoDao ipDao;
-    private ProdutoDao prodDao;
     private SimpleDraweeView imageLoja;
-
-    private DatabaseHelper dh;
-    private Produto produto;
-    private ArrayList<Produto> prod;
     private ActionButton fab;
     private float scale;
     private Usuario user;
@@ -58,34 +42,10 @@ public class LojaActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loja);
         mContext = this;
-
         loja = getIntent().getExtras().getParcelable("loja");
         ((MyApplication) getApplication()).getMyLoja().setId(loja.getId());
-        dh = new DatabaseHelper(LojaActivity.this);
         scale = mContext.getResources().getDisplayMetrics().density;
-
         user = ((MyApplication) getApplication()).getUser();
-       // try {
-            //ipDao = new ItemPedidoDao(dh.getConnectionSource());
-            //ipDao.delete(ipDao.queryForAll());
-            //prodDao = new ProdutoDao(dh.getConnectionSource());
-           /*produto = new Produto();
-           produto = loja.getProduto().get(0);
-           prodDao.create(produto);
-           ItemPedido itemPedido = new ItemPedido();
-            itemPedido.setProduto(produto);
-            itemPedido.setQuantidade(1);
-            ipDao.create(itemPedido);
-
-        */
-          //cesta= ipDao.queryForAll();
-        //} catch (SQLException e) {
-           // e.printStackTrace();
-        //}
-
-
-
-
         fab = (ActionButton) findViewById(R.id.fab_menu);
         imageLoja = (SimpleDraweeView) findViewById(R.id.cv_loja);
         Uri uri = Uri.parse(loja.getImgLoja());
@@ -96,12 +56,9 @@ public class LojaActivity extends ActionBarActivity {
         tvLoja.setText(loja.getNome());
         tvCatLoja.setText(loja.getCategoria().get(0).getNome());
         tvEndLoja.setText(loja.getEndereco().getBairro()+", "+loja.getEndereco().getCidade());
-
         ohTopBar = (Toolbar) findViewById(R.id.oh_top_toolbar);
         setSupportActionBar(ohTopBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
 
 
         // FRAGMENT
@@ -113,25 +70,16 @@ public class LojaActivity extends ActionBarActivity {
             ft.commit();
         }
 
-       // mTitle = (TextView) ohTopBar.findViewById(R.id.toolbar_title);
-       // mTitle.setText(loja.getNome());
-
-
     }
 
    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_loja, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-
 
         int id = item.getItemId();
 
@@ -141,27 +89,11 @@ public class LojaActivity extends ActionBarActivity {
             return true;
         }
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_cesta_loja) {
-            //Toast.makeText(LojaActivity.this, user.getLogin(), Toast.LENGTH_SHORT).show();
             Intent it = new Intent(LojaActivity.this, CestaActivity.class);
             startActivity(it);
             return true;
         }
-
-        if (id == R.id.action_settings2) {
-            Toast.makeText(LojaActivity.this, user.getId()+user.getLogin(), Toast.LENGTH_SHORT).show();
-            //Intent it = new Intent(LojaActivity.this, CestaActivity.class);
-            //startActivity(it);
-            return true;
-        }
-
-        if (id == R.id.action_menu_registrar) {
-
-
-            return true;
-        }
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -178,12 +110,8 @@ public class LojaActivity extends ActionBarActivity {
 
         startActivity(itLProx);
 
-
         return ;
     }
-
-
-
 
     public void openMenu(View view){
 
@@ -199,8 +127,6 @@ public class LojaActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
-
                 Intent intent = new Intent(mContext, ListaProdutosActivity.class);
                 intent.putParcelableArrayListExtra("produtos", (ArrayList<Produto>)loja.getProduto());
                 listPopupWindow.dismiss();
@@ -209,14 +135,7 @@ public class LojaActivity extends ActionBarActivity {
             }
         });
         listPopupWindow.setModal(true);
-        //listPopupWindow.getBackground().setAlpha(0);
         listPopupWindow.show();
-
-
     }
-
-
-
-
 
 }
