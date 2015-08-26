@@ -1,0 +1,259 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    tools:context=".ProdutoActivity"
+    android:outlineProvider="paddedBounds"
+    >
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/oh_top_toolbar"
+        android:layout_width='match_parent'
+        android:elevation='4dp'
+        android:layout_height='?attr/actionBarSize'
+        android:background='?attr/colorPrimary'
+        android:minHeight='?attr/actionBarSize'
+        android:focusable="false" >
+
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/fv_img_produto_unit"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            fresco:placeholderImage="@drawable/ic_fav"
+            fresco:actualImageScaleType="focusCrop"
+            fresco:placeholderImageScaleType="fitCenter"
+            fresco:failureImage="@drawable/ic_fav"
+            fresco:failureImageScaleType="centerInside"
+            fresco:retryImage="@drawable/ic_fav"
+            fresco:roundAsCircle="false"
+
+
+        android:layout_below="@+id/oh_top_toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:elevation="3dp" />
+
+
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/tv_nome_produto_unit"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:layout_below="@+id/oh_top_toolbar"
+        android:layout_toRightOf="@+id/fv_img_produto_unit"
+        android:layout_toEndOf="@+id/fv_img_produto_unit"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="8dp" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Arroz, Feijao, Batata, Polenta, Sal, Couve, Carne, Salada, Pao, Vnna, Mostarda, Maionese"
+        android:id="@+id/tv_itens_produto_produto"
+        android:layout_below="@+id/tv_nome_produto_unit"
+        android:layout_alignLeft="@+id/tv_nome_produto_unit"
+        android:layout_alignStart="@+id/tv_nome_produto_unit"
+        android:textSize="9sp"
+        android:textColor="@color/OH_CINZA_ESCURO" />
+
+
+    <View
+        android:id="@+id/vw_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+
+        android:background="@color/OH_CINZA_CLARO"
+        android:layout_below="@+id/fv_img_produto_unit"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp" />
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/iv_ic_cesta_produto"
+        android:src="@drawable/ic_cesta_xx_grey"
+        android:layout_below="@+id/vw_divider"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantidade"
+        android:id="@+id/tv_lb_qtd_produto"
+        android:layout_below="@+id/vw_divider"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp" />
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/iv_mais_bolinha"
+        android:src="@drawable/ic_menos_bolinha"
+        android:onClick="delQtd"
+        android:layout_alignBottom="@+id/tv_qtd_produto"
+        android:layout_toLeftOf="@+id/tv_qtd_produto"
+        android:layout_toStartOf="@+id/tv_qtd_produto"
+        android:layout_marginRight="14dp" />
+
+
+    <TextView
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/tv_qtd_produto"
+
+        android:elegantTextHeight="true"
+        android:enabled="false"
+        android:text="1"
+        android:textColor="@color/OH_CINZA_ESCURO"
+        android:textSize="16dp"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_toLeftOf="@+id/imageView2"
+        android:layout_toStartOf="@+id/imageView2"
+        android:layout_marginRight="12dp" />
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/imageView2"
+        android:src="@drawable/ic_mais_bolinha"
+        android:onClick="addQtd"
+        android:layout_alignTop="@+id/tv_lb_qtd_produto"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp" />
+
+    <View
+        android:id="@+id/vw_divider2"
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        android:background="@color/OH_CINZA_CLARO"
+        android:layout_below="@+id/tv_lb_qtd_produto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/iv_ic_sifrao_produto"
+        android:src="@drawable/ic_cifrao_cinza"
+        android:layout_below="@+id/vw_divider2"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="20dp"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total"
+        android:id="@+id/tv_lb_total_produto"
+        android:layout_below="@+id/vw_divider2"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="118,99"
+        android:id="@+id/tv_total_produto"
+        android:layout_alignTop="@+id/iv_ic_sifrao_produto"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="35dp" />
+
+
+    <View
+        android:id="@+id/vw_divider3"
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+
+        android:background="@color/OH_CINZA_CLARO"
+        android:layout_below="@+id/tv_lb_total_produto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_menu_adicionais"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/fab_menu_opcionais"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="75dp" />
+
+
+    <com.software.shell.fab.ActionButton
+        android:id="@+id/fab_menu_opcionais"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="getAdicionais"
+        android:layout_above="@+id/bt_add_produto_unit"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="56dp"
+        android:layout_marginLeft="75dp"
+        fresco:borderWidth="0dp"
+        fresco:elevation="4dp"
+        fresco:button_color="@color/colorAccent"
+        fresco:fabSize="normal"
+        fresco:image="@drawable/ic_pedido"/>
+
+
+
+
+    <Button
+        android:id="@+id/bt_add_produto_unit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EDC951"
+        android:text="Adicionar"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:singleLine="false"
+        android:nestedScrollingEnabled="false"
+        android:layout_marginBottom="44dp"
+        android:elevation="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="AddCesta" />
+
+
+
+
+</RelativeLayout>

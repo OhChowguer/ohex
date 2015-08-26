@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="oh_color_base">#AB303A</color>
+    <color name="my_gree">#1DE9B6</color>
+    <color name="OH_CINZA_ESCURO">#B0B0B0</color>
+    <color name="oh_color_terc">#EDC951</color>
+    <color name="OH_CINZA_CLARO">#EEEEEE</color>
+    <color name="grey">#DDDDDD</color>
+    <color name="black">#000</color>
+    <color name="colorPrimaryDark">#992B34</color>
+    <color name="colorAccent">#EDC951</color>
+    <color name="colorPrimary">#992B34</color>
+
+</resources>

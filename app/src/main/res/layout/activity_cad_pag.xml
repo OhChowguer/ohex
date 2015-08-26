@@ -1,0 +1,195 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:adjustViewBounds="true"
+    android:background="@drawable/bg"
+    android:scaleType="fitCenter"
+    tools:context=".CadFormaDePagamentoActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/oh_top_toolbar_form_pag"
+        android:layout_width='match_parent'
+        android:layout_height='?attr/actionBarSize'
+        android:elevation='4dp'
+        android:focusable="false"
+        android:minHeight='?attr/actionBarSize' />
+
+    <TextView
+        android:id="@+id/tv_form_pag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/oh_top_toolbar_form_pag"
+        android:text="Forma de pagamento"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/bt_login"
+        android:layout_below="@+id/tv_form_pag"
+        android:layout_marginTop="8dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sp_cad_form_pag"
+                android:spinnerMode="dialog"
+                android:layout_above="@+id/et_cidade_cad_form_pag"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:id="@+id/tvNumeroCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_nome"
+                android:hint="Numero Cartão"
+                android:inputType="textPersonName"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="13sp"
+                android:layout_below="@+id/sp_cad_form_pag" />
+
+
+            <EditText
+                android:id="@+id/tvDataExpCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_senha"
+                android:hint="Data Expiração"
+                android:inputType="textPassword"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="13sp"
+                android:password="true"
+                android:layout_below="@+id/tvNumeroCard" />
+
+
+            <EditText
+                android:id="@+id/tvNomeTitular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_useracc"
+                android:hint="Nome Titular"
+                android:inputType="text|textEmailAddress"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="13sp"
+                android:layout_below="@+id/tvDataExpCard"/>
+
+
+            <TextView
+                android:id="@+id/tv_label_cad_form_pag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Endereço de cobrança"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:layout_below="@+id/tvNomeTitular"/>
+
+
+            <EditText
+                android:id="@+id/et_cep_cad_form_pag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_email"
+                android:hint="CEP"
+                android:inputType="textEmailAddress"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="13sp"
+                android:layout_below="@+id/tv_label_cad_form_pag"/>
+
+            <EditText
+                android:id="@+id/ev_rua_cad_form_pag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_email"
+                android:hint="Rua"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="13sp"
+                android:layout_below="@+id/et_cep_cad_form_pag"/>
+
+
+            <EditText
+                android:id="@+id/et_pais_form_pag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_email"
+                android:hint="Pais"
+                android:inputType="textEmailAddress"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="13sp"
+                android:layout_below="@+id/ev_rua_cad_form_pag"/>
+
+
+            <EditText
+                android:id="@+id/et_estado_cad_form_pag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_email"
+                android:hint="Estado"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="13sp"
+                android:layout_below="@+id/et_pais_form_pag"/>
+
+            <EditText
+                android:id="@+id/et_cidade_form_pag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_email"
+                android:hint="Cidade"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="13sp"
+                android:layout_below="@+id/et_estado_cad_form_pag"/>
+
+
+
+            <EditText
+                android:id="@+id/et_fone_cad_form_pag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_email"
+                android:hint="Telefone principal"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textSize="13sp"
+                android:layout_below="@+id/et_cidade_form_pag"/>
+
+
+
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:background="#EDC951"
+        android:onClick="add"
+        android:singleLine="false"
+        android:text="Cadastrar"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+
+</RelativeLayout>

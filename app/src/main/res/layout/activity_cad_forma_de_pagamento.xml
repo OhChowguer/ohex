@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.ohexpress.ohex.CadFormaDePagamentoActivity"
+    >
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sp_cad_form_pag"
+        android:spinnerMode="dropdown"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome Titular"
+        android:id="@+id/tv_nome_titular_card"
+        android:layout_below="@+id/sp_cad_form_pag"
+        android:layout_toLeftOf="@+id/et_numero_card"
+        android:layout_toStartOf="@+id/et_numero_card"
+        android:layout_marginTop="20dp" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_nome_titular_card"
+        android:layout_alignBottom="@+id/tv_nome_titular_card"
+        android:layout_toRightOf="@+id/tv_nome_titular_card"
+        android:layout_toEndOf="@+id/tv_nome_titular_card" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Numero Card"
+        android:id="@+id/tv_numero_cad"
+        android:layout_below="@+id/tv_nome_titular_card"
+        android:layout_alignLeft="@+id/sp_cad_form_pag"
+        android:layout_alignStart="@+id/sp_cad_form_pag"
+        android:layout_marginTop="20dp" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_numero_card"
+        android:layout_alignBottom="@+id/tv_numero_cad"
+        android:layout_toRightOf="@+id/tv_numero_cad"
+        android:layout_toEndOf="@+id/tv_numero_cad" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp" />
+
+
+
+
+</RelativeLayout>

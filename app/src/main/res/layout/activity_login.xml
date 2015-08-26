@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CC333F"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    tools:context=".MainActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/oh_top_toolbar"
+        android:layout_width='match_parent'
+        android:elevation='4dp'
+        android:layout_height='?attr/actionBarSize'
+        android:background='?attr/colorPrimary'
+        android:minHeight='?attr/actionBarSize'
+        android:focusable="false" />
+
+
+    <EditText
+        android:id="@+id/tvDataExpCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_senha"
+        android:editable="true"
+        android:ems="10"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:singleLine="false"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="15dp"
+        android:password="true"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#EDC951"
+        android:onClick="signIn"
+        android:text="Entrar"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:textStyle="normal"
+        android:singleLine="false"
+        android:nestedScrollingEnabled="false"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:id="@+id/et_login_act"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_senha"
+        android:editable="true"
+        android:ems="10"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:singleLine="false"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="15dp"
+        android:password="true"
+        android:layout_above="@+id/tvDataExpCard"
+        android:layout_centerHorizontal="true"
+        android:text="Login" />
+
+
+</RelativeLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="McDonalds"
+        android:id="@+id/tv_nome_loga_dialog_pedido"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R$ 199,00"
+        android:id="@+id/tv_total_pedido_dialog"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal" />
+
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="118dp"/>
+
+     <!--RadioGroup
+         android:layout_width="match_parent"
+         android:layout_height="118dp"
+         android:id="@+id/rg_dialog_pedido"></RadioGroup-->
+
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_numero_cvc"
+        android:hint="CVC"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Emitir pedido"
+        android:id="@+id/bt_emite_ped_dialog"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/accent"
+        android:onClick="addPedido" />
+</LinearLayout>

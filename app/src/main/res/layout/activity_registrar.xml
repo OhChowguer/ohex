@@ -1,0 +1,161 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:adjustViewBounds="true"
+    android:scaleType="fitCenter"
+    tools:context=".RegistrarActivity"
+    android:id="@+id/activity_lay_registrar">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/oh_top_toolbar"
+        android:layout_width='match_parent'
+        android:elevation='4dp'
+        android:layout_height='?attr/actionBarSize'
+        android:minHeight='?attr/actionBarSize'
+        android:focusable="false" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Novo cadastro"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        android:layout_below="@+id/oh_top_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp" />
+
+
+
+    <EditText
+        android:id="@+id/tvNumeroCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="56dp"
+        android:autoText="false"
+        android:drawableLeft="@drawable/ic_nome"
+        android:editable="false"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="13dp"
+        android:paddingLeft="15dp"
+        android:gravity="bottom"
+        android:layout_alignWithParentIfMissing="false" />
+
+    <EditText
+        android:id="@+id/tvNomeTitular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvNumeroCard"
+        android:drawableLeft="@drawable/ic_useracc"
+        android:editable="true"
+        android:ems="10"
+        android:hint="Login"
+        android:inputType="text|textEmailAddress"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="13dp"
+        android:paddingLeft="15dp"
+        android:gravity="bottom" />
+
+    <EditText
+        android:id="@+id/tvEndereco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvNomeTitular"
+        android:drawableLeft="@drawable/ic_email"
+        android:editable="true"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="13dp"
+        android:paddingLeft="15dp"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_centerInParent="true" />
+
+    <EditText
+        android:id="@+id/tvDataExpCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvEndereco"
+        android:drawableLeft="@drawable/ic_senha"
+        android:editable="false"
+        android:ems="10"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:singleLine="false"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="13dp"
+        android:password="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentRight="true"
+        android:elegantTextHeight="false"
+        android:paddingLeft="15dp"
+        android:gravity="bottom" />
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#EDC951"
+        android:onClick="add"
+        android:text="Cadastrar"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:singleLine="false"
+        android:nestedScrollingEnabled="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/text_jacc_login"
+        android:layout_marginBottom="15dp"
+        android:elevation="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="                             Já tem conta? "
+        android:id="@+id/text_jacc_login"
+        android:textSize="12dp"
+        android:layout_marginBottom="15dp"
+        android:autoText="false"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Faça seu login aqui!"
+        android:id="@+id/textView3"
+        android:textSize="12dp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_below="@+id/bt_login"
+        android:layout_toEndOf="@+id/text_jacc_login"
+        android:autoText="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentEnd="true" />
+
+
+</RelativeLayout>

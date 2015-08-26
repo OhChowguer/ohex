@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+
+    <item android:id="@+id/mn_pesq_loja_nome" android:title="Por nome"
+        android:orderInCategory="100" android:showAsAction="never" />
+    <item android:id="@+id/mn_pesq_loja_categoria" android:title="Por categoria"
+        android:orderInCategory="100" android:showAsAction="never" />
+    <item android:id="@+id/mn_pesq_loja_end" android:title="Por Endereço"
+        android:orderInCategory="100" android:showAsAction="never" />
+
+
+
+</menu>

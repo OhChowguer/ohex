@@ -1,109 +1,141 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="0dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg"
+    android:adjustViewBounds="true"
+    android:scaleType="fitCenter"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
-    android:paddingBottom="0dp" tools:context=".MainActivity"
-    android:background="#CC333F">
+    tools:context=".MainActivity">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Novo cadastro"
-        android:id="@+id/textView"
+
+    <android.support.v7.widget.Toolbar
+        android:id='@+id/oh_pesquisa_toolbar'
+        android:layout_width='match_parent'
+        android:elevation='4dp'
+        android:layout_height="50dp"
+        android:background='@drawable/toolbar_rounded_corners'
+        android:minHeight='?attr/actionBarSize'
+        android:focusable="false"
+        android:layout_above="@+id/rl_fragment_container_main"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" >
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/oh_top_toolbar"
+        android:layout_width='match_parent'
+        android:elevation='4dp'
+        android:layout_height='?attr/actionBarSize'
+        android:background='@android:color/transparent'
+        android:minHeight='?attr/actionBarSize'
+        android:focusable="false"
         android:layout_alignParentTop="true"
-        android:textColor="#FFFFFF"
-        android:textSize="30dp"
-        android:layout_centerVertical="true"
-        android:layout_alignEnd="@+id/textView2" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Já tem uma conta? Faça login aqui!"
-        android:id="@+id/textView2"
-        android:textColor="#FFFFFF"
+
+
+    <RelativeLayout
+        android:id="@+id/rl_fragment_container_main"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="@android:color/white"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:text="Mais Proximos"
+            android:id="@+id/button2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/accent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:textColor="#FFFFFF"
+            android:elevation="3dp"
+            android:onClick="myActionButton"
+            android:drawableTop="@drawable/ic_local_xx_branco"
+            android:drawablePadding="-15dp"
+            android:paddingTop="32sp"/>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:text="Codigo"
+            android:id="@+id/button3"
+            android:layout_alignTop="@+id/button2"
+            android:layout_toRightOf="@+id/button2"
+            android:layout_toEndOf="@+id/button2"
+            android:background="@color/accent"
+            android:textColor="#FFFFFF"
+            android:drawableTop="@drawable/ic_qr_xx_branco"
+            android:drawablePadding="-15dp"
+            android:paddingTop="32sp"/>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:text="Favoritos"
+            android:id="@+id/button4"
+            android:layout_below="@+id/button2"
+            android:layout_alignLeft="@+id/button2"
+            android:layout_alignStart="@+id/button2"
+            android:background="@color/accent"
+            android:textColor="#FFFFFF"
+            android:drawableTop="@drawable/ic_favorito_xx_branco"
+            android:drawablePadding="-15dp"
+            android:paddingTop="32sp"
+            android:onClick="myFavoritas" />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:text="pedidos"
+            android:id="@+id/button5"
+            android:layout_alignTop="@+id/button4"
+            android:layout_alignLeft="@+id/button3"
+            android:layout_alignStart="@+id/button3"
+            android:background="@color/accent"
+            android:textColor="#FFFFFF"
+            android:drawableTop="@drawable/ic_lista_xx_branco"
+            android:drawablePadding="-15dp"
+            android:paddingTop="32sp"
+            android:onClick="myPedidos" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:id="@+id/imageView3"
+        android:layout_below="@+id/oh_top_toolbar"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp" />
+        android:src="@drawable/oh_logo" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Nome"
-        android:ems="10"
-        android:id="@+id/tvNome"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="56dp"
-        android:layout_alignParentEnd="true"
-        android:textColor="#FFFFFF"
-        android:autoText="false"
-        android:textColorHint="#FFFFFF"
-        android:editable="false"
-        android:drawableLeft="@drawable/ic_nome" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="text|textEmailAddress"
-        android:ems="10"
-        android:id="@+id/tvLogin"
-        android:layout_below="@+id/tvNome"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:textColor="#FFFFFF"
-        android:hint="Login"
-        android:textColorHint="#FFFFFF"
-        android:editable="true"
-        android:drawableLeft="@drawable/ic_useracc"/>
+    <!--include
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/tvEmail"
-        android:layout_below="@+id/tvLogin"
-        android:layout_alignParentStart="true"
-        android:textColor="#FFFFFF"
-        android:layout_alignParentEnd="true"
-        android:hint="Email"
-        android:textColorHint="#FFFFFF"
-        android:editable="true"
-        android:drawableLeft="@drawable/ic_email"/>
+        android:id="@+id/inc_toolbar_baixo"
+        layout="@layout/toolbar_baixo"
+        ></include-->
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/tvSenha"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:textColor="#FFFFFF"
-        android:layout_below="@+id/tvEmail"
-        android:textColorHint="#FFFFFF"
-        android:hint="Senha"
-        android:editable="true"
-        android:inputType="textPassword"
-        android:singleLine="false"
-        android:drawableLeft="@drawable/ic_senha"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cadastrar"
-        android:id="@+id/button"
-        android:background="#EDC951"
-        android:onClick="add"
-        android:textSize="20dp"
-        android:textColor="#FFFFFF"
-        android:layout_above="@+id/textView2"
-        android:layout_alignStart="@+id/tvSenha"
-        android:layout_alignEnd="@+id/tvSenha" />
 
 
 </RelativeLayout>

@@ -1,16 +1,29 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light">
-        <!-- Customize your theme here. -->
+
+    <style name='Theme.MyTheme' parent='MaterialDrawerTheme.Light.DarkToolbar'>
+
+        <item name='colorPrimary'>@color/oh_color_base</item>
+        <item name='colorPrimaryDark'>@color/colorPrimaryDark</item>
+        <item name='colorAccent'>@color/oh_color_terc</item>
+        <item name='colorControlNormal'>@color/oh_color_terc</item>
+
+        <item name="material_drawer_background">@color/material_drawer_background</item>
+        <item name="material_drawer_icons">@color/material_drawer_icons</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_primary_text</item>
+        <item name="material_drawer_primary_icon">@color/material_drawer_primary_icon</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_secondary_text</item>
+        <item name="material_drawer_hint_text">@color/material_drawer_hint_text</item>
+        <item name="material_drawer_divider">@color/material_drawer_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_selected</item>
+        <item name="material_drawer_selected_text">@color/material_drawer_selected_text</item>
+        <item name="material_drawer_header_selection_text">@color/material_drawer_header_selection_text</item>
+
+
     </style>
 
-    <style name="MyCustomTheme" parent="@android:style/Theme.Holo.Light">
-        <item name="android:actionBarStyle">@style/MyActionBarTheme</item>
-    </style>
-
-    <style name="MyActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">#CC333F</item>
+    <style name='Theme.MyThemeBarBaixo' parent='Theme.MyTheme'>
+        <item name='colorPrimary'>@color/oh_color_terc</item>
     </style>
 
 </resources>

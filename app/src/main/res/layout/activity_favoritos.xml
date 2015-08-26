@@ -1,0 +1,130 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#CC333F"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    tools:context=".MainActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/oh_top_toolbar"
+        android:layout_width='match_parent'
+        android:elevation='4dp'
+        android:layout_height='?attr/actionBarSize'
+        android:background='?attr/colorPrimary'
+        android:minHeight='?attr/actionBarSize'
+        android:focusable="false" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Novo cadastro"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        android:layout_below="@+id/oh_top_toolbar"
+        android:layout_alignParentStart="true" />
+
+
+
+    <EditText
+        android:id="@+id/tvNumeroCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="56dp"
+        android:autoText="false"
+        android:drawableLeft="@drawable/ic_nome"
+        android:editable="false"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/tvNomeTitular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvNumeroCard"
+        android:drawableLeft="@drawable/ic_useracc"
+        android:editable="true"
+        android:ems="10"
+        android:hint="Login"
+        android:inputType="text|textEmailAddress"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/tvEndereco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvNomeTitular"
+        android:drawableLeft="@drawable/ic_email"
+        android:editable="true"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/tvDataExpCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvEndereco"
+        android:drawableLeft="@drawable/ic_senha"
+        android:editable="true"
+        android:ems="10"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:singleLine="false"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="15dp"
+        android:password="true" />
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#EDC951"
+        android:onClick="add"
+        android:text="Cadastrar"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:textStyle="normal"
+        android:singleLine="false"
+        android:nestedScrollingEnabled="false"
+        android:layout_below="@+id/tvDataExpCard"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="55dp"
+        android:layout_alignParentEnd="true" />
+
+
+
+
+    <include
+
+        android:id="@+id/inc_toolbar_baixo"
+        layout="@layout/toolbar_baixo"
+        ></include>
+
+
+</RelativeLayout>

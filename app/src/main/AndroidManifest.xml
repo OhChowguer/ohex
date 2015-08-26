@@ -1,24 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.ohexpress.ohex" >
+
+    <permssion
+        android:name="br.com.ohexpress.ohex.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="br.com.ohexpress.ohex.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/MyCustomTheme" >
+        android:theme="@style/Theme.MyTheme" >
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyADlg1Ysq8Qr5pdp1KJGfImAoOXaid3z4c" />
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value="br.com.ohexpress.ohex.SearchableActivity" />
+
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label=""
+            android:windowSoftInputMode="adjustPan|adjustNothing" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".RegistrarActivity"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".LojasProximasActivity"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".LojaActivity"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".ProdutoActivity"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".CestaActivity"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".ListaProdutosActivity"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".ListaPedidoActivity"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".PedidoActivity"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".EmitePedidoActivity"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".SearchableActivity"
+            android:label=""
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan|adjustNothing" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
 
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name=".MapaActivity"
+            android:label="@string/title_activity_mapa" >
+        </activity>
+        <activity
+            android:name=".EstabelecimentoMainActivity"
+            android:label="" >
+        </activity>
 
+        <service
+            android:name=".AccountAuthenticatorService"
+            android:label="AccountAuthenticatorService" >
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
 
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+
+        <activity
+            android:name=".CadFormaDePagamentoActivity"
+            android:label="@string/title_activity_cad_forma_de_pagamento" >
+        </activity>
     </application>
 
 </manifest>

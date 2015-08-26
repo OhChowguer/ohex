@@ -1,0 +1,107 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="2dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginLeft="6dp"
+    android:layout_marginRight="6dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="false"
+    app:cardPreventCornerOverlap="true">
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    >
+
+
+
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/iv_img_itensCesta"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        fresco:placeholderImage="@drawable/ic_fav"
+        fresco:actualImageScaleType="focusCrop"
+        fresco:placeholderImageScaleType="fitCenter"
+        fresco:failureImage="@drawable/ic_fav"
+        fresco:failureImageScaleType="centerInside"
+        fresco:retryImage="@drawable/ic_fav"
+
+
+        android:layout_margin="8dp" />
+
+    <TextView
+        android:textColor="#000000"
+        android:id="@+id/tv_nome_produto_itens_cesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="30dp"
+        android:textSize="14sp"
+        android:text="Nome Produto"
+        android:layout_alignTop="@+id/iv_img_itensCesta"
+        android:layout_toRightOf="@+id/iv_img_itensCesta"
+        android:layout_toEndOf="@+id/iv_img_itensCesta"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="19,99"
+        android:id="@+id/tv_preco_produto_cesta"
+        android:layout_alignBottom="@+id/tv_nome_produto_itens_cesta"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="8dp"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:id="@+id/tv_qtd_item_cesta"
+        android:textSize="20sp"
+        android:layout_alignBottom="@+id/tv_nome_produto_itens_cesta"
+        android:layout_toLeftOf="@+id/bt_mais_cesta"
+        android:layout_toStartOf="@+id/bt_mais_cesta"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp" />
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/bt_menos_cesta"
+        android:src="@drawable/ic_menos_bolinha"
+        android:layout_alignBottom="@+id/tv_nome_produto_itens_cesta"
+        android:layout_toLeftOf="@+id/tv_qtd_item_cesta"
+        android:layout_toStartOf="@+id/tv_qtd_item_cesta" />
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/bt_mais_cesta"
+        android:src="@drawable/ic_mais_bolinha"
+        android:layout_alignTop="@+id/bt_menos_cesta"
+        android:layout_toLeftOf="@+id/textView6"
+        android:layout_toStartOf="@+id/textView6"
+        android:layout_marginRight="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R$"
+        android:id="@+id/textView6"
+        android:layout_alignTop="@+id/tv_nome_produto_itens_cesta"
+        android:layout_toLeftOf="@+id/tv_preco_produto_cesta"
+        android:layout_toStartOf="@+id/tv_preco_produto_cesta"
+        android:layout_marginRight="8dp" />
+
+
+</RelativeLayout>
+</android.support.v7.widget.CardView>

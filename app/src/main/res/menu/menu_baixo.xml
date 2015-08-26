@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item android:id="@+id/item_tb_pesquisa"
+        android:title="Pedidos"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_busca_36_white"
+        />
+    <item android:id="@+id/item_tb_pedido"
+        android:title="Favoritos"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_ped"
+        />
+    <item android:id="@+id/item_tb_car"
+        android:title="Proximos"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_cart_36_white"
+        />
+    <item android:id="@+id/item_tb_prox"
+        android:title="Pedido"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_map_36_white"
+        />
+
+    <item android:id="@+id/item_tb_favoritos"
+        android:title="Pedido"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_star_36_white"
+        />
+    <item android:id="@+id/item_tb_qrcode"
+        android:title="Pedido"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_qrcode_36_white"
+        />
+
+    <item android:id="@+id/item_tb_config"
+        android:title="Pedido"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_conf_36_white"
+        />
+
+
+</menu>

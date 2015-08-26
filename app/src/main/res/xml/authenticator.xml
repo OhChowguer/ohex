@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<account-authenticator
+    android:label="@string/label"
+    android:smallIcon="@drawable/ic_pedido"
+    android:icon="@drawable/ic_pedido"
+    android:accountType="@string/type"
+    xmlns:android="http://schemas.android.com/apk/res/android"/>

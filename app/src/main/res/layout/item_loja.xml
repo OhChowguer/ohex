@@ -1,0 +1,96 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:background="#FFFFFF"
+    android:paddingLeft="16dp">
+
+
+
+
+    <!--ImageView
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:id="@+id/iv_img_listLoja"
+        android:src="@drawable/ic_pedido"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />-->
+
+
+
+    <TextView
+        android:textColor="#000000"
+        android:layout_toRightOf="@+id/iv_img_listLoja"
+        android:id="@+id/tv_item_pedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="30dp"
+        android:textSize="16sp"
+        android:text="Nome Loja"
+        android:layout_marginTop="1dp" />
+    <TextView
+        android:textColor="#808080"
+        android:id="@+id/tv_statusLoja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="30dp"
+        android:textSize="14sp"
+        android:text="Status"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/vw_divider2" />
+
+    <TextView
+        android:textColor="#808080"
+        android:layout_toRightOf="@+id/iv_img_listLoja"
+        android:layout_below="@+id/tv_item_pedido"
+        android:id="@+id/tv_catLoja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="30dp"
+        android:textSize="14sp"
+        android:text="Categoria" />
+
+    <TextView
+        android:textColor="#808080"
+        android:id="@+id/tv_distLoja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="30dp"
+        android:textSize="14sp"
+        android:text="KM"
+        android:layout_below="@+id/tv_statusLoja"
+        android:layout_alignStart="@+id/tv_statusLoja" />
+    <TextView
+        android:textColor="#808080"
+        android:layout_toRightOf="@+id/iv_img_listLoja"
+        android:layout_below="@+id/tv_catLoja"
+        android:id="@+id/tv_endLoja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="30dp"
+        android:textSize="14sp"
+        android:text="Endereço" />
+    <TextView
+        android:textColor="#808080"
+        android:id="@+id/tv_delivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="30dp"
+        android:textSize="14sp"
+        android:text="Deliv"
+        android:layout_below="@+id/tv_distLoja"
+        android:layout_alignStart="@+id/tv_distLoja" />
+
+
+
+    <View
+        android:id="@+id/vw_divider2"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tv_endLoja"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

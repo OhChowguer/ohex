@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+    <item android:id="@+id/action_f1" android:title="Aceitos"
+        android:orderInCategory="100" android:showAsAction="never" />
+    <item android:id="@+id/action_f2" android:title="Pendentes"
+        android:orderInCategory="100" android:showAsAction="never" />
+    <item android:id="@+id/action_f3" android:title="Recusados"
+        android:orderInCategory="100" android:showAsAction="never" />
+
+
+
+</menu>
