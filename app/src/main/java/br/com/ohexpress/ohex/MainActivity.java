@@ -338,7 +338,7 @@ public class MainActivity extends ActionBarActivity {
     public boolean myActionButton (View view) {
 
 
-                RestAdapter restAdapterDist = new RestAdapter.Builder().setEndpoint("http://10.0.3.2:8080/ohexpress/phone/listalojaproxima").build();
+                RestAdapter restAdapterDist = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
 
                 LojaService lojaServiceDist = restAdapterDist.create(LojaService.class);
 

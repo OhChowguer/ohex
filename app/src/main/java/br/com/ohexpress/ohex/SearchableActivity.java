@@ -24,6 +24,7 @@ import br.com.ohexpress.ohex.adapters.LojasAdapter;
 import br.com.ohexpress.ohex.interfaces.LojaService;
 import br.com.ohexpress.ohex.interfaces.RecyclerViewOnClickListenerHack;
 import br.com.ohexpress.ohex.model.Loja;
+import br.com.ohexpress.ohex.util.Constant;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -117,7 +118,7 @@ public class SearchableActivity extends AppCompatActivity implements RecyclerVie
     public void filterLojas( String q ){
         //listaAux.clear();
 
-        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("http://10.0.3.2:8080/ohexpress/phone/lojas").build();
+        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
 
         LojaService lojaService = restAdapter.create(LojaService.class);
 
