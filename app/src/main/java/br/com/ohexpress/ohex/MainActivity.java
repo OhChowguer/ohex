@@ -209,7 +209,7 @@ public class MainActivity extends ActionBarActivity {
 
             if (user.getId()==null) {
 
-                RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint("http://10.0.3.2:8080/ohexpress/phone").build();
+                RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
 
                 UserService userService = restAdapterPedido.create(UserService.class);
 
@@ -301,7 +301,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void myFavoritas(View view){
 
-        RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint("http://10.0.3.2:8080/ohexpress/phone").build();
+        RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
         UserService userService = restAdapterPedido.create(UserService.class);
 
         userService.listarfavoritas(user.getToken(),

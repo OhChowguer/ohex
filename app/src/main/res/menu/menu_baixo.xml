@@ -25,7 +25,7 @@
         android:title="Pedido"
         android:orderInCategory="100"
         app:showAsAction="always"
-        android:icon="@drawable/ic_map_36_white"
+        android:icon="@drawable/ic_map_36"
         />
 
     <item android:id="@+id/item_tb_favoritos"
