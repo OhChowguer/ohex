@@ -121,11 +121,11 @@
         android:layout_alignBottom="@+id/tv_qtd_produto"
         android:layout_toLeftOf="@+id/tv_qtd_produto"
         android:layout_toStartOf="@+id/tv_qtd_produto"
-        android:layout_marginRight="14dp" />
+        android:layout_marginRight="15dp" />
 
 
     <TextView
-        android:layout_width="20dp"
+        android:layout_width="9dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:id="@+id/tv_qtd_produto"
@@ -138,7 +138,8 @@
         android:layout_alignBottom="@+id/imageView2"
         android:layout_toLeftOf="@+id/imageView2"
         android:layout_toStartOf="@+id/imageView2"
-        android:layout_marginRight="12dp" />
+        android:layout_marginRight="15dp"
+        android:digits="1" />
 
     <ImageView
         android:layout_width="25dp"
@@ -207,31 +208,37 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <android.support.design.widget.FloatingActionButton
+    <com.software.shell.fab.ActionButton
         android:id="@+id/fab_menu_adicionais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/fab_menu_opcionais"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="75dp" />
+        android:layout_marginRight="75dp"
+        android:onClick="getAdicionais"
+        fresco:borderWidth="0dp"
+        fresco:elevation="4dp"
+        fresco:button_color="@color/fab_material_green_900"
+        fresco:fabSize="normal"
+        fresco:image="@drawable/fab_plus_icon"/>
 
 
     <com.software.shell.fab.ActionButton
         android:id="@+id/fab_menu_opcionais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="getAdicionais"
+        android:onClick="getOpcionais"
         android:layout_above="@+id/bt_add_produto_unit"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="36dp"
         android:layout_marginLeft="75dp"
         fresco:borderWidth="0dp"
         fresco:elevation="4dp"
-        fresco:button_color="@color/colorAccent"
+        fresco:button_color="@color/fab_material_red_900"
         fresco:fabSize="normal"
-        fresco:image="@drawable/ic_pedido"/>
+        fresco:image="@drawable/ic_fechar_36_white"/>
 
 
 
@@ -244,6 +251,7 @@
         android:text="Adicionar"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
+
         android:singleLine="false"
         android:nestedScrollingEnabled="false"
         android:layout_marginBottom="44dp"

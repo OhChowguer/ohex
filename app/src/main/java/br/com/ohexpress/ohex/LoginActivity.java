@@ -27,15 +27,10 @@ import retrofit.client.Response;
 public class LoginActivity extends  AccountAuthenticatorActivity {
 
 
-    private RequestQueue requestQueue;
-    private Map<String, String> params;
-    private String url;
-    private TextView nome;
     private EditText login;
     private TextView email;
     private EditText senha;
     private Toolbar ohTopBar;
-    private Toolbar ohBaixoBar;
     private AccountManager mAccountManager;
     private Usuario user;
 
@@ -47,17 +42,12 @@ public class LoginActivity extends  AccountAuthenticatorActivity {
         //ohTopBar = (Toolbar) findViewById(R.id.oh_top_toolbar);
         //setSupportActionBar(ohTopBar);
 
-
-
         senha = (EditText) findViewById(R.id.tvDataExpCard);
         login = (EditText) findViewById(R.id.et_login_act);
-
-
         user = ((MyApplication) getApplication()).getUser();
         user.setAccountType(getIntent().getStringExtra(Constant.ARG_ACCOUNT_TYPE));
         user.setAccountName(getIntent().getStringExtra(Constant.ARG_ACCOUNT_NAME));
         user.setAuthTokenType(getIntent().getStringExtra(Constant.ARG_AUTH_TYPE));
-
         mAccountManager = AccountManager.get(LoginActivity.this);
 
 
@@ -65,34 +55,17 @@ public class LoginActivity extends  AccountAuthenticatorActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-
-
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-
-            Toast.makeText(this, "Deu certo SILAAAAA", Toast.LENGTH_SHORT).show();
+        if (id == R.id.home) {
+            finish();
             return true;
         }
-
-        if (id == R.id.action_settings2) {
-
-            Toast.makeText(this, "Eh Nois SILAAA", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -101,7 +74,6 @@ public class LoginActivity extends  AccountAuthenticatorActivity {
     public void signIn(View view) {
 
         final Intent it = new Intent();
-        //Log.i("Script", "AuthenticatorActivity.signIn()");
 
         findViewById(R.id.bt_login).setEnabled(false);
         user.setLogin(((EditText) findViewById(R.id.et_login_act)).getText().toString());

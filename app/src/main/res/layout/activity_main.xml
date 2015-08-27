@@ -55,13 +55,10 @@
         android:layout_alignParentStart="true">
 
         <Button
-            android:layout_width="150dp"
+            android:layout_width="fill_parent"
             android:layout_height="150dp"
             android:text="Mais Proximos"
             android:id="@+id/button2"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
             android:background="@color/accent"
             android:textColor="#FFFFFF"
             android:elevation="3dp"
@@ -69,10 +66,16 @@
             android:drawableTop="@drawable/ic_local_xx_branco"
             android:drawablePadding="-15dp"
             android:paddingTop="32sp"
-            android:layout_margin="12dp" />
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/tv_xaxo"
+            android:layout_toStartOf="@+id/tv_xaxo"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="12dp" />
 
         <Button
-            android:layout_width="150dp"
+            android:layout_width="fill_parent"
             android:layout_height="150dp"
             android:text="Codigo"
             android:id="@+id/button3"
@@ -81,10 +84,15 @@
             android:drawableTop="@drawable/ic_qr_xx_branco"
             android:drawablePadding="-15dp"
             android:paddingTop="32sp"
-            android:layout_toRightOf="@+id/button4"
-            android:layout_margin="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="12dp" />
+            android:layout_alignWithParentIfMissing="false"
+            android:elegantTextHeight="false"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/tv_xaxo"
+            android:layout_toEndOf="@+id/tv_xaxo"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:layout_width="150dp"
@@ -99,10 +107,13 @@
             android:onClick="myFavoritas"
             android:layout_alignTop="@+id/button5"
             android:layout_alignLeft="@+id/button2"
-            android:layout_alignStart="@+id/button2" />
+            android:layout_alignStart="@+id/button2"
+            android:layout_toLeftOf="@+id/button5"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="8dp" />
 
         <Button
-            android:layout_width="150dp"
+            android:layout_width="fill_parent"
             android:layout_height="150dp"
             android:text="pedidos"
             android:id="@+id/button5"
@@ -115,7 +126,16 @@
             android:layout_below="@+id/button3"
             android:layout_alignLeft="@+id/button3"
             android:layout_alignStart="@+id/button3"
-            android:layout_marginRight="12dp" />
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_xaxo"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 

@@ -3,23 +3,16 @@ package br.com.ohexpress.ohex.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
+import java.util.List;
 
-import java.util.ArrayList;
-
-/**
- * Created by rafaelchowman on 15/07/15.
- */
-@DatabaseTable(tableName="itempedido")
 public class ItemPedido implements Parcelable{
 
-    @DatabaseField(generatedId=true)
+
     private Long id;
-    @DatabaseField(foreign = true, canBeNull = false, foreignAutoRefresh = true, columnName = "produto")
     private Produto produto;
-    @DatabaseField
     private int quantidade;
+    private List<ItemProduto> adicionais;
+    private List<ItemProduto> opcionais;
 
     public ItemPedido(){}
 
@@ -28,15 +21,10 @@ public class ItemPedido implements Parcelable{
         this.produto = produto;
         this.quantidade=qtd;
     }
-
-
     public ItemPedido(Parcel parcel){
         this.id = parcel.readLong();
         this.quantidade = parcel.readInt();
         this.produto = (Produto) parcel.readParcelable(br.com.ohexpress.ohex.model.Produto.class.getClassLoader());
-
-
-
     }
     public Long getId() {
         return id;
@@ -88,4 +76,20 @@ public class ItemPedido implements Parcelable{
             return new ItemPedido[size];
         }
     };
+
+    public List<ItemProduto> getAdicionais() {
+        return adicionais;
+    }
+
+    public void setAdicionais(List<ItemProduto> adicionais) {
+        this.adicionais = adicionais;
+    }
+
+    public List<ItemProduto> getOpcionais() {
+        return opcionais;
+    }
+
+    public void setOpcionais(List<ItemProduto> opcionais) {
+        this.opcionais = opcionais;
+    }
 }
