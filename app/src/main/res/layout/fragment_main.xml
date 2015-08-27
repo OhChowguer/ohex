@@ -6,12 +6,6 @@
     tools:context="br.com.ohexpress.ohex.fragment.MainFragment">
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/ic_star_48_white"
-         />
 </FrameLayout>
 
 

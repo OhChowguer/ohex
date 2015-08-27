@@ -173,16 +173,6 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-        // FRAGMENT
-
-       MainFragment frag = (MainFragment) getSupportFragmentManager().findFragmentByTag("mainFragMain");
-        if(frag == null) {
-            frag = new MainFragment();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.rl_fragment_container_main, frag, "mainFragMain");
-            ft.commit();
-        }
-
 
     }
 

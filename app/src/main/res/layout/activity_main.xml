@@ -57,7 +57,7 @@
         <Button
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:text="Mais Proxims"
+            android:text="Mais Proximos"
             android:id="@+id/button2"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -74,7 +74,7 @@
         <Button
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:text="Codigoo"
+            android:text="Codigo"
             android:id="@+id/button3"
             android:background="@color/accent"
             android:textColor="#FFFFFF"
@@ -114,7 +114,8 @@
             android:onClick="myPedidos"
             android:layout_below="@+id/button3"
             android:layout_alignLeft="@+id/button3"
-            android:layout_alignStart="@+id/button3" />
+            android:layout_alignStart="@+id/button3"
+            android:layout_marginRight="12dp" />
 
     </RelativeLayout>
 
@@ -122,13 +123,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/imageView3"
-        android:layout_below="@+id/oh_top_toolbar"
-        android:layout_centerHorizontal="true"
         android:src="@drawable/oh_logo"
-        android:layout_marginRight="100dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="100dp"
-        android:layout_above="@+id/oh_pesquisa_toolbar" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/oh_pesquisa_toolbar"
+        android:layout_marginRight="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp" />
 
 
     <!--include
