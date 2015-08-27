@@ -57,7 +57,7 @@
         <Button
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:text="Mais Proximos"
+            android:text="Mais Proxims"
             android:id="@+id/button2"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
