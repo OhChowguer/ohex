@@ -206,4 +206,20 @@ public class Loja implements Parcelable {
     public void setImgLogoTopo(String imgLogoTopo) {
         this.imgLogoTopo = imgLogoTopo;
     }
+
+    public List<Produto> filtraProduto(CategoriaProduto categoria){
+        List<Produto> filtrados= new ArrayList<Produto>(0);
+
+        for(Produto prod:produto){
+
+            for (CategoriaProduto cat: prod.getCategoriaProduto()){
+
+                if (categoria.getId() == cat.getId()){
+                    filtrados.add(prod);
+                }
+            }
+        }
+
+        return filtrados;
+    }
 }

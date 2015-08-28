@@ -3,11 +3,11 @@
     xmlns:fresco="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="4dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    app:cardCornerRadius="3dp"
+    android:layout_marginBottom="1dp"
+    android:layout_marginTop="1dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    app:cardCornerRadius="2dp"
     app:cardElevation="3dp"
     app:cardUseCompatPadding="false"
     app:cardPreventCornerOverlap="true">
@@ -15,35 +15,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="10dp"
     android:background="#FFFFFF"
-    >
-
-
-
-
+    android:paddingTop="6dp">
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/iv_img_listProduto"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         fresco:placeholderImage="@drawable/ic_fav"
         fresco:actualImageScaleType="focusCrop"
         fresco:placeholderImageScaleType="fitCenter"
         fresco:failureImage="@drawable/ic_fav"
         fresco:failureImageScaleType="centerInside"
-        fresco:retryImage="@drawable/ic_fav" />
+        fresco:retryImage="@drawable/ic_fav"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="8dp" />
 
     <TextView
-        android:textColor="#000000"
-        android:layout_toRightOf="@+id/iv_img_listProduto"
         android:id="@+id/tv_nomeProduto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingRight="30dp"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:text="Nome Loja"
-        android:layout_marginTop="1dp"
-        android:layout_marginLeft="10dp" />
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/iv_img_listProduto"
+        android:layout_toEndOf="@+id/iv_img_listProduto"
+        android:paddingLeft="8dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,23 +50,23 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="13,90"
         android:id="@+id/tv_preco_produto"
-        android:textSize="25dp"
+        android:textSize="15sp"
         android:textAlignment="center"
-        android:layout_alignTop="@+id/tv_nomeProduto"
-        android:layout_toLeftOf="@+id/iv_next"
-        android:layout_toStartOf="@+id/iv_next"
-        android:layout_marginRight="3dp"
-        android:layout_marginTop="6dp" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="12dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/tv_desc_produto"
+        android:textSize="9sp"
         android:layout_below="@+id/tv_nomeProduto"
-        android:layout_alignLeft="@+id/tv_nomeProduto"
-        android:layout_alignStart="@+id/tv_nomeProduto"
-        android:textSize="9sp" />
+        android:layout_toRightOf="@+id/iv_img_listProduto"
+        android:layout_toEndOf="@+id/iv_img_listProduto"
+        android:paddingLeft="8dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -78,18 +77,19 @@
         android:layout_toLeftOf="@+id/tv_preco_produto"
         android:layout_toStartOf="@+id/tv_preco_produto"
         android:textSize="7dp"
-        android:layout_marginTop="1dp" />
+        android:layout_marginTop="1dp"
+        android:paddingRight="6dp" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:id="@+id/iv_next"
-        android:src="@drawable/ic_next"
-        android:layout_alignTop="@+id/tv_preco_produto"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="4dp"
-        android:layout_marginTop="6dp" />
+        android:src="@drawable/ic_mais_amarelo"
+        android:layout_below="@+id/tv_preco_produto"
+        android:layout_alignRight="@+id/tv_preco_produto"
+        android:layout_alignEnd="@+id/tv_preco_produto"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="3dp" />
 
 
 </RelativeLayout>

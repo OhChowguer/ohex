@@ -26,10 +26,8 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 import br.com.ohexpress.ohex.model.ItemPedido;
 import br.com.ohexpress.ohex.model.ItemProduto;
-import br.com.ohexpress.ohex.model.Loja;
 import br.com.ohexpress.ohex.model.Pedido;
 import br.com.ohexpress.ohex.model.Produto;
 

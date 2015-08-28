@@ -21,6 +21,7 @@ public class CategoriaProduto implements Parcelable {
     //private Set<Loja> loja = new HashSet<Loja>(0);
 
     public CategoriaProduto(Parcel parcel){
+        this.id = parcel.readLong();
         this.nome = parcel.readString();
         this.descricao = parcel.readString();
 
@@ -98,6 +99,7 @@ public class CategoriaProduto implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
 
+        dest.writeLong(id);
         dest.writeString(nome);
         dest.writeString(descricao);
 

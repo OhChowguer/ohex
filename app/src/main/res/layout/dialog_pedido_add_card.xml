@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Você não possui formas de pagamento cadastradas, gostaria de cadastrar uma?"
+        android:id="@+id/tv_nome_loga_dialog_pedido"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp" />
+
+
+    <!--RadioGroup
+         android:layout_width="match_parent"
+         android:layout_height="118dp"
+         android:id="@+id/rg_dialog_pedido"></RadioGroup-->
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sim"
+        android:id="@+id/bt_emite_ped_dialog_sim"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/accent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Não"
+        android:id="@+id/bt_emite_ped_dialog_nao"
+        android:background="@color/accent"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp" />
+</LinearLayout>

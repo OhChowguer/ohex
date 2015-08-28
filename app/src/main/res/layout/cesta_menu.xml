@@ -7,23 +7,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-
-
-        >
+        android:background="@android:color/white">
 
         <ImageView
             android:id="@+id/iv_icon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="28dp"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:src="@null" />
+            android:src="@null"
+            android:layout_margin="12dp" />
 
         <TextView
             android:id="@+id/tv_label"
@@ -37,11 +29,10 @@
         <View
             android:id="@+id/vw_divider2"
             android:layout_width="wrap_content"
-            android:layout_height="0.5dp"
+            android:layout_height="0.3dp"
             android:layout_below="@+id/iv_icon"
             android:layout_marginLeft="5dp"
             android:layout_marginStart="4dp"
-
             android:background="@color/oh_color_terc"/>
             <!--android:visibility="gone" -->
 

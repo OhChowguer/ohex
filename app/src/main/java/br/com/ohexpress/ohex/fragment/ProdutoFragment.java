@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class ProdutoFragment extends Fragment implements RecyclerViewOnClickList
 
     private RecyclerView mRecyclerView;
     private List<Produto> lista ;
+    private TextView title;
 
 
     @Override
@@ -35,6 +37,7 @@ public class ProdutoFragment extends Fragment implements RecyclerViewOnClickList
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_produto, container, false);
+        title = (TextView) view.findViewById(R.id.tv_label_title_frag_prod);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_lista_produto);
         mRecyclerView.setHasFixedSize(true);
@@ -74,6 +77,8 @@ public class ProdutoFragment extends Fragment implements RecyclerViewOnClickList
         ProdutoAdapter adapter = new ProdutoAdapter(getActivity(), lista);
         adapter.setRecyclerViewOnClickListenerHack(this);
         mRecyclerView.setAdapter(adapter);
+
+        if (lista.size()>0){title.setText(lista.get(0).getCategoriaProduto().get(0).getNome());}
 
 
         return view;

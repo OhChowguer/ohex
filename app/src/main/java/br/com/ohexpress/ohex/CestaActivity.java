@@ -22,12 +22,14 @@ import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
 import br.com.ohexpress.ohex.adapters.CestaDialogAdapter;
 import br.com.ohexpress.ohex.fragment.ItensCestaFragment;
 import br.com.ohexpress.ohex.interfaces.PedidoService;
@@ -70,8 +72,7 @@ public class CestaActivity extends ActionBarActivity {
         DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.GERMAN);
         otherSymbols.setDecimalSeparator(',');
         otherSymbols.setGroupingSeparator('.');
-        format = new DecimalFormat("###0.00",otherSymbols);
-
+        format = new DecimalFormat("###0.00", otherSymbols);
 
 
         tvTotalCesta = (TextView) findViewById(R.id.tv_total_cesta);
@@ -80,7 +81,7 @@ public class CestaActivity extends ActionBarActivity {
 
         // FRAGMENT
         ItensCestaFragment frag = (ItensCestaFragment) getSupportFragmentManager().findFragmentByTag("mainFragCesta");
-        if(frag == null) {
+        if (frag == null) {
             frag = new ItensCestaFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.rl_fragment_container_cesta, frag, "mainFragCesta");
@@ -90,7 +91,7 @@ public class CestaActivity extends ActionBarActivity {
 
     }
 
-   @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_loja, menu);
@@ -104,8 +105,8 @@ public class CestaActivity extends ActionBarActivity {
 
         if (id == android.R.id.home) {
 
-            if (card!=null){
-                Toast.makeText(CestaActivity.this,card.getNomeTitular(),Toast.LENGTH_LONG).show();
+            if (card != null) {
+                Toast.makeText(CestaActivity.this, card.getNomeTitular(), Toast.LENGTH_LONG).show();
             }
 
             finish();
@@ -114,36 +115,43 @@ public class CestaActivity extends ActionBarActivity {
         }
 
 
-
         return super.onOptionsItemSelected(item);
     }
 
-    public void EmitirPedido(View view){
+    public void EmitirPedido(View view) {
         Account[] accs = mAccountManager.getAccountsByType(Constant.ACCOUNT_TYPE);
         final Dialog dialog = new Dialog(this);
         //Toast.makeText(CestaActivity.this,user.getCreditCard().get(0).getNomeTitular(),Toast.LENGTH_SHORT).show();
 
-        if(accs.length==0) {
-            getAccounts(null);}
-        else if(user.getCreditCard().size() == 0){
+        if (accs.length == 0) {
+            getAccounts(null);
+        } else if (user.getCreditCard().size() == 0) {
 
 
-        dialog.setContentView(R.layout.dialog_pedido);
-        dialog.setTitle("Forma de pagamento");
-        // set the custom dialog components - text, image and button
-        TextView text = (TextView) dialog.findViewById(R.id.tv_nome_loga_dialog_pedido);
-        text.setText("Voce nao possui uma forma de pagamento, gostaria de cadastrar uma?");
-        //ImageView image = (ImageView) dialog.findViewById(R.id.image);
-        //image.setImageResource(R.drawable.ic_busca);
-        Button dialogButton = (Button) dialog.findViewById(R.id.bt_emite_ped_dialog);
-            dialogButton.setText("Adicionar");
-        // if button is clicked, close the custom dialog
-        dialogButton.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                dialog.dismiss();
-            } });
-        dialog.show();}
-        else {
+            dialog.setContentView(R.layout.dialog_pedido_add_card);
+            dialog.setTitle("Forma de pagamento");
+            TextView text = (TextView) dialog.findViewById(R.id.tv_nome_loga_dialog_pedido);
+            //text.setText("Voce nao possui uma forma de pagamento, gostaria de cadastrar uma?");
+            //ImageView image = (ImageView) dialog.findViewById(R.id.image);
+            //image.setImageResource(R.drawable.ic_busca);
+            Button dialogButtonSim = (Button) dialog.findViewById(R.id.bt_emite_ped_dialog_sim);
+            Button dialogButtonNao = (Button) dialog.findViewById(R.id.bt_emite_ped_dialog_nao);
+            //dialogButton.setText("Adicionar");
+            // if button is clicked, close the custom dialog
+            dialogButtonSim.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(CestaActivity.this,"Abre tela de cadastro de pedido",Toast.LENGTH_SHORT).show();
+                }
+            });
+            dialogButtonNao.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
+        } else {
 
 
             dialog.setContentView(R.layout.dialog_pedido);
@@ -212,8 +220,6 @@ public class CestaActivity extends ActionBarActivity {
             listDialog.show();*/
 
 
-
-
         }
 
         //Intent it = new Intent(CestaActivity.this, EmitePedidoActivity.class);
@@ -222,16 +228,16 @@ public class CestaActivity extends ActionBarActivity {
         return;
     }
 
-    public double getTotal(){
+    public double getTotal() {
 
-        double total=0;
+        double total = 0;
 
-       for(ItemPedido itens : cesta){
+        for (ItemPedido itens : cesta) {
 
-           total = total+itens.getQuantidade()*itens.getProduto().getPreco();
+            total = total + itens.getQuantidade() * itens.getProduto().getPreco();
 
 
-       }
+        }
 
         return total;
     }
@@ -266,7 +272,7 @@ public class CestaActivity extends ActionBarActivity {
                 null);
     }
 
-    public void AddPedido(View view){
+    public void AddPedido(View view) {
 
 
         pedido.setCard(card);
@@ -274,7 +280,7 @@ public class CestaActivity extends ActionBarActivity {
 
         PedidoService pedidoService = restAdapter.create(PedidoService.class);
 
-        pedidoService.addPedido(user.getToken(),"cvc",pedido,
+        pedidoService.addPedido(user.getToken(), "cvc", pedido,
                 new Callback<Pedido>() {
 
 

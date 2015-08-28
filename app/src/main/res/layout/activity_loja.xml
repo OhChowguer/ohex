@@ -136,7 +136,6 @@
         app:image="@drawable/ic_star_36"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         app:borderWidth="0dp"
         app:elevation="4dp"
         app:fabSize="normal"

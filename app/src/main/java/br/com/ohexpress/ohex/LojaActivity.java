@@ -106,9 +106,9 @@ public class LojaActivity extends ActionBarActivity {
 
     public void getMap(){
 
-        Intent itLProx = new Intent(LojaActivity.this, MapaActivity.class);
+        //Intent itLProx = new Intent(LojaActivity.this, MapaActivity.class);
 
-        startActivity(itLProx);
+       // startActivity(itLProx);
 
         return ;
     }
@@ -128,7 +128,7 @@ public class LojaActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(mContext, ListaProdutosActivity.class);
-                intent.putParcelableArrayListExtra("produtos", (ArrayList<Produto>)loja.getProduto());
+                intent.putParcelableArrayListExtra("produtos", (ArrayList<Produto>)loja.filtraProduto(loja.getCategoriaProduto().get(position)));
                 listPopupWindow.dismiss();
                 mContext.startActivity(intent);
 
@@ -137,5 +137,7 @@ public class LojaActivity extends ActionBarActivity {
         listPopupWindow.setModal(true);
         listPopupWindow.show();
     }
+
+
 
 }
