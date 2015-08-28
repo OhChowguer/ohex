@@ -19,8 +19,8 @@
     android:paddingTop="6dp">
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/iv_img_listProduto"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         fresco:placeholderImage="@drawable/ic_fav"
         fresco:actualImageScaleType="focusCrop"
         fresco:placeholderImageScaleType="fitCenter"
@@ -50,7 +50,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="13,90"
         android:id="@+id/tv_preco_produto"
-        android:textSize="15sp"
+        android:textSize="12dp"
         android:textAlignment="center"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
@@ -73,16 +73,15 @@
         android:layout_height="wrap_content"
         android:text="R$"
         android:id="@+id/tv_sifra"
-        android:layout_alignBottom="@+id/tv_nomeProduto"
-        android:layout_toLeftOf="@+id/tv_preco_produto"
-        android:layout_toStartOf="@+id/tv_preco_produto"
         android:textSize="7dp"
-        android:layout_marginTop="1dp"
-        android:paddingRight="6dp" />
+        android:paddingRight="6dp"
+        android:layout_alignBottom="@+id/tv_preco_produto"
+        android:layout_toLeftOf="@+id/tv_preco_produto"
+        android:layout_toStartOf="@+id/tv_preco_produto" />
 
     <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
         android:id="@+id/iv_next"
         android:src="@drawable/ic_mais_amarelo"
         android:layout_below="@+id/tv_preco_produto"
