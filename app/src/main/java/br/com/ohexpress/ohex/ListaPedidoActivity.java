@@ -195,7 +195,7 @@ public class ListaPedidoActivity extends ActionBarActivity {
 
     public void getPedidos() {
 
-        RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint("http://10.0.3.2:8080/ohexpress/phone").build();
+        RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
         PedidoService pedidoService = restAdapterPedido.create(PedidoService.class);
 
         pedidoService.listarPedidoPorComprador(user.getToken(),

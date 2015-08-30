@@ -104,11 +104,11 @@ public class LojaActivity extends ActionBarActivity {
         return loja.getProduto();
     }
 
-    public void getMap(){
+    public void getMap(View view){
 
-        //Intent itLProx = new Intent(LojaActivity.this, MapaActivity.class);
+        Intent itLProx = new Intent(LojaActivity.this, MapaActivity.class);
 
-       // startActivity(itLProx);
+        startActivity(itLProx);
 
         return ;
     }
