@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Locale;
 import br.com.ohexpress.ohex.model.ItemPedido;
 import br.com.ohexpress.ohex.model.ItemProduto;
+import br.com.ohexpress.ohex.model.Loja;
 import br.com.ohexpress.ohex.model.Pedido;
 import br.com.ohexpress.ohex.model.Produto;
 
@@ -112,22 +113,17 @@ public class ProdutoActivity extends ActionBarActivity {
 
     public boolean AddCesta(View view) {
 
-        //Loja loja = ((MyApplication) getApplication()).getMyLoja();
-        //cesta = pedido.getItem();
-        if (pedido.getLoja().getId() == ((MyApplication) getApplication()).getMyLoja().getId() || pedido.getLoja().getNome() == null) {
 
+        Loja loja = new Loja();
+        if (pedido.getLoja().getId() == ((MyApplication) getApplication()).getMyLoja().getId() || pedido.getLoja().getId() == null) {
             itemPedido = new ItemPedido();
             itemPedido.setProduto(produto);
             itemPedido.setAdicionais(adicionais);
             itemPedido.setOpcionais(opcinais);
             itemPedido.setQuantidade(Integer.parseInt(tvQtdProduto.getText().toString()));
-
-            //LojaActivity.addCesta(itemPedido);
-            //cesta.add(itemPedido);
-            //pedido.setItem(cesta);
             pedido.getItem().add(itemPedido);
-            pedido.setLoja(((MyApplication) getApplication()).getMyLoja());
-
+            loja.setId(((MyApplication) getApplication()).getMyLoja().getId());
+            pedido.setLoja(loja);
             Toast.makeText(ProdutoActivity.this, "Item adicionado", Toast.LENGTH_SHORT).show();
             finish();
 

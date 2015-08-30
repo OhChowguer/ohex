@@ -82,7 +82,7 @@
     <ImageView
         android:layout_width="17dp"
         android:layout_height="17dp"
-        android:id="@+id/iv_next"
+        android:id="@+id/iv_add_cesta"
         android:src="@drawable/ic_mais_amarelo"
         android:layout_below="@+id/tv_preco_produto"
         android:layout_alignRight="@+id/tv_preco_produto"

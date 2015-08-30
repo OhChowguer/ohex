@@ -83,6 +83,9 @@ public class ItensCestaFragment extends Fragment implements RecyclerViewOnClickL
     @Override
     public void onClickListener(View view, int position) {
 
+
+
+
         //Toast.makeText(getActivity(), "Position: "+position, Toast.LENGTH_SHORT).show();
 
         //Intent itLProx = new Intent(getActivity(), ProdutoActivity.class);

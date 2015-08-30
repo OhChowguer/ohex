@@ -6,7 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -16,6 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import br.com.ohexpress.ohex.CestaActivity;
+import br.com.ohexpress.ohex.LojasProximasActivity;
+import br.com.ohexpress.ohex.MyApplication;
 import br.com.ohexpress.ohex.R;
 import br.com.ohexpress.ohex.interfaces.RecyclerViewOnClickListenerHack;
 import br.com.ohexpress.ohex.model.ItemPedido;
@@ -28,12 +33,14 @@ public class CestaAdapter extends RecyclerView.Adapter<CestaAdapter.MyViewHolder
     private RecyclerViewOnClickListenerHack mRecyclerViewOnClickListenerHack;
     private DecimalFormat precision;
     private DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.GERMAN);
-
+    private Context context;
 
 
 
 
     public CestaAdapter(Context c, List<ItemPedido> l){
+
+        context = c;
         listaItens = l;
         mLayoutInflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         otherSymbols.setDecimalSeparator(',');
@@ -50,13 +57,44 @@ public class CestaAdapter extends RecyclerView.Adapter<CestaAdapter.MyViewHolder
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+
+
 
         Uri uri = Uri.parse(listaItens.get(position).getProduto().getImgProduto());
         holder.tvNomeItensCesta.setText(listaItens.get(position).getProduto().getNome());
         holder.tvPrecoProdCesta.setText(precision.format(listaItens.get(position).getProduto().getPreco() * listaItens.get(position).getQuantidade()));
         holder.tvQtdProdCesta.setText(listaItens.get(position).getQuantidade()+"");
         holder.imageItemCesta.setImageURI(uri);
+        holder.more.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+
+                listaItens.get(position).addQtd();
+                notifyDataSetChanged();
+
+                ((CestaActivity) context).refreshTotal();
+
+
+            }
+        });
+
+        holder.less.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+
+                listaItens.get(position).removeQtd();
+                notifyDataSetChanged();
+
+                ((CestaActivity) context).refreshTotal();
+
+
+            }
+        });
 
 
     }
@@ -65,6 +103,7 @@ public class CestaAdapter extends RecyclerView.Adapter<CestaAdapter.MyViewHolder
 
         listaItens.remove(position);
         notifyItemRemoved(position);
+
 
 
     }
@@ -83,6 +122,8 @@ public class CestaAdapter extends RecyclerView.Adapter<CestaAdapter.MyViewHolder
         public TextView tvNomeItensCesta;
         public TextView tvPrecoProdCesta;
         public TextView tvQtdProdCesta;
+        public ImageView more;
+        public ImageView less;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -91,6 +132,8 @@ public class CestaAdapter extends RecyclerView.Adapter<CestaAdapter.MyViewHolder
             tvNomeItensCesta = (TextView) itemView.findViewById(R.id.tv_nome_produto_itens_cesta);
             tvPrecoProdCesta = (TextView) itemView.findViewById(R.id.tv_preco_produto_cesta);
             tvQtdProdCesta = (TextView) itemView.findViewById(R.id.tv_qtd_item_cesta);
+            more = (ImageView) itemView.findViewById(R.id.bt_mais_cesta);
+            less = (ImageView) itemView.findViewById(R.id.bt_menos_cesta);
             itemView.setOnClickListener(this);
         }
 

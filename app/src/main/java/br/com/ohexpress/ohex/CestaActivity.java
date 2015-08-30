@@ -312,5 +312,12 @@ public class CestaActivity extends ActionBarActivity {
         return;
     }
 
+    public void refreshTotal(){
+
+        tvTotalCesta.setText(format.format(getTotal()));
+
+
+    }
+
 
 }

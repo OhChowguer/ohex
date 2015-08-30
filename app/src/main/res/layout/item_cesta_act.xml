@@ -49,7 +49,7 @@
         android:layout_marginTop="8dp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="55dp"
         android:layout_height="wrap_content"
         android:text="19,99"
         android:id="@+id/tv_preco_produto_cesta"

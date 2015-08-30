@@ -92,4 +92,19 @@ public class ItemPedido implements Parcelable{
     public void setOpcionais(List<ItemProduto> opcionais) {
         this.opcionais = opcionais;
     }
+
+    public void addQtd(){
+
+
+        if (quantidade<9) {
+            quantidade = quantidade + 1;
+        }
+    }
+
+    public void removeQtd(){
+
+        if (quantidade > 1){
+
+        quantidade = quantidade-1;}
+    }
 }

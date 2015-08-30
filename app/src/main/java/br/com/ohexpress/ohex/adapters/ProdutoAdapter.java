@@ -8,15 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.ohexpress.ohex.MyApplication;
 import br.com.ohexpress.ohex.R;
 import br.com.ohexpress.ohex.interfaces.RecyclerViewOnClickListenerHack;
+import br.com.ohexpress.ohex.model.ItemPedido;
 import br.com.ohexpress.ohex.model.Loja;
+import br.com.ohexpress.ohex.model.Pedido;
 import br.com.ohexpress.ohex.model.Produto;
 
 public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHolder> {
@@ -24,9 +28,12 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
     private List<Produto> listaProduto ;
     private LayoutInflater mLayoutInflater;
     private RecyclerViewOnClickListenerHack mRecyclerViewOnClickListenerHack;
+    private Context context;
 
 
     public ProdutoAdapter(Context c, List<Produto> l){
+
+        context=c;
         listaProduto = l;
         mLayoutInflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -40,7 +47,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
 
 
         Uri uri = Uri.parse(listaProduto.get(position).getImgProduto());
@@ -49,6 +56,30 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
         holder.tvDescProduto.setText(listaProduto.get(position).getNomeItemProdutro());
         //holder.tvDescProduto.setText(listaProduto.get(position).getDescricao());
         holder.tvPrecoProduto.setText(""+listaProduto.get(position).getPreco());
+        holder.addCesta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Pedido pedido = ((MyApplication) context.getApplicationContext()).getMyPedido();
+                Loja loja = new Loja();
+
+
+
+                if (pedido.getLoja().getId() == ((MyApplication) context.getApplicationContext()).getMyLoja().getId() || pedido.getLoja().getId() == null) {
+
+                    ItemPedido itemPedido = new ItemPedido();
+                    itemPedido.setProduto(listaProduto.get(position));
+                    itemPedido.setQuantidade(1);
+                    loja.setId(((MyApplication) context.getApplicationContext()).getMyLoja().getId());
+                    pedido.setLoja(loja);
+                    pedido.getItem().add(itemPedido);
+                    Toast.makeText(context, "Item adicionado", Toast.LENGTH_SHORT).show();
+
+
+
+                }
+            }
+        });
 
 
 
@@ -76,6 +107,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
         public TextView tvNomeProduto;
         public TextView tvDescProduto;
         public TextView tvPrecoProduto;
+        public ImageView addCesta;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -84,6 +116,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
             tvNomeProduto = (TextView) itemView.findViewById(R.id.tv_nomeProduto);
             tvDescProduto = (TextView) itemView.findViewById(R.id.tv_desc_produto);
             tvPrecoProduto = (TextView) itemView.findViewById(R.id.tv_preco_produto);
+            addCesta = (ImageView) itemView.findViewById(R.id.iv_add_cesta);
             itemView.setOnClickListener(this);
         }
 
