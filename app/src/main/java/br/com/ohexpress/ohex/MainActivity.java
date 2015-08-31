@@ -10,6 +10,8 @@ import android.accounts.OperationCanceledException;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -24,6 +26,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -147,6 +151,7 @@ public class MainActivity extends ActionBarActivity {
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView;
         MenuItem item = ohPesqBar.getMenu().findItem(R.id.action_searchable_activity_tb2);
+        item.setIcon(R.drawable.ic_busca_xx_amarelo);
 
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ){
             searchView = (SearchView) item.getActionView();
@@ -169,6 +174,10 @@ public class MainActivity extends ActionBarActivity {
                 return true;
             }
         });
+        TextView textView = (TextView) searchView.findViewById(R.id.search_src_text);
+        textView.setTextColor(Color.BLUE);
+        textView.setHintTextColor(Color.GREEN);
+
 
 
 

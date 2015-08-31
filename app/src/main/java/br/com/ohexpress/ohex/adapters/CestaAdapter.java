@@ -1,7 +1,9 @@
 package br.com.ohexpress.ohex.adapters;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,9 +59,9 @@ public class CestaAdapter extends RecyclerView.Adapter<CestaAdapter.MyViewHolder
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+    public void onBindViewHolder(MyViewHolder holder, int pos) {
 
-
+        final int position = pos;
 
         Uri uri = Uri.parse(listaItens.get(position).getProduto().getImgProduto());
         holder.tvNomeItensCesta.setText(listaItens.get(position).getProduto().getNome());
@@ -72,10 +74,10 @@ public class CestaAdapter extends RecyclerView.Adapter<CestaAdapter.MyViewHolder
             public void onClick(View v) {
 
 
-                listaItens.get(position).addQtd();
-                notifyDataSetChanged();
+                    listaItens.get(position).addQtd();
+                    notifyDataSetChanged();
+                    ((CestaActivity) context).refreshTotal();
 
-                ((CestaActivity) context).refreshTotal();
 
 
             }
@@ -86,11 +88,43 @@ public class CestaAdapter extends RecyclerView.Adapter<CestaAdapter.MyViewHolder
             @Override
             public void onClick(View v) {
 
+                if(listaItens.get(position).getQuantidade()==1){
 
-                listaItens.get(position).removeQtd();
-                notifyDataSetChanged();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-                ((CestaActivity) context).refreshTotal();
+                    builder.setTitle("Confirmação");
+                    builder.setMessage("Gostaria de deletar o item? =(");
+
+                    builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int which) {
+                            listaItens.remove(position);
+                            notifyItemRemoved(position);
+                            notifyDataSetChanged();
+
+                            ((CestaActivity) context).refreshTotal();
+
+                        }
+
+                    });
+
+                    builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    AlertDialog alert = builder.create();
+                    alert.show();
+
+
+                }
+                else {
+                    listaItens.get(position).removeQtd();
+                    notifyDataSetChanged();
+                    ((CestaActivity) context).refreshTotal();
+                }
 
 
             }
@@ -148,5 +182,11 @@ public class CestaAdapter extends RecyclerView.Adapter<CestaAdapter.MyViewHolder
             }
 
         }
+    }
+
+    public void removeQtd(){
+
+
+
     }
 }
