@@ -207,7 +207,7 @@ public class ListaPedidoActivity extends ActionBarActivity {
 
                         listPedido = (ArrayList<Pedido>) pedidos;
 
-                       frag.loadPedidos(pedidos);
+                       //frag.loadPedidos(pedidos);
 
 
 

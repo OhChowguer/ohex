@@ -1,6 +1,7 @@
 package br.com.ohexpress.ohex.fragment;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +39,11 @@ public class PedidoFragment extends Fragment implements RecyclerViewOnClickListe
 
         View view = inflater.inflate(R.layout.fragment_pedidos, container, false);
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_lista_pedido);
-        mRecyclerView.setHasFixedSize(true);
+;
+        ProgressBar spinner = (ProgressBar) view.findViewById(R.id.progressBar1);
+        spinner.isShown();
+        //mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_lista_pedido);
+        //mRecyclerView.setHasFixedSize(true);
 
         /*
         mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -66,9 +71,9 @@ public class PedidoFragment extends Fragment implements RecyclerViewOnClickListe
         });
     */
 
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(llm);
+        //LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        //llm.setOrientation(LinearLayoutManager.VERTICAL);
+        //mRecyclerView.setLayoutManager(llm);
 
 
 

@@ -125,22 +125,50 @@ public class MainActivity extends ActionBarActivity {
                 .withAccountHeader(accHeaderBuilder)
                 .withSavedInstance(savedInstanceState)
                 .withSelectedItem(0)
-                .addDrawerItems(new PrimaryDrawerItem().withName("Teste1"), new DividerDrawerItem(), new SecondaryDrawerItem().withName("teste2"))
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName("Menu"),
+                        new DividerDrawerItem(),
+                        new SecondaryDrawerItem().withName("Lugares Proximos").withIcon(R.drawable.ic_map_gray_25),
+                        new DividerDrawerItem(),
+                        new SecondaryDrawerItem().withName("Favoritos").withIcon(R.drawable.ic_map_gray_25),
+                        new DividerDrawerItem(),
+                        new SecondaryDrawerItem().withName("QR Code").withIcon(R.drawable.ic_map_gray_25),
+                        new DividerDrawerItem(),
+                        new SecondaryDrawerItem().withName("Cesta de compras").withIcon(R.drawable.ic_map_gray_25),
+                        new DividerDrawerItem(),
+                        new SecondaryDrawerItem().withName("Meus Pedidos").withIcon(R.drawable.ic_map_gray_25),
+                        new DividerDrawerItem(),
+                        new SecondaryDrawerItem().withName("Configurações").withIcon(R.drawable.ic_map_gray_25),
+                        new DividerDrawerItem(),
+                        new SecondaryDrawerItem().withName("Sair").withIcon(R.drawable.ic_map_gray_25))
 
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(AdapterView<?> adapterView, View view, int i, long l, IDrawerItem iDrawerItem) {
+                                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                                    @Override
+                                    public boolean onItemClick(AdapterView<?> adapterView, View view, int position, long l, IDrawerItem iDrawerItem) {
 
-                        //Toast.makeText(MainActivity.this,user.getCreditCard().get(0).getNomeTitular(),Toast.LENGTH_SHORT).show()
+                                       switch (position) {
+                                           case 1:
 
-                        //Intent it = new Intent(MainActivity.this, CadFormaDePagamentoActivity.class);
-                        //startActivity(it);
+                                               break;
+                                           case 2:
+                                               myActionButton(null);
+                                               break;
+                                           case 3:
+
+                                               break;
+                                           case 4:
+                                               myFavoritas(null);
+                                               break;
+                                           case 10:
+                                               myPedidos(null);
+                                               break;
+                                       }
 
 
-                        return false;
-                    }
-                })
-                .build();
+                                        return false;
+                                    }
+                                })
+                                .build();
 
         ohPesqBar = (Toolbar) findViewById(R.id.oh_pesquisa_toolbar);
 
@@ -393,7 +421,7 @@ public class MainActivity extends ActionBarActivity {
 
                             accHeaderBuilder.addProfiles(new ProfileDrawerItem().
                                     withName(user.getAccountName()).withEmail("chowman@gmail.com")
-                                    .withIcon(getResources().getDrawable(R.drawable.ic_cart_36_white)));
+                                    .withIcon(getResources().getDrawable(R.drawable.img_avatar)));
 
 
 

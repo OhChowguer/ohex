@@ -101,8 +101,10 @@ public class CestaAdapter extends RecyclerView.Adapter<CestaAdapter.MyViewHolder
                             listaItens.remove(position);
                             notifyItemRemoved(position);
                             notifyDataSetChanged();
-
                             ((CestaActivity) context).refreshTotal();
+                            if (listaItens.isEmpty()){
+                                ((CestaActivity) context).limpaActivity();
+                            }
 
                         }
 

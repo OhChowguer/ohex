@@ -47,6 +47,9 @@ public class CestaActivity extends ActionBarActivity {
 
     private Toolbar ohTopBar;
     private TextView tvTotalCesta;
+    private TextView tvLabelTotalCesta;
+    private TextView tvLabelSifrao;
+    private View saparator;
     private Usuario user;
     private AccountManager mAccountManager;
     private List<ItemPedido> cesta;
@@ -72,11 +75,22 @@ public class CestaActivity extends ActionBarActivity {
         DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.GERMAN);
         otherSymbols.setDecimalSeparator(',');
         otherSymbols.setGroupingSeparator('.');
-        format = new DecimalFormat("###0.00", otherSymbols);
-
-
+        format = new DecimalFormat("###0.00", otherSymbols);tvTotalCesta = (TextView) findViewById(R.id.tv_total_cesta);
+        tvTotalCesta.setText(format.format(getTotal()));
         tvTotalCesta = (TextView) findViewById(R.id.tv_total_cesta);
         tvTotalCesta.setText(format.format(getTotal()));
+        tvLabelTotalCesta = (TextView) findViewById(R.id.tv_label_total_cesta);
+        tvLabelSifrao = (TextView) findViewById(R.id.tv_label_sifrao);
+        saparator = (View) findViewById(R.id.item_separator);
+
+
+        if (cesta.isEmpty()){
+
+            limpaActivity();
+        }
+
+
+
 
 
         // FRAGMENT
@@ -94,7 +108,7 @@ public class CestaActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu_loja, menu);
+        //getMenuInflater().inflate(R.menu.menu_loja, menu);
         return true;
     }
 
@@ -315,6 +329,18 @@ public class CestaActivity extends ActionBarActivity {
     public void refreshTotal(){
 
         tvTotalCesta.setText(format.format(getTotal()));
+
+
+    }
+
+    public void limpaActivity(){
+
+        Button botao = (Button) findViewById(R.id.bt_finaliza_pedido);
+        botao.setVisibility(View.GONE);
+        tvTotalCesta.setVisibility(View.GONE);
+        tvLabelTotalCesta.setVisibility(View.GONE);
+        tvLabelSifrao.setVisibility(View.GONE);
+        saparator.setVisibility(View.GONE);
 
 
     }

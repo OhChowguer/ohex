@@ -48,7 +48,7 @@
         android:layout_marginBottom="8dp" />
 
     <Button
-        android:id="@+id/bt_add_produto_unit"
+        android:id="@+id/bt_finaliza_pedido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#EDC951"
@@ -70,9 +70,9 @@
         android:text="Total:"
         android:id="@+id/tv_label_total_cesta"
         android:textSize="25dp"
-        android:layout_above="@+id/bt_add_produto_unit"
-        android:layout_toLeftOf="@+id/textView2"
-        android:layout_toStartOf="@+id/textView2"
+        android:layout_above="@+id/bt_finaliza_pedido"
+        android:layout_toLeftOf="@+id/tv_label_sifrao"
+        android:layout_toStartOf="@+id/tv_label_sifrao"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp" />
 
@@ -91,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RS"
-        android:id="@+id/textView2"
+        android:id="@+id/tv_label_sifrao"
         android:layout_alignTop="@+id/tv_total_cesta"
         android:layout_toLeftOf="@+id/tv_total_cesta"
         android:layout_toStartOf="@+id/tv_total_cesta"
