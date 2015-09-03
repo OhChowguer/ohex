@@ -126,21 +126,21 @@ public class MainActivity extends ActionBarActivity {
                 .withSavedInstance(savedInstanceState)
                 .withSelectedItem(0)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName("Menu"),
+                        new PrimaryDrawerItem().withName("Menu").withIcon(R.drawable.ic_home_amarelo),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Lugares Proximos").withIcon(R.drawable.ic_map_gray_25),
+                        new SecondaryDrawerItem().withName("Lojas Proximos").withIcon(R.drawable.ic_local_amarelo),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Favoritos").withIcon(R.drawable.ic_map_gray_25),
+                        new SecondaryDrawerItem().withName("Favoritos").withIcon(R.drawable.ic_favorito_amarelo),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("QR Code").withIcon(R.drawable.ic_map_gray_25),
+                        new SecondaryDrawerItem().withName("QR Code").withIcon(R.drawable.ic_qr_amarelo),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Cesta de compras").withIcon(R.drawable.ic_map_gray_25),
+                        new SecondaryDrawerItem().withName("Cesta de compras").withIcon(R.drawable.ic_cesto_amarelo),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Meus Pedidos").withIcon(R.drawable.ic_map_gray_25),
+                        new SecondaryDrawerItem().withName("Meus Pedidos").withIcon(R.drawable.ic_lista_amarelo),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Configurações").withIcon(R.drawable.ic_map_gray_25),
+                        new SecondaryDrawerItem().withName("Configurações").withIcon(R.drawable.ic_usuario_amarelo),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Sair").withIcon(R.drawable.ic_map_gray_25))
+                        new SecondaryDrawerItem().withName("Sair").withIcon(R.drawable.ic_off_amarelo))
 
                                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                                     @Override
@@ -153,14 +153,24 @@ public class MainActivity extends ActionBarActivity {
                                            case 2:
                                                myActionButton(null);
                                                break;
-                                           case 3:
-
-                                               break;
                                            case 4:
                                                myFavoritas(null);
                                                break;
+                                           case 6:
+                                               myFavoritas(null);
+                                               break;
+                                           case 8:
+                                               Intent itLProx = new Intent(MainActivity.this, CestaActivity.class);
+                                               startActivity(itLProx);
+                                               break;
                                            case 10:
                                                myPedidos(null);
+                                               break;
+                                           case 12:
+                                               myFavoritas(null);
+                                               break;
+                                           case 14:
+                                               myFavoritas(null);
                                                break;
                                        }
 
@@ -203,8 +213,8 @@ public class MainActivity extends ActionBarActivity {
             }
         });
         TextView textView = (TextView) searchView.findViewById(R.id.search_src_text);
-        textView.setTextColor(Color.BLUE);
-        textView.setHintTextColor(Color.GREEN);
+        textView.setTextColor(Color.DKGRAY);
+        textView.setHintTextColor(Color.LTGRAY);
 
 
 
@@ -360,8 +370,11 @@ public class MainActivity extends ActionBarActivity {
 
     public boolean myActionButton (View view) {
 
+        Intent itLProx = new Intent(MainActivity.this, LojasProximasActivity.class);
+        startActivity(itLProx);
 
-                RestAdapter restAdapterDist = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
+
+                /*RestAdapter restAdapterDist = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
 
                 LojaService lojaServiceDist = restAdapterDist.create(LojaService.class);
 
@@ -389,7 +402,7 @@ public class MainActivity extends ActionBarActivity {
                             }
                         }
 
-                );
+                );*/
 
 
 

@@ -69,6 +69,7 @@ public class ItensCestaFragment extends Fragment implements RecyclerViewOnClickL
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(llm);
 
+
         CestaAdapter adapter = new CestaAdapter(getActivity(), cesta);
         adapter.setRecyclerViewOnClickListenerHack(this);
         mRecyclerView.setAdapter(adapter);

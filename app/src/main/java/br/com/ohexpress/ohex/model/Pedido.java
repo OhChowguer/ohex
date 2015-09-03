@@ -21,6 +21,12 @@ public class Pedido implements Parcelable{
     private CreditCard card;
    // private Usuario usuario;
     public Pedido(){}
+    public Pedido(boolean var){
+
+        List<ItemPedido> myCesta = new ArrayList<ItemPedido>(0);
+        item = myCesta;
+        loja = new Loja();
+    }
 
     public Pedido(Parcel in){
 

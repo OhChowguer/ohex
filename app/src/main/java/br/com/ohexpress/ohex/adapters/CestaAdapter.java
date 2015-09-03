@@ -139,10 +139,13 @@ public class CestaAdapter extends RecyclerView.Adapter<CestaAdapter.MyViewHolder
 
         listaItens.remove(position);
         notifyItemRemoved(position);
-
-
-
     }
+    public void limparItens(){
+
+        listaItens.clear();
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public int getItemCount() {

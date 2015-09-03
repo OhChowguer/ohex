@@ -1,11 +1,13 @@
 package br.com.ohexpress.ohex.fragment;
 
 import br.com.ohexpress.ohex.LojaActivity;
+import br.com.ohexpress.ohex.ProdutoActivity;
 import br.com.ohexpress.ohex.R;
 import br.com.ohexpress.ohex.adapters.LojasAdapter;
 import br.com.ohexpress.ohex.LojasProximasActivity;
 import br.com.ohexpress.ohex.interfaces.RecyclerViewOnClickListenerHack;
 import br.com.ohexpress.ohex.model.Loja;
+import br.com.ohexpress.ohex.model.LojaPorDistancia;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,19 +20,25 @@ import java.util.ArrayList;
 import java.util.List;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ProgressBar;
 
 
 public class LojaFragment extends Fragment implements RecyclerViewOnClickListenerHack {
 
 
     private RecyclerView mRecyclerView;
-    private List<Loja> lista ;
+    private List<Loja> lista  = new ArrayList<Loja>(0);
+    private ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_lojas, container, false);
+
+
+        progressBar = (ProgressBar) view.findViewById(R.id.progressbar_lojas);
+        progressBar.setVisibility(View.VISIBLE);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_lista);
         mRecyclerView.setHasFixedSize(true);
@@ -62,11 +70,7 @@ public class LojaFragment extends Fragment implements RecyclerViewOnClickListene
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(llm);
-
-
-
         lista = ((LojasProximasActivity) getActivity()).getSetLojaList();
-        //carregaLojas();
         LojasAdapter adapter = new LojasAdapter(getActivity(), lista);
         adapter.setRecyclerViewOnClickListenerHack(this);
         mRecyclerView.setAdapter(adapter);
@@ -87,6 +91,16 @@ public class LojaFragment extends Fragment implements RecyclerViewOnClickListene
         startActivity(itLProx);
     }
 
+    public void refreshLista(List<Loja> lojas) {
+
+        lista = lojas;
+        LojasAdapter adapter = new LojasAdapter(getActivity(), lista);
+        adapter.setRecyclerViewOnClickListenerHack(this);
+        mRecyclerView.setAdapter(adapter);
+        progressBar.setVisibility(View.GONE);
+
+
+    }
 
 
 

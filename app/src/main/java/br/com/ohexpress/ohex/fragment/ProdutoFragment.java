@@ -95,6 +95,8 @@ public class ProdutoFragment extends Fragment implements RecyclerViewOnClickList
         itLProx.putExtra("produto", lista.get(position));
         startActivity(itLProx);
     }
+
+
     
 
 

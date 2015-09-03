@@ -2,24 +2,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D0D0D0"
+    android:background="#FFFFFF"
     tools:context="br.com.ohexpress.ohex.fragment.LojaFragment">
 
     <ProgressBar
         android:id="@+id/progressBar1"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:progressDrawable="@drawable/myprogressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminateDrawable="@drawable/myprogressbar"/>
+        android:layout_width="120dp"
+        android:layout_height="52dp"
+        android:indeterminateDrawable="@drawable/myprogressbar"
+        android:layout_gravity="center" />
 
-    <!--android.support.v7.widget.RecyclerView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_lista_pedido"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp" /-->
+        android:layout_marginTop="8dp" />
 
 </FrameLayout>
 

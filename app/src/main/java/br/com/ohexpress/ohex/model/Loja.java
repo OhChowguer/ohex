@@ -25,7 +25,6 @@ public class Loja implements Parcelable {
     private List<Categoria> categoria ;
     private List<CategoriaProduto> categoriaProduto;
     private String imgLogoTopo;
-
     private List<Produto> produto;
     private List<Usuario> usuario ;
     private String distText;

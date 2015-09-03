@@ -56,6 +56,8 @@ public class CestaActivity extends ActionBarActivity {
     private Pedido pedido;
     private DecimalFormat format;
     private CreditCard card;
+    private ItensCestaFragment frag;
+    private FragmentTransaction ft;
 
 
     @Override
@@ -94,10 +96,10 @@ public class CestaActivity extends ActionBarActivity {
 
 
         // FRAGMENT
-        ItensCestaFragment frag = (ItensCestaFragment) getSupportFragmentManager().findFragmentByTag("mainFragCesta");
+        frag = (ItensCestaFragment) getSupportFragmentManager().findFragmentByTag("mainFragCesta");
         if (frag == null) {
             frag = new ItensCestaFragment();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.rl_fragment_container_cesta, frag, "mainFragCesta");
             ft.commit();
         }
@@ -108,7 +110,7 @@ public class CestaActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        //getMenuInflater().inflate(R.menu.menu_loja, menu);
+        getMenuInflater().inflate(R.menu.menu_cesta, menu);
         return true;
     }
 
@@ -119,12 +121,14 @@ public class CestaActivity extends ActionBarActivity {
 
         if (id == android.R.id.home) {
 
-            if (card != null) {
-                Toast.makeText(CestaActivity.this, card.getNomeTitular(), Toast.LENGTH_LONG).show();
-            }
-
             finish();
 
+            return true;
+        }
+        if (id == R.id.action_limpar_cesta) {
+
+            ((MyApplication) getApplication()).setMyPedido(new Pedido(true));
+            limpaActivity();
             return true;
         }
 
@@ -341,8 +345,10 @@ public class CestaActivity extends ActionBarActivity {
         tvLabelTotalCesta.setVisibility(View.GONE);
         tvLabelSifrao.setVisibility(View.GONE);
         saparator.setVisibility(View.GONE);
+        if (frag!=null) {
+            frag.getView().setVisibility(View.GONE);
 
-
+        }
     }
 
 

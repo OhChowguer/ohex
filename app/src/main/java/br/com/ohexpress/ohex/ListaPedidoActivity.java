@@ -206,8 +206,7 @@ public class ListaPedidoActivity extends ActionBarActivity {
                     public void success(List<Pedido> pedidos, Response response) {
 
                         listPedido = (ArrayList<Pedido>) pedidos;
-
-                       //frag.loadPedidos(pedidos);
+                        frag.loadPedidos(pedidos);
 
 
 
@@ -218,6 +217,7 @@ public class ListaPedidoActivity extends ActionBarActivity {
                     public void failure(RetrofitError error) {
 
                         Toast.makeText(ListaPedidoActivity.this, "Deu errado" + error, Toast.LENGTH_LONG).show();
+                        frag.removeProgress();
 
 
                     }

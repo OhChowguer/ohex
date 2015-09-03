@@ -31,7 +31,7 @@ public class PedidoFragment extends Fragment implements RecyclerViewOnClickListe
 
     private RecyclerView mRecyclerView;
     private List<Pedido> listaPedido = new ArrayList<Pedido>(0);
-
+    private ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,10 +40,10 @@ public class PedidoFragment extends Fragment implements RecyclerViewOnClickListe
         View view = inflater.inflate(R.layout.fragment_pedidos, container, false);
 
 ;
-        ProgressBar spinner = (ProgressBar) view.findViewById(R.id.progressBar1);
-        spinner.isShown();
-        //mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_lista_pedido);
-        //mRecyclerView.setHasFixedSize(true);
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBar1);
+        progressBar.setVisibility(View.VISIBLE);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_lista_pedido);
+        mRecyclerView.setHasFixedSize(true);
 
         /*
         mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -71,9 +71,9 @@ public class PedidoFragment extends Fragment implements RecyclerViewOnClickListe
         });
     */
 
-        //LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        //llm.setOrientation(LinearLayoutManager.VERTICAL);
-        //mRecyclerView.setLayoutManager(llm);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(llm);
 
 
 
@@ -103,6 +103,15 @@ public class PedidoFragment extends Fragment implements RecyclerViewOnClickListe
         PedidoAdapter adapter = new PedidoAdapter(getActivity(), listaPedido);
         adapter.setRecyclerViewOnClickListenerHack(this);
         mRecyclerView.setAdapter(adapter);
+        progressBar.setVisibility(View.GONE);
+
+    }
+
+    public void removeProgress(){
+
+
+
+        progressBar.setVisibility(View.GONE);
 
     }
 
