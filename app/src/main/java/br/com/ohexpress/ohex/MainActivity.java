@@ -44,11 +44,13 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import br.com.ohexpress.ohex.fragment.MainFragment;
 import br.com.ohexpress.ohex.interfaces.LojaService;
 import br.com.ohexpress.ohex.interfaces.UserService;
+import br.com.ohexpress.ohex.model.CreditCard;
 import br.com.ohexpress.ohex.model.Loja;
 import br.com.ohexpress.ohex.model.LojaPorDistancia;
 import br.com.ohexpress.ohex.model.Pedido;
@@ -83,7 +85,13 @@ public class MainActivity extends ActionBarActivity {
         Fresco.initialize(this);
         setContentView(R.layout.activity_main);
 
+        List<CreditCard> cards = new ArrayList<CreditCard>(0);
+
+        CreditCard card = new CreditCard("99999999999","Visa",1,"DEBITO",new Date(),"Diego");
+        cards.add(card);
+
         user = ((MyApplication) getApplication()).getUser();
+        user.setCreditCard(cards);
         mAccountManager = AccountManager.get(MainActivity.this);
 
         /*
@@ -105,7 +113,6 @@ public class MainActivity extends ActionBarActivity {
         accHeaderBuilder = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.bg)
-
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
                     public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
@@ -124,9 +131,9 @@ public class MainActivity extends ActionBarActivity {
                 .withDrawerGravity(Gravity.LEFT)
                 .withAccountHeader(accHeaderBuilder)
                 .withSavedInstance(savedInstanceState)
-                .withSelectedItem(0)
+                .withSelectedItem(1)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName("Menu").withIcon(R.drawable.ic_home_amarelo),
+                        new PrimaryDrawerItem().withName("Inicio").withIcon(R.drawable.ic_home_amarelo),
                         new DividerDrawerItem(),
                         new SecondaryDrawerItem().withName("Lojas Proximos").withIcon(R.drawable.ic_local_amarelo),
                         new DividerDrawerItem(),

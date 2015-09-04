@@ -14,7 +14,7 @@
         android:id="@+id/oh_top_toolbar"
         android:layout_width='match_parent'
         android:elevation='4dp'
-        android:layout_height='?attr/actionBarSize'
+        android:layout_height="?attr/actionBarSize"
         android:minHeight='?attr/actionBarSize'
         android:focusable="false" />
 

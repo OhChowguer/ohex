@@ -195,8 +195,10 @@ public class CestaActivity extends ActionBarActivity {
             //RadioGroup rg = (RadioGroup) dialog.findViewById(R.id.rg_dialog_pedido);
 
             List<String> list = new ArrayList<String>();
-            list.add("VISA CREDITO ****.****.****.9090");
-            list.add("MASTER CARD  ****.*****");
+
+            for (CreditCard card: user.getCreditCard()){
+            list.add(card.getNome()+" - ****.****."+card.getNumeroCard().substring(7));
+          }
 
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked, list);

@@ -22,6 +22,14 @@ public class CreditCard implements Parcelable{
     private String nomeTitular;
     private Endereco enderecoCob;
 
+    public CreditCard(String numeroCard, String nome, int tipoCard, String descricao, Date dataExp, String nomeTitular) {
+        this.numeroCard = numeroCard;
+        this.nome = nome;
+        this.tipoCard = tipoCard;
+        this.descricao = descricao;
+        this.dataExp = dataExp;
+        this.nomeTitular = nomeTitular;
+    }
 
     public CreditCard(Parcel parcel) {
         this.id = parcel.readLong();
