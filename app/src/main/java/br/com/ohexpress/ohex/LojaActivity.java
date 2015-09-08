@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -32,9 +34,16 @@ import java.util.ArrayList;
 import java.util.List;
 import br.com.ohexpress.ohex.adapters.CestaMenuAdapter;
 import br.com.ohexpress.ohex.fragment.DestaqueFragment;
+import br.com.ohexpress.ohex.interfaces.UserService;
 import br.com.ohexpress.ohex.model.Loja;
 import br.com.ohexpress.ohex.model.Produto;
 import br.com.ohexpress.ohex.model.Usuario;
+import br.com.ohexpress.ohex.util.Constant;
+import br.com.ohexpress.ohex.util.ServerUtil;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class LojaActivity extends ActionBarActivity {
@@ -50,8 +59,10 @@ public class LojaActivity extends ActionBarActivity {
     private float scale;
     private Usuario user;
     private Drawer nDrawerLeft;
+    private Drawer nDrawerRight;
     private AccountHeader accHeaderBuilder;
     private ImageView openDrawer;
+    private ActionButton fabFav;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +84,35 @@ public class LojaActivity extends ActionBarActivity {
         tvEndLoja.setText(loja.getEndereco().getBairro()+", "+loja.getEndereco().getCidade());
         ohTopBar = (Toolbar) findViewById(R.id.oh_top_toolbar);
         setSupportActionBar(ohTopBar);
+        fabFav = (ActionButton) findViewById(R.id.fab_fav);
+
+        if (user.getId() == null || user.findFav(loja.getId())){
+            fabFav.setButtonColor(getResources().getColor(R.color.grey));
+            fabFav.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    addFav(1);
+
+                }
+            });
+
+        }else{
+            fabFav.setButtonColor(getResources().getColor(R.color.accent));
+
+            fabFav.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    addFav(2);
+
+                }
+            });
+
+
+        }
+
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -107,15 +147,15 @@ public class LojaActivity extends ActionBarActivity {
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Inicio").withIcon(R.drawable.ic_home_amarelo),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Lojas Proximos").withIcon(R.drawable.ic_local_amarelo),
-                        new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Favoritos").withIcon(R.drawable.ic_favorito_amarelo),
-                        new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("QR Code").withIcon(R.drawable.ic_qr_amarelo),
+                        //new SecondaryDrawerItem().withName("Lojas Proximos").withIcon(R.drawable.ic_local_amarelo),
+                        //new DividerDrawerItem(),
+                        //new SecondaryDrawerItem().withName("Favoritos").withIcon(R.drawable.ic_favorito_amarelo),
+                       // new DividerDrawerItem(),
+                        new SecondaryDrawerItem().withName("Menu da loja").withIcon(R.drawable.ic_qr_amarelo),
                         new DividerDrawerItem(),
                         new SecondaryDrawerItem().withName("Cesta de compras").withIcon(R.drawable.ic_cesto_amarelo),
                         new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Meus Pedidos").withIcon(R.drawable.ic_lista_amarelo),
+                        new SecondaryDrawerItem().withName("Pedidos em "+loja.getNome()).withIcon(R.drawable.ic_lista_amarelo),
                         new DividerDrawerItem(),
                         new SecondaryDrawerItem().withName("Configurações").withIcon(R.drawable.ic_usuario_amarelo),
                         new DividerDrawerItem(),
@@ -133,11 +173,17 @@ public class LojaActivity extends ActionBarActivity {
                                 break;
                             case 2:
 
-                                break;
-                            case 4:
+                                //nDrawerRight.openDrawer();
 
                                 break;
+                            case 4:
+                                Intent itLProx = new Intent(LojaActivity.this, CestaActivity.class);
+                                startActivity(itLProx);
+                                break;
                             case 6:
+
+                                Intent it = new Intent(LojaActivity.this, ListaPedidoActivity.class);
+                                startActivity(it);
 
                                 break;
                             case 8:
@@ -159,6 +205,14 @@ public class LojaActivity extends ActionBarActivity {
                     }
                 })
                 .build();
+
+        nDrawerRight = new DrawerBuilder()
+                .withActivity(this)
+                .addDrawerItems(
+                        //pass your items here
+                )
+                .withDrawerGravity(Gravity.RIGHT)
+                .append(nDrawerLeft);
 
         openDrawer = (ImageView) findViewById(R.id.iv_open_drawer);
         openDrawer.setOnClickListener(new View.OnClickListener() {
@@ -221,6 +275,73 @@ public class LojaActivity extends ActionBarActivity {
         return ;
     }
 
+    public void addFav(final int act){
+
+        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
+
+        UserService userService = restAdapter.create(UserService.class);
+
+        userService.actionfavoritas(user.getToken(), loja.getId(),
+                new Callback<String>() {
+
+
+                    @Override
+                    public void success(String callback, Response response) {
+
+
+                        if (callback != null) {
+
+                            Toast.makeText(LojaActivity.this, callback, Toast.LENGTH_SHORT).show();
+                            ServerUtil serverUtil = new ServerUtil();
+                            serverUtil.getUser(user, LojaActivity.this);
+                            if (act == 1){
+
+                                //fabFav.setButtonColor(R.color.accent);
+                                fabFav.setButtonColor(getResources().getColor(R.color.accent));
+                                fabFav.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+
+
+
+                                        addFav(2);
+
+                                    }
+                                });
+
+                            }else{
+                                fabFav.setButtonColor(getResources().getColor(R.color.grey));
+                                fabFav.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+
+
+
+                                        addFav(1);
+
+                                    }
+                                });
+                            }
+
+                        }
+
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+
+                        Toast.makeText(LojaActivity.this, "Erro =S (" + error + ")", Toast.LENGTH_SHORT).show();
+
+
+                    }
+                }
+
+        );
+
+
+        return ;
+    }
+
     public void openMenu(View view){
 
 
@@ -245,6 +366,9 @@ public class LojaActivity extends ActionBarActivity {
         listPopupWindow.setModal(true);
         listPopupWindow.show();
     }
+
+
+
 
 
 

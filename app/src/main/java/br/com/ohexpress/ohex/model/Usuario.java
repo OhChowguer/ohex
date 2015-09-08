@@ -27,6 +27,17 @@ public class Usuario implements Parcelable {
     private List<CreditCard> creditCard = new ArrayList<CreditCard>();
 
     public Usuario(){}
+
+    public Usuario(String login, String nome, String email){
+
+
+        this.login = login;
+        this.nome = nome;
+        this.email = email;
+
+
+
+    }
     public Usuario(Parcel parcel){
 
         this.id = parcel.readLong();
@@ -193,4 +204,16 @@ public class Usuario implements Parcelable {
             return new Usuario[size];
         }
     };
+
+    public boolean findFav(Long id){
+
+        for (Loja loja: favorita){
+            if (loja.getId() == id){
+
+                return true;
+            }
+        }
+
+     return false;
+    }
 }

@@ -23,13 +23,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_useracc"
-        android:editable="true"
         android:ems="10"
         android:hint="Usuario"
         android:singleLine="false"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:password="false"
         android:layout_above="@+id/tvDataExpCard"
         android:layout_centerHorizontal="true"
@@ -84,6 +83,18 @@
         android:textColor="@android:color/white"
         android:textSize="30sp"
         android:layout_margin="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ainda não tem uma conta? Registre-se aqui"
+        android:id="@+id/tv_clique_aqui"
+        android:layout_below="@+id/tvDataExpCard"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/fab_material_white"
+        android:textStyle="bold"
+        android:textSize="12sp" />
 
 
 </RelativeLayout>

@@ -296,11 +296,12 @@ public class CestaActivity extends ActionBarActivity {
 
 
         pedido.setCard(card);
+
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
 
         PedidoService pedidoService = restAdapter.create(PedidoService.class);
 
-        pedidoService.addPedido(user.getToken(), "cvc", pedido,
+        pedidoService.addPedido(user.getToken(), pedido,
                 new Callback<Pedido>() {
 
 

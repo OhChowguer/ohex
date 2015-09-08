@@ -125,7 +125,7 @@
         android:nestedScrollingEnabled="false"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/text_jacc_login"
+        android:layout_above="@+id/tv_reg_aqui"
         android:layout_marginBottom="15dp"
         android:elevation="5dp" />
 
@@ -133,29 +133,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="                             Já tem conta? "
-        android:id="@+id/text_jacc_login"
-        android:textSize="12dp"
-        android:layout_marginBottom="15dp"
+        android:text="Já tem conta? Faça seu login aqui"
+        android:id="@+id/tv_reg_aqui"
+        android:textSize="12sp"
         android:autoText="false"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="false"
-        android:textColor="#FFFFFF" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Faça seu login aqui!"
-        android:id="@+id/textView3"
-        android:textSize="12dp"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:layout_below="@+id/bt_login"
-        android:layout_toEndOf="@+id/text_jacc_login"
-        android:autoText="false"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

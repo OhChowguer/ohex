@@ -29,6 +29,7 @@ public class LoginActivity extends  AccountAuthenticatorActivity {
 
     private EditText login;
     private TextView email;
+    private TextView cliqueAqui;
     private EditText senha;
     private Toolbar ohTopBar;
     private AccountManager mAccountManager;
@@ -49,6 +50,15 @@ public class LoginActivity extends  AccountAuthenticatorActivity {
         user.setAccountName(getIntent().getStringExtra(Constant.ARG_ACCOUNT_NAME));
         user.setAuthTokenType(getIntent().getStringExtra(Constant.ARG_AUTH_TYPE));
         mAccountManager = AccountManager.get(LoginActivity.this);
+        cliqueAqui = (TextView) findViewById(R.id.tv_clique_aqui);
+        cliqueAqui.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,RegistrarActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
     }

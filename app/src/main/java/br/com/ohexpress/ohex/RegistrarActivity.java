@@ -1,6 +1,7 @@
 package br.com.ohexpress.ohex;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,14 +21,20 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
+import br.com.ohexpress.ohex.interfaces.UserService;
+import br.com.ohexpress.ohex.model.Usuario;
+import br.com.ohexpress.ohex.util.Constant;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+
 
 public class RegistrarActivity extends ActionBarActivity {
 
 
-    private RequestQueue requestQueue;
     private Map<String, String> params;
-    private String url;
     private TextView nome;
+    private TextView rAqui;
     private TextView login;
     private TextView email;
     private TextView senha;
@@ -43,17 +50,19 @@ public class RegistrarActivity extends ActionBarActivity {
         setSupportActionBar(ohTopBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-         url = "http://10.0.2.2:8080/ohexpress/registroApp";
-
         nome = (TextView) findViewById(R.id.tvNumeroCard);
         login = (TextView) findViewById(R.id.tvNomeTitular);
         email = (TextView) findViewById(R.id.tvEndereco);
         senha = (TextView) findViewById(R.id.tvDataExpCard);
-
-
-        requestQueue = Volley.newRequestQueue(RegistrarActivity.this);
-
+        rAqui = (TextView) findViewById(R.id.tv_reg_aqui);
+        rAqui.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegistrarActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
@@ -91,50 +100,43 @@ public class RegistrarActivity extends ActionBarActivity {
 
     public void add(View view) {
 
-        params = new HashMap<String, String>();
-        params.put("email", email.getText().toString());
-        params.put("nome", nome.getText().toString());
-        params.put("sNome", "Rafael");
-        params.put("senha", senha.getText().toString());
-        params.put("login", login.getText().toString());
+
+        Usuario usuario = new Usuario(login.getText().toString(),nome.getText().toString(),email.getText().toString());
+
+        RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
+
+        UserService userService = restAdapterPedido.create(UserService.class);
+
+        userService.registrar(senha.getText().toString(),usuario,
+                new Callback<Usuario>() {
 
 
-        StringRequest request = new StringRequest(Method.POST, url, new Response.Listener<String>() {
+                    @Override
+                    public void success(Usuario usuario, retrofit.client.Response response) {
+
+                        if (usuario.getId() != null){
+
+                            ((MyApplication) getApplication()).setUser(usuario);
+
+                        }else {
 
 
-            @Override
-            public void onResponse(String response) {
+                            Toast.makeText(RegistrarActivity.this, "Erro no registro", Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(RegistrarActivity.this, "deu certo" + response, Toast.LENGTH_LONG).show();
+                        }
 
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+                    }
 
-                Toast.makeText(RegistrarActivity.this, "deu erro" + error, Toast.LENGTH_LONG).show();
+                    @Override
+                    public void failure(RetrofitError error) {
 
-            }
-        }) {
-            @Override
-            public Map<String, String> getParams() throws AuthFailureError {
-
-                params = new HashMap<String, String>();
-                params.put("email", email.getText().toString());
-                params.put("nome", nome.getText().toString());
-                params.put("sNome", "Rafael");
-                params.put("senha", senha.getText().toString());
-                params.put("login", login.getText().toString());
-
-                return (params);
-            }
-
-        };
-
-        request.setTag("tag");
-        requestQueue.add(request);
+                        Toast.makeText(RegistrarActivity.this, "Deu errado =(  " + error, Toast.LENGTH_LONG).show();
 
 
-        return;
+                    }
+                }
+
+        );
+
     }
 }

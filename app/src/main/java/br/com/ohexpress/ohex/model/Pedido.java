@@ -19,6 +19,8 @@ public class Pedido implements Parcelable{
     private Loja loja ;
     private int status;
     private CreditCard card;
+
+
    // private Usuario usuario;
     public Pedido(){}
     public Pedido(boolean var){

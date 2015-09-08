@@ -2,7 +2,6 @@ package br.com.ohexpress.ohex.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import java.util.Date;
 
 /**
@@ -21,6 +20,8 @@ public class CreditCard implements Parcelable{
     private Date dataExp;
     private String nomeTitular;
     private Endereco enderecoCob;
+
+
 
     public CreditCard(String numeroCard, String nome, int tipoCard, String descricao, Date dataExp, String nomeTitular) {
         this.numeroCard = numeroCard;

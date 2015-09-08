@@ -88,7 +88,7 @@ public class LojasProximasActivity extends ActionBarActivity {
 
         LojaService lojaServiceDist = restAdapterDist.create(LojaService.class);
 
-        lojaServiceDist.listarLojasDist(
+        lojaServiceDist.listarLojas(
                 new Callback<List<LojaPorDistancia>>() {
 
 

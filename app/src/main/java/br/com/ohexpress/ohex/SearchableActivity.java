@@ -24,6 +24,7 @@ import br.com.ohexpress.ohex.adapters.LojasAdapter;
 import br.com.ohexpress.ohex.interfaces.LojaService;
 import br.com.ohexpress.ohex.interfaces.RecyclerViewOnClickListenerHack;
 import br.com.ohexpress.ohex.model.Loja;
+import br.com.ohexpress.ohex.model.LojaPorDistancia;
 import br.com.ohexpress.ohex.util.Constant;
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -123,13 +124,13 @@ public class SearchableActivity extends AppCompatActivity implements RecyclerVie
         LojaService lojaService = restAdapter.create(LojaService.class);
 
         lojaService.listarLojas(
-                new Callback<List<Loja>>() {
+                new Callback<List<LojaPorDistancia>>() {
 
 
                     @Override
-                    public void success(List<Loja> lojas, Response response) {
+                    public void success(List<LojaPorDistancia> lojas, Response response) {
 
-                        setList(lojas);
+                        setList(setDistancia(lojas));
 
                         //Toast.makeText(SearchableActivity.this, "Position:okay", Toast.LENGTH_SHORT).show();
                     }
@@ -242,6 +243,23 @@ public class SearchableActivity extends AppCompatActivity implements RecyclerVie
 
         return super.onOptionsItemSelected(item);
     }
+
+    public List<Loja> setDistancia(List<LojaPorDistancia> lpd) {
+
+        List<Loja> lojas =  new ArrayList<Loja>();
+
+        for (LojaPorDistancia lj: lpd)
+        {
+            Loja loja = lj.getLoja();
+            loja.setDistNumber(lj.getDistNumber());
+            loja.setDistText(lj.getDistText());
+            lojas.add(loja);
+
+
+        }
+        return lojas;
+    }
+
 
 
 }

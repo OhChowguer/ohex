@@ -30,7 +30,7 @@ public interface PedidoService {
 
 
     @POST("/addpedido")
-    void addPedido(@Header ("Autentication") String token,@Header ("cvc") String cvc,@Body Pedido pedido, Callback<Pedido> callback);
+    void addPedido(@Header ("Autentication") String token, @Body Pedido pedido, Callback<Pedido> callback);
 
     @POST("/listarpedidosporcomprador")
     void listarPedidoPorComprador(@Header("Autentication") String token, Callback<List<Pedido>> pedidos);

@@ -144,7 +144,7 @@ public class EmitePedidoActivity extends ActionBarActivity {
 
         PedidoService pedidoService = restAdapter.create(PedidoService.class);
 
-        pedidoService.addPedido(user.getToken(), "cvc",pedido,
+        pedidoService.addPedido(user.getToken(), pedido,
                 new Callback<Pedido>(){
 
 

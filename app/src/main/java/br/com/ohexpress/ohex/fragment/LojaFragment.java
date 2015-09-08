@@ -1,6 +1,7 @@
 package br.com.ohexpress.ohex.fragment;
 
 import br.com.ohexpress.ohex.LojaActivity;
+import br.com.ohexpress.ohex.LojasFavoritasActivity;
 import br.com.ohexpress.ohex.ProdutoActivity;
 import br.com.ohexpress.ohex.R;
 import br.com.ohexpress.ohex.adapters.LojasAdapter;
@@ -70,7 +71,8 @@ public class LojaFragment extends Fragment implements RecyclerViewOnClickListene
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(llm);
-        lista = ((LojasProximasActivity) getActivity()).getSetLojaList();
+//        lista = ((LojasProximasActivity) getActivity()).getSetLojaList();
+        //lista = ((LojasFavoritasActivity) getActivity()).getSetLojaList();
         LojasAdapter adapter = new LojasAdapter(getActivity(), lista);
         adapter.setRecyclerViewOnClickListenerHack(this);
         mRecyclerView.setAdapter(adapter);

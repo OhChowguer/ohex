@@ -57,6 +57,7 @@ import br.com.ohexpress.ohex.model.Pedido;
 import br.com.ohexpress.ohex.model.Usuario;
 import br.com.ohexpress.ohex.util.PedidosUtil;
 import br.com.ohexpress.ohex.util.Constant;
+import br.com.ohexpress.ohex.util.ServerUtil;
 import retrofit.Callback;
 
 import retrofit.RestAdapter;
@@ -133,8 +134,8 @@ public class MainActivity extends ActionBarActivity {
                 .withSavedInstance(savedInstanceState)
                 .withSelectedItem(1)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName("Inicio").withIcon(R.drawable.ic_home_amarelo),
-                        new DividerDrawerItem(),
+                        //new PrimaryDrawerItem().withName("Inicio").withIcon(R.drawable.ic_home_amarelo),
+                       // new DividerDrawerItem(),
                         new SecondaryDrawerItem().withName("Lojas Proximos").withIcon(R.drawable.ic_local_amarelo),
                         new DividerDrawerItem(),
                         new SecondaryDrawerItem().withName("Favoritos").withIcon(R.drawable.ic_favorito_amarelo),
@@ -157,26 +158,26 @@ public class MainActivity extends ActionBarActivity {
                                            case 1:
 
                                                break;
-                                           case 2:
+                                           case 0:
                                                myActionButton(null);
+                                               break;
+                                           case 2:
+                                               myFavoritas(null);
                                                break;
                                            case 4:
                                                myFavoritas(null);
                                                break;
                                            case 6:
-                                               myFavoritas(null);
-                                               break;
-                                           case 8:
                                                Intent itLProx = new Intent(MainActivity.this, CestaActivity.class);
                                                startActivity(itLProx);
                                                break;
-                                           case 10:
+                                           case 8:
                                                myPedidos(null);
                                                break;
-                                           case 12:
+                                           case 10:
                                                myFavoritas(null);
                                                break;
-                                           case 14:
+                                           case 12:
                                                myFavoritas(null);
                                                break;
                                        }
@@ -249,6 +250,9 @@ public class MainActivity extends ActionBarActivity {
 
             if (user.getId()==null) {
 
+                //ServerUtil serverUtil = new ServerUtil();
+                //serverUtil.getUser(user,MainActivity.this);
+
                 RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
 
                 UserService userService = restAdapterPedido.create(UserService.class);
@@ -261,10 +265,12 @@ public class MainActivity extends ActionBarActivity {
                             public void success(Usuario usuario, Response response) {
 
                                 ((MyApplication) getApplication()).setUser(usuario);
+                                user = usuario;
                                 //listaPedido = (ArrayList<Pedido>) pedidos;
                                 //Intent itLProx = new Intent(MainActivity.this, EstabelecimentoMainActivity.class);
                                 //itLProx.putParcelableArrayListExtra("pedidos", listaPedido);
                                 //tartActivity(itLProx);
+
                                 Toast.makeText(MainActivity.this, user.getToken(), Toast.LENGTH_SHORT).show();
 
 
@@ -282,7 +288,7 @@ public class MainActivity extends ActionBarActivity {
                 );
             }
             else{
-                Toast.makeText(MainActivity.this, user.getCreditCard().get(0).getNomeTitular(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, user.getCreditCard().get(0).getNomeTitular(), Toast.LENGTH_SHORT).show();
             }
 
             //PedidosUtil pUtil = new PedidosUtil();
@@ -341,18 +347,21 @@ public class MainActivity extends ActionBarActivity {
 
     public void myFavoritas(View view){
 
-        RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
+        Intent itLProx = new Intent(MainActivity.this, LojasFavoritasActivity.class);
+        startActivity(itLProx);
+
+        /*RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
         UserService userService = restAdapterPedido.create(UserService.class);
 
         userService.listarfavoritas(user.getToken(),
-                new Callback<Usuario>() {
+                new Callback<List<LojaPorDistancia>>() {
 
 
                     @Override
-                    public void success(Usuario usuario, Response response) {
+                    public void success(List<LojaPorDistancia> lojas, Response response) {
 
 
-                        lista = (ArrayList<Loja>) usuario.getFavoritas();
+                        lista = (ArrayList<Loja>) setDistancia(lojas);
                         Intent itLProx = new Intent(MainActivity.this, LojasProximasActivity.class);
                         itLProx.putParcelableArrayListExtra("lojas", lista);
                         startActivity(itLProx);
@@ -369,7 +378,7 @@ public class MainActivity extends ActionBarActivity {
                     }
                 }
 
-        );
+        );*/
 
 
     }

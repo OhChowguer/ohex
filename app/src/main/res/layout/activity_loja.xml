@@ -14,8 +14,6 @@
 
 
 
-
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/oh_top_toolbar"
         android:layout_width='match_parent'
@@ -115,7 +113,8 @@
         app:fabSize="normal"
         android:layout_alignTop="@+id/fab_loc"
         android:layout_toRightOf="@+id/fab_loc"
-        android:layout_toEndOf="@+id/fab_loc" />
+        android:layout_toEndOf="@+id/fab_loc"
+        />
 
     <com.software.shell.fab.ActionButton
         android:id="@+id/fab_menu"
