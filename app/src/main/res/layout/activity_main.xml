@@ -18,7 +18,7 @@
         android:id='@+id/oh_pesquisa_toolbar'
         android:layout_width='match_parent'
         android:elevation='4dp'
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:background='@drawable/toolbar_rounded_corners'
         android:minHeight='?attr/actionBarSize'
         android:focusable="false"
