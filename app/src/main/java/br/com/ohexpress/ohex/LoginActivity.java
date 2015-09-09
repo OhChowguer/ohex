@@ -8,13 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.android.volley.RequestQueue;
-import java.util.Map;
 import br.com.ohexpress.ohex.interfaces.UserService;
 import br.com.ohexpress.ohex.model.Usuario;
 import br.com.ohexpress.ohex.util.Constant;
@@ -24,7 +22,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 
-public class LoginActivity extends  AccountAuthenticatorActivity {
+public class LoginActivity extends AccountAuthenticatorActivity  {
 
 
     private EditText login;
@@ -34,14 +32,14 @@ public class LoginActivity extends  AccountAuthenticatorActivity {
     private Toolbar ohTopBar;
     private AccountManager mAccountManager;
     private Usuario user;
+    private ImageView voltar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //ohTopBar = (Toolbar) findViewById(R.id.oh_top_toolbar);
-        //setSupportActionBar(ohTopBar);
+
 
         senha = (EditText) findViewById(R.id.tvDataExpCard);
         login = (EditText) findViewById(R.id.et_login_act);
@@ -54,8 +52,15 @@ public class LoginActivity extends  AccountAuthenticatorActivity {
         cliqueAqui.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,RegistrarActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegistrarActivity.class);
                 startActivity(intent);
+                finish();
+            }
+        });
+        voltar = (ImageView) findViewById(R.id.iv_voltar_login);
+        voltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 finish();
             }
         });
@@ -69,15 +74,6 @@ public class LoginActivity extends  AccountAuthenticatorActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.home) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
 
 

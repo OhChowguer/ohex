@@ -18,8 +18,12 @@
         <item name="material_drawer_header_selection_text">@color/material_drawer_header_selection_text</item>
     </style>
 
-    <style name='Theme.MyThemeBarBaixo' parent='Theme.MyTheme'>
-        <item name='colorPrimary'>@color/oh_color_terc</item>
+    <style name='Theme.OhBarPesqTheme' parent='Theme.MyTheme'>
+        <item name='colorControlNormal'>@color/oh_color_terc</item>
+        <!--item name="android:textSize">15sp</item-->
+        <item name="android:textColor">@android:color/holo_blue_dark</item>
+        <item name="android:actionMenuTextColor">@android:color/holo_blue_dark</item>
+
     </style>
 
 </resources>

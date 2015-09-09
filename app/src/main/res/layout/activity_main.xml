@@ -17,11 +17,12 @@
     <android.support.v7.widget.Toolbar
         android:id='@+id/oh_pesquisa_toolbar'
         android:layout_width='match_parent'
-        android:elevation='4dp'
-        android:layout_height="40dp"
+        android:elevation='6dp'
+        android:layout_height='?attr/actionBarSize'
         android:background='@drawable/toolbar_rounded_corners'
         android:minHeight='?attr/actionBarSize'
         android:focusable="false"
+        android:theme="@style/Theme.OhBarPesqTheme"
         android:layout_above="@+id/rl_fragment_container_main"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

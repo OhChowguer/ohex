@@ -7,7 +7,7 @@
     android:layout_height='?attr/actionBarSize'
     android:minHeight='?attr/actionBarSize'
     android:background="?attr/colorPrimary"
-    app:theme="@style/Theme.MyThemeBarBaixo"
+
     android:elevation='4dp'>
 
 

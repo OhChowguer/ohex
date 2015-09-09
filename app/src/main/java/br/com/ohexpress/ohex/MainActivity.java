@@ -78,6 +78,7 @@ public class MainActivity extends ActionBarActivity {
     private AccountHeader accHeaderBuilder;
     private Usuario user;
     private AccountManager mAccountManager;
+    private Account[] accs;
 
 
     @Override
@@ -85,6 +86,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
         setContentView(R.layout.activity_main);
+
 
         List<CreditCard> cards = new ArrayList<CreditCard>(0);
 
@@ -102,11 +104,13 @@ public class MainActivity extends ActionBarActivity {
 
 
 
+
+
         ohTopBar = (Toolbar) findViewById(R.id.oh_top_toolbar);
         setSupportActionBar(ohTopBar);
 
 
-        Account[] accs = mAccountManager.getAccountsByType(Constant.ACCOUNT_TYPE);
+        accs = mAccountManager.getAccountsByType(Constant.ACCOUNT_TYPE);
 
         if(accs.length>0) {
             getAccounts(null);}
@@ -123,91 +127,46 @@ public class MainActivity extends ActionBarActivity {
                 .build();
 
 
-
-        nDrawerLeft = new DrawerBuilder()
-                .withActivity(this)
-                .withToolbar(ohTopBar)
-                //.withDisplayBelowToolbar(true)
-                .withActionBarDrawerToggleAnimated(true)
-                .withDrawerGravity(Gravity.LEFT)
-                .withAccountHeader(accHeaderBuilder)
-                .withSavedInstance(savedInstanceState)
-                .withSelectedItem(1)
-                .addDrawerItems(
-                        //new PrimaryDrawerItem().withName("Inicio").withIcon(R.drawable.ic_home_amarelo),
-                       // new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Lojas Proximos").withIcon(R.drawable.ic_local_amarelo),
-                        new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Favoritos").withIcon(R.drawable.ic_favorito_amarelo),
-                        new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("QR Code").withIcon(R.drawable.ic_qr_amarelo),
-                        new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Cesta de compras").withIcon(R.drawable.ic_cesto_amarelo),
-                        new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Meus Pedidos").withIcon(R.drawable.ic_lista_amarelo),
-                        new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Configurações").withIcon(R.drawable.ic_usuario_amarelo),
-                        new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Sair").withIcon(R.drawable.ic_off_amarelo))
-
-                                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                                    @Override
-                                    public boolean onItemClick(AdapterView<?> adapterView, View view, int position, long l, IDrawerItem iDrawerItem) {
-
-                                       switch (position) {
-                                           case 1:
-
-                                               break;
-                                           case 0:
-                                               myActionButton(null);
-                                               break;
-                                           case 2:
-                                               myFavoritas(null);
-                                               break;
-                                           case 4:
-                                               myFavoritas(null);
-                                               break;
-                                           case 6:
-                                               Intent itLProx = new Intent(MainActivity.this, CestaActivity.class);
-                                               startActivity(itLProx);
-                                               break;
-                                           case 8:
-                                               myPedidos(null);
-                                               break;
-                                           case 10:
-                                               myFavoritas(null);
-                                               break;
-                                           case 12:
-                                               myFavoritas(null);
-                                               break;
-                                       }
-
-
-                                        return false;
-                                    }
-                                })
-                                .build();
-
         ohPesqBar = (Toolbar) findViewById(R.id.oh_pesquisa_toolbar);
 
         ohPesqBar.inflateMenu(R.menu.menu_toolbar_pesquisa);
 
 
 
+
+
+
+
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView;
         MenuItem item = ohPesqBar.getMenu().findItem(R.id.action_searchable_activity_tb2);
-        item.setIcon(R.drawable.ic_busca_xx_amarelo);
+
+        item.expandActionView();
+
 
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ){
             searchView = (SearchView) item.getActionView();
+
         }
         else{
             searchView = (SearchView) MenuItemCompat.getActionView(item);
+
         }
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setQueryHint(getResources().getString(R.string.search_hint));
+        //searchView.setQueryHint(getResources().getString(R.string.search_hint));
+        searchView.setIconified(false);
+        searchView.setIconifiedByDefault(false);
+        nDrawerLeft = new DrawerBuilder()
+                .withActivity(this)
+                .withToolbar(ohTopBar)
+                        //.withDisplayBelowToolbar(true)
+                .withActionBarDrawerToggleAnimated(true)
+                .withDrawerGravity(Gravity.LEFT)
+                .withAccountHeader(accHeaderBuilder)
+                .withSavedInstance(savedInstanceState)
+                .build();
+
 
 
         ohPesqBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -221,8 +180,9 @@ public class MainActivity extends ActionBarActivity {
             }
         });
         TextView textView = (TextView) searchView.findViewById(R.id.search_src_text);
-        textView.setTextColor(Color.DKGRAY);
+        textView.setTextColor(getResources().getColor(R.color.accent));
         textView.setHintTextColor(Color.LTGRAY);
+        setnDrawerLeft();
 
 
 
@@ -383,6 +343,85 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+    public void setnDrawerLeft(){
+
+        accs = mAccountManager.getAccountsByType(Constant.ACCOUNT_TYPE);
+
+
+        nDrawerLeft.removeAllItems();
+        nDrawerLeft.addItems(
+                new SecondaryDrawerItem().withName("Lojas Proximos").withIcon(R.drawable.ic_local_amarelo),
+                new DividerDrawerItem(),
+                new SecondaryDrawerItem().withName("Favoritos").withIcon(R.drawable.ic_favorito_amarelo),
+                new DividerDrawerItem(),
+                new SecondaryDrawerItem().withName("QR Code").withIcon(R.drawable.ic_qr_amarelo),
+                new DividerDrawerItem(),
+                new SecondaryDrawerItem().withName("Cesta de compras").withIcon(R.drawable.ic_cesto_amarelo),
+                new DividerDrawerItem(),
+                new SecondaryDrawerItem().withName("Meus Pedidos").withIcon(R.drawable.ic_lista_amarelo),
+                new DividerDrawerItem(),
+                new SecondaryDrawerItem().withName("Configurações").withIcon(R.drawable.ic_usuario_amarelo),
+                new DividerDrawerItem());
+
+
+        nDrawerLeft.setOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+            @Override
+            public boolean onItemClick(AdapterView<?> adapterView, View view, int position, long l, IDrawerItem iDrawerItem) {
+
+                switch (position) {
+                    case 1:
+
+                        break;
+                    case 0:
+                        myActionButton(null);
+                        break;
+                    case 2:
+                        myFavoritas(null);
+                        break;
+                    case 4:
+                        myFavoritas(null);
+                        break;
+                    case 6:
+                        Intent itLProx = new Intent(MainActivity.this, CestaActivity.class);
+                        startActivity(itLProx);
+                        break;
+                    case 8:
+                        myPedidos(null);
+                        break;
+                    case 10:
+                        myFavoritas(null);
+                        break;
+                    case 12:
+
+
+                        if (accs.length > 0) {
+                            Account account = accs[0];
+                            mAccountManager.removeAccount(account, null, null);
+                            setnDrawerLeft();
+                            accHeaderBuilder.clear();
+                        }
+
+
+                        break;
+                }
+
+
+                return false;
+            }
+        });
+
+        if (accs.length > 0) {
+
+                nDrawerLeft.addItem(new SecondaryDrawerItem().withName("Sair").withIcon(R.drawable.ic_off_amarelo));
+            } else {
+                nDrawerLeft.addItem(new SecondaryDrawerItem().withName("Entrar").withIcon(R.drawable.ic_off_amarelo));
+            }
+
+
+
+
+    }
+
 
     public boolean myActionButton (View view) {
 
@@ -426,6 +465,21 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
+    public void onResume(){
+        super.onResume();
+        accs = mAccountManager.getAccountsByType(Constant.ACCOUNT_TYPE);
+
+
+        if(accs.length==0){
+            accHeaderBuilder.clear();
+        }
+        if(accs.length>0){
+        getAccounts(null);}
+
+        setnDrawerLeft();
+
+    }
+
     public void getAccounts(View view) {
         mAccountManager.getAuthTokenByFeatures(Constant.ACCOUNT_TYPE,
                 Constant.ACCOUNT_TOKEN_TYPE_COMPRADOR,
@@ -439,20 +493,12 @@ public class MainActivity extends ActionBarActivity {
                         try {
                             Bundle bundle = future.getResult();
                             Log.i("Script", "MainActivity.getAccounts()");
-                            //Log.i("Script", "MainActivity.getAccounts() : AccountType = "+bundle.getString(AccountManager.KEY_ACCOUNT_TYPE));
-                            //Log.i("Script", "MainActivity.getAccounts() : AccountName = "+bundle.getString(AccountManager.KEY_ACCOUNT_NAME));
-                            //Log.i("Script", "MainActivity.getAccounts() : Token = " + bundle.getString(AccountManager.KEY_AUTHTOKEN));
 
-                            user.setAccountType(bundle.getString(AccountManager.KEY_ACCOUNT_TYPE));
-                            user.setAccountName(bundle.getString(AccountManager.KEY_ACCOUNT_NAME));
-                            user.setToken(bundle.getString(AccountManager.KEY_AUTHTOKEN));
-
-
-                            accHeaderBuilder.addProfiles(new ProfileDrawerItem().
-                                    withName(user.getAccountName()).withEmail("chowman@gmail.com")
-                                    .withIcon(getResources().getDrawable(R.drawable.img_avatar)));
-
-
+                            if(accHeaderBuilder.getProfiles().isEmpty() && accs.length>0){
+                                accHeaderBuilder.addProfile(new ProfileDrawerItem().
+                                        withName(bundle.getString(AccountManager.KEY_ACCOUNT_NAME)).withEmail(bundle.getString(AccountManager.KEY_AUTHTOKEN))
+                                        .withIcon(getResources().getDrawable(R.drawable.img_avatar)), 0);
+                            }
 
                             //setUserDataFromServer();
                         } catch (OperationCanceledException e) {

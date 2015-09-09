@@ -1,6 +1,7 @@
 package br.com.ohexpress.ohex;
 
 
+import android.accounts.AccountManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -39,6 +40,7 @@ public class RegistrarActivity extends ActionBarActivity {
     private TextView email;
     private TextView senha;
     private Toolbar ohTopBar;
+    private AccountManager mAccountManager;
 
 
     @Override
@@ -49,6 +51,7 @@ public class RegistrarActivity extends ActionBarActivity {
         ohTopBar = (Toolbar) findViewById(R.id.oh_top_toolbar);
         setSupportActionBar(ohTopBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mAccountManager = AccountManager.get(RegistrarActivity.this);
 
         nome = (TextView) findViewById(R.id.tvNumeroCard);
         login = (TextView) findViewById(R.id.tvNomeTitular);
@@ -117,6 +120,9 @@ public class RegistrarActivity extends ActionBarActivity {
                         if (usuario.getId() != null){
 
                             ((MyApplication) getApplication()).setUser(usuario);
+                            //mAccountManager
+
+                            finish();
 
                         }else {
 
