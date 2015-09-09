@@ -39,7 +39,7 @@ import br.com.ohexpress.ohex.model.Loja;
 import br.com.ohexpress.ohex.model.Produto;
 import br.com.ohexpress.ohex.model.Usuario;
 import br.com.ohexpress.ohex.util.Constant;
-import br.com.ohexpress.ohex.util.ServerUtil;
+//import br.com.ohexpress.ohex.util.ServerUtil;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -292,8 +292,8 @@ public class LojaActivity extends ActionBarActivity {
                         if (callback != null) {
 
                             Toast.makeText(LojaActivity.this, callback, Toast.LENGTH_SHORT).show();
-                            ServerUtil serverUtil = new ServerUtil();
-                            serverUtil.getUser(user, LojaActivity.this);
+                            //ServerUtil serverUtil = new ServerUtil();
+                            //serverUtil.getUser(user, LojaActivity.this);
                             if (act == 1){
 
                                 //fabFav.setButtonColor(R.color.accent);

@@ -132,11 +132,6 @@ public class MainActivity extends ActionBarActivity {
         ohPesqBar.inflateMenu(R.menu.menu_toolbar_pesquisa);
 
 
-
-
-
-
-
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView;
         MenuItem item = ohPesqBar.getMenu().findItem(R.id.action_searchable_activity_tb2);
@@ -182,7 +177,7 @@ public class MainActivity extends ActionBarActivity {
         TextView textView = (TextView) searchView.findViewById(R.id.search_src_text);
         textView.setTextColor(getResources().getColor(R.color.accent));
         textView.setHintTextColor(Color.LTGRAY);
-        setnDrawerLeft();
+        setnDrawerLeft(false);
 
 
 
@@ -343,12 +338,12 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    public void setnDrawerLeft(){
+    public void setnDrawerLeft(Boolean logout){
 
         accs = mAccountManager.getAccountsByType(Constant.ACCOUNT_TYPE);
-
-
         nDrawerLeft.removeAllItems();
+
+        if(accs.length>0 ){
         nDrawerLeft.addItems(
                 new SecondaryDrawerItem().withName("Lojas Proximos").withIcon(R.drawable.ic_local_amarelo),
                 new DividerDrawerItem(),
@@ -361,17 +356,12 @@ public class MainActivity extends ActionBarActivity {
                 new SecondaryDrawerItem().withName("Meus Pedidos").withIcon(R.drawable.ic_lista_amarelo),
                 new DividerDrawerItem(),
                 new SecondaryDrawerItem().withName("Configurações").withIcon(R.drawable.ic_usuario_amarelo),
-                new DividerDrawerItem());
-
-
+                new DividerDrawerItem(),
+                new SecondaryDrawerItem().withName("Sair").withIcon(R.drawable.ic_off_amarelo));
         nDrawerLeft.setOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
             @Override
             public boolean onItemClick(AdapterView<?> adapterView, View view, int position, long l, IDrawerItem iDrawerItem) {
-
                 switch (position) {
-                    case 1:
-
-                        break;
                     case 0:
                         myActionButton(null);
                         break;
@@ -392,30 +382,66 @@ public class MainActivity extends ActionBarActivity {
                         myFavoritas(null);
                         break;
                     case 12:
-
-
-                        if (accs.length > 0) {
-                            Account account = accs[0];
-                            mAccountManager.removeAccount(account, null, null);
-                            setnDrawerLeft();
-                            accHeaderBuilder.clear();
-                        }
-
+                        Account account = accs[0];
+                        mAccountManager.removeAccount(account, new AccountManagerCallback<Boolean>() {
+                            @Override
+                            public void run(AccountManagerFuture<Boolean> future) {
+                                accHeaderBuilder.clear();
+                                setnDrawerLeft(true);
+                            }
+                        },null);
 
                         break;
                 }
-
-
                 return false;
             }
         });
+        }else{
 
-        if (accs.length > 0) {
+            nDrawerLeft.addItems(
+                    new SecondaryDrawerItem().withName("Lojas Proximos").withIcon(R.drawable.ic_local_amarelo),
+                    new DividerDrawerItem(),
+                    new SecondaryDrawerItem().withName("QR Code").withIcon(R.drawable.ic_qr_amarelo),
+                    new DividerDrawerItem(),
+                    new SecondaryDrawerItem().withName("Cesta de compras").withIcon(R.drawable.ic_cesto_amarelo),
+                    new DividerDrawerItem(),
+                    new SecondaryDrawerItem().withName("Configurações").withIcon(R.drawable.ic_usuario_amarelo),
+                    new DividerDrawerItem(),
+                    new SecondaryDrawerItem().withName("Entrar").withIcon(R.drawable.ic_off_amarelo));
+            nDrawerLeft.setOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                @Override
+                public boolean onItemClick(AdapterView<?> adapterView, View view, int position, long l, IDrawerItem iDrawerItem) {
+                    switch (position) {
+                        case 0:
+                            myActionButton(null);
+                            break;
+                        case 2:
+                            //QR Code
+                            break;
+                        case 4:
+                            Intent itLProx = new Intent(MainActivity.this, CestaActivity.class);
+                            startActivity(itLProx);
+                            break;
+                        case 6:
+                            //Config
+                            break;
+                        case 8:
+                            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                            startActivity(intent);
+                            break;
 
-                nDrawerLeft.addItem(new SecondaryDrawerItem().withName("Sair").withIcon(R.drawable.ic_off_amarelo));
-            } else {
-                nDrawerLeft.addItem(new SecondaryDrawerItem().withName("Entrar").withIcon(R.drawable.ic_off_amarelo));
-            }
+                    }
+                    return false;
+                }
+            });
+        }
+
+
+
+
+
+
+
 
 
 
@@ -476,7 +502,7 @@ public class MainActivity extends ActionBarActivity {
         if(accs.length>0){
         getAccounts(null);}
 
-        setnDrawerLeft();
+        setnDrawerLeft(false);
 
     }
 

@@ -14,7 +14,16 @@
 
 
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/oh_top_toolbar"
+        android:layout_width='match_parent'
+        android:elevation='4dp'
+        android:layout_height="40dp"
+        android:minHeight='?attr/actionBarSize'
+        android:background='?attr/colorPrimary'
+        android:focusable="false" >
 
+    </android.support.v7.widget.Toolbar>
 
     <TextView
         android:layout_width="wrap_content"
@@ -123,61 +132,42 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/rl_loja_lay"
-        android:background="?attr/colorPrimary"
-        android:layout_alignParentTop="true"
+        android:layout_height="80dp"
+        android:layout_below="@+id/oh_top_toolbar"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:id="@+id/rl_loja_lay"
+        android:background="?attr/colorPrimary">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/cv_loja"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:placeholderImage="@drawable/ic_fav"
+            app:actualImageScaleType="focusCrop"
+            app:placeholderImageScaleType="fitCenter"
+            app:failureImage="@drawable/ic_fav"
+            app:failureImageScaleType="centerInside"
+            app:retryImage="@drawable/ic_fav"
+            app:roundAsCircle="true"
+
+            app:roundingBorderColor="#FFFFFF"
+
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="3dp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/iv_open_drawer"
-            android:src="@drawable/ic_menu"
-            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_menu_drawer"
+            android:layout_alignBottom="@+id/cv_loja"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="8dp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/iv_open_drawer_right"
-            android:src="@drawable/ic_menu"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="8dp" />
     </RelativeLayout>
-
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/cv_loja"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:placeholderImage="@drawable/ic_fav"
-        app:actualImageScaleType="focusCrop"
-        app:placeholderImageScaleType="fitCenter"
-        app:failureImage="@drawable/ic_fav"
-        app:failureImageScaleType="centerInside"
-        app:retryImage="@drawable/ic_fav"
-        app:roundAsCircle="true"
-        app:roundingBorderWidth="2dp"
-        app:roundingBorderColor="#FFFFFF"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/oh_top_toolbar"
-        android:layout_width='match_parent'
-        android:elevation='4dp'
-        android:layout_height="?attr/actionBarSize"
-        android:minHeight='?attr/actionBarSize'
-        android:background='@android:color/transparent'
-        android:focusable="false" >
-
-    </android.support.v7.widget.Toolbar>
 
 
     <!--<include
