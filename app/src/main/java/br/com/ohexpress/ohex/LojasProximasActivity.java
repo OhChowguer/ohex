@@ -95,10 +95,13 @@ public class LojasProximasActivity extends ActionBarActivity {
                     @Override
                     public void success(List<LojaPorDistancia> lojas, Response response) {
 
+                        if (lojas != null){
                         List<Loja> lista = (List<Loja>) setDistancia(lojas);
+                        //Toast.makeText(LojasProximasActivity.this,""+lojas.get(0).getLoja().getNome(),Toast.LENGTH_LONG).show();
                         fragment.refreshLista(lista);
-
-
+                        }else{
+                            Toast.makeText(LojasProximasActivity.this,"erro ao carregar lojas",Toast.LENGTH_LONG).show();
+                        }
                     }
 
                     @Override
@@ -111,10 +114,6 @@ public class LojasProximasActivity extends ActionBarActivity {
                 }
 
         );
-
-
-
-
         return true;
     }
 
@@ -128,8 +127,6 @@ public class LojasProximasActivity extends ActionBarActivity {
             loja.setDistNumber(lj.getDistNumber());
             loja.setDistText(lj.getDistText());
             lojas.add(loja);
-
-
         }
         return lojas;
     }

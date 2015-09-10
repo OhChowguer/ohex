@@ -31,11 +31,10 @@
 
 
     <EditText
+
         android:id="@+id/tvNumeroCard"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
         android:layout_marginTop="56dp"
         android:autoText="false"
@@ -53,10 +52,8 @@
 
     <EditText
         android:id="@+id/tvNomeTitular"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/tvNumeroCard"
         android:drawableLeft="@drawable/ic_useracc"
         android:editable="true"
@@ -71,10 +68,8 @@
 
     <EditText
         android:id="@+id/tvEndereco"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/tvNomeTitular"
         android:drawableLeft="@drawable/ic_email"
         android:editable="true"
@@ -114,7 +109,7 @@
 
     <Button
         android:id="@+id/bt_login"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#EDC951"
         android:onClick="add"
@@ -123,8 +118,6 @@
         android:textSize="20dp"
         android:singleLine="false"
         android:nestedScrollingEnabled="false"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
         android:layout_above="@+id/tv_reg_aqui"
         android:layout_marginBottom="15dp"
         android:elevation="5dp" />

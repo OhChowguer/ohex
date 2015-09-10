@@ -43,6 +43,7 @@ public class LoginActivity extends AccountAuthenticatorActivity  {
 
         senha = (EditText) findViewById(R.id.tvDataExpCard);
         login = (EditText) findViewById(R.id.et_login_act);
+        //login.color;
         user = ((MyApplication) getApplication()).getUser();
         user.setAccountType(getIntent().getStringExtra(Constant.ARG_ACCOUNT_TYPE));
         user.setAccountName(getIntent().getStringExtra(Constant.ARG_ACCOUNT_NAME));

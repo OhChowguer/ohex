@@ -1,0 +1,92 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="false"
+    app:cardPreventCornerOverlap="true"
+    android:background="@color/accent">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:paddingTop="6dp">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/iv_img_listProduto"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        fresco:placeholderImage="@drawable/ic_fav"
+        fresco:actualImageScaleType="focusCrop"
+        fresco:placeholderImageScaleType="fitCenter"
+        fresco:failureImage="@drawable/ic_fav"
+        fresco:failureImageScaleType="centerInside"
+        fresco:retryImage="@drawable/ic_fav"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/tv_nomeProduto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="30dp"
+        android:textSize="12sp"
+        android:text="Nome Loja"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/iv_img_listProduto"
+        android:layout_toEndOf="@+id/iv_img_listProduto"
+        android:paddingLeft="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="13,90"
+        android:id="@+id/tv_preco_produto"
+        android:textSize="12dp"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/tv_desc_produto"
+        android:textSize="9sp"
+        android:layout_below="@+id/tv_nomeProduto"
+        android:layout_toRightOf="@+id/iv_img_listProduto"
+        android:layout_toEndOf="@+id/iv_img_listProduto"
+        android:paddingLeft="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R$"
+        android:id="@+id/tv_sifra"
+        android:textSize="7dp"
+        android:paddingRight="6dp"
+        android:layout_alignBottom="@+id/tv_preco_produto"
+        android:layout_toLeftOf="@+id/tv_preco_produto"
+        android:layout_toStartOf="@+id/tv_preco_produto" />
+
+    <ImageView
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:id="@+id/iv_add_cesta"
+        android:src="@drawable/ic_mais_amarelo"
+        android:layout_below="@+id/tv_preco_produto"
+        android:layout_alignRight="@+id/tv_preco_produto"
+        android:layout_alignEnd="@+id/tv_preco_produto"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="3dp" />
+
+
+</RelativeLayout>
+</android.support.v7.widget.CardView>
