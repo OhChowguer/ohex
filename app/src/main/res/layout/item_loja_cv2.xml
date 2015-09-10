@@ -75,7 +75,8 @@
         android:textSize="16sp"
         android:text="Nome Loja"
         android:layout_alignTop="@+id/iv_img_listLoja"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@+id/iv_img_listLoja"
+        android:layout_toEndOf="@+id/iv_img_listLoja" />
 
     <TextView
         android:textColor="@color/OH_CINZA_ESCURO"
