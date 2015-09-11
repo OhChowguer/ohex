@@ -69,12 +69,7 @@ public class MainActivity extends ActionBarActivity {
 
     private Toolbar ohTopBar;
     private Toolbar ohPesqBar;
-    private Toolbar ohBaixoBar;
-    private ArrayList<Loja> lista;
-    private ArrayList<LojaPorDistancia> listaDist;
-    private ArrayList<Pedido> listaPedido;
     private Drawer nDrawerLeft;
-    private Drawer nDrawerRight;
     private AccountHeader accHeaderBuilder;
     private Usuario user;
     private AccountManager mAccountManager;
@@ -88,13 +83,13 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
 
-        List<CreditCard> cards = new ArrayList<CreditCard>(0);
+        //List<CreditCard> cards = new ArrayList<CreditCard>(0);
 
-        CreditCard card = new CreditCard("99999999999","Visa",1,"DEBITO",new Date(),"Diego");
-        cards.add(card);
+        //CreditCard card = new CreditCard("99999999999","Visa",1,"DEBITO",new Date(),"Diego");
+        //cards.add(card);
 
         user = ((MyApplication) getApplication()).getUser();
-        user.setCreditCard(cards);
+        //user.setCreditCard(cards);
         mAccountManager = AccountManager.get(MainActivity.this);
 
         /*
@@ -387,9 +382,11 @@ public class MainActivity extends ActionBarActivity {
                             @Override
                             public void run(AccountManagerFuture<Boolean> future) {
                                 accHeaderBuilder.clear();
+                                ((MyApplication) getApplication()).setUser(new Usuario());
+                                user = new Usuario();
                                 setnDrawerLeft(true);
                             }
-                        },null);
+                        }, null);
 
                         break;
                 }
@@ -426,7 +423,7 @@ public class MainActivity extends ActionBarActivity {
                             //Config
                             break;
                         case 8:
-                            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                             startActivity(intent);
                             break;
 

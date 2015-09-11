@@ -40,6 +40,7 @@ import br.com.ohexpress.ohex.model.Produto;
 import br.com.ohexpress.ohex.model.Usuario;
 import br.com.ohexpress.ohex.util.Constant;
 //import br.com.ohexpress.ohex.util.ServerUtil;
+import br.com.ohexpress.ohex.util.ServerUtil;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -62,6 +63,7 @@ public class LojaActivity extends ActionBarActivity {
     private Drawer nDrawerRight;
     private AccountHeader accHeaderBuilder;
     private ImageView openDrawer;
+    private ImageView heartFav;
     private ActionButton fabFav;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,10 +87,18 @@ public class LojaActivity extends ActionBarActivity {
         ohTopBar = (Toolbar) findViewById(R.id.oh_top_toolbar);
         setSupportActionBar(ohTopBar);
         fabFav = (ActionButton) findViewById(R.id.fab_fav);
+        heartFav = (ImageView) findViewById(R.id.ic_heart_fav_loja);
 
-        if (user.getId() == null || user.findFav(loja.getId())){
-            fabFav.setButtonColor(getResources().getColor(R.color.grey));
-            fabFav.setOnClickListener(new View.OnClickListener() {
+
+        if (user.getId() == null){
+            //fabFav.dismiss();
+            heartFav.setImageResource(R.drawable.ic_heart_36_vazio);
+        }
+
+        else if (user.findFav(loja.getId())){
+            //fabFav.setButtonColor(getResources().getColor(R.color.grey));
+            heartFav.setImageResource(R.drawable.ic_heart_36_cheio);
+            heartFav.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -98,9 +108,8 @@ public class LojaActivity extends ActionBarActivity {
             });
 
         }else{
-            fabFav.setButtonColor(getResources().getColor(R.color.accent));
-
-            fabFav.setOnClickListener(new View.OnClickListener() {
+            //fabFav.setButtonColor(getResources().getColor(R.color.accent));
+            heartFav.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -108,6 +117,15 @@ public class LojaActivity extends ActionBarActivity {
 
                 }
             });
+
+            /*heartFav.setOnClickListener(new View.OnClickListener() {
+            //    @Override
+                public void onClick(View v) {
+
+                    addFav(2);
+
+                }
+            });*/
 
 
         }
@@ -292,17 +310,16 @@ public class LojaActivity extends ActionBarActivity {
                         if (callback != null) {
 
                             Toast.makeText(LojaActivity.this, callback, Toast.LENGTH_SHORT).show();
-                            //ServerUtil serverUtil = new ServerUtil();
-                            //serverUtil.getUser(user, LojaActivity.this);
+                            ServerUtil serverUtil = new ServerUtil();
+                            serverUtil.getUser(user, LojaActivity.this);
                             if (act == 1){
 
                                 //fabFav.setButtonColor(R.color.accent);
-                                fabFav.setButtonColor(getResources().getColor(R.color.accent));
-                                fabFav.setOnClickListener(new View.OnClickListener() {
+                                //fabFav.setButtonColor(getResources().getColor(R.color.accent));
+                                heartFav.setImageResource(R.drawable.ic_heart_36_vazio);
+                                heartFav.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-
-
 
                                         addFav(2);
 
@@ -310,8 +327,10 @@ public class LojaActivity extends ActionBarActivity {
                                 });
 
                             }else{
-                                fabFav.setButtonColor(getResources().getColor(R.color.grey));
-                                fabFav.setOnClickListener(new View.OnClickListener() {
+                                Toast.makeText(LojaActivity.this, callback, Toast.LENGTH_SHORT).show();
+                                //fabFav.setButtonColor(getResources().getColor(R.color.grey));
+                                heartFav.setImageResource(R.drawable.ic_heart_36_cheio);
+                                heartFav.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
 
