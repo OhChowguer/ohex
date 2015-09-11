@@ -28,15 +28,16 @@
     <RelativeLayout
         android:id="@+id/rl_fragment_container_pedido"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_below="@+id/oh_top_toolbar"></RelativeLayout>
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/oh_top_toolbar"
+        android:layout_above="@+id/tv_total_pedido"></RelativeLayout>
 
     <Button
         android:id="@+id/bt_add_produto_pedido_unit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#EDC951"
-        android:text="Finalizar"
+        android:text="REEMITIR PEDIDO"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         android:singleLine="false"
@@ -45,25 +46,29 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="AddPedido" />
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TOTAL"
+        android:text="Total: "
         android:id="@+id/tv_label_total_cesta"
+        android:textSize="15dp"
         android:layout_above="@+id/bt_add_produto_pedido_unit"
-        android:textSize="25dp" />
+        android:layout_toLeftOf="@+id/tv_total_pedido"
+        android:layout_toStartOf="@+id/tv_total_pedido" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="129,90"
         android:id="@+id/tv_total_pedido"
-        android:layout_alignTop="@+id/tv_label_total_cesta"
+        android:textSize="25dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textSize="25dp" />
+        android:layout_marginTop="16dp"
+        android:layout_above="@+id/bt_add_produto_pedido_unit" />
 
 
 </RelativeLayout>

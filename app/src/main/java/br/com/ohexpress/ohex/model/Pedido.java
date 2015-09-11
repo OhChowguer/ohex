@@ -129,4 +129,15 @@ public class Pedido implements Parcelable{
     public void setCard(CreditCard card) {
         this.card = card;
     }
+
+    public double somaVlrItens() {
+
+        double valor = 0;
+         for (ItemPedido it: item){
+
+             valor=valor+(it.getProduto().getPreco()*it.getQuantidade());
+         }
+
+        return valor;
+    }
 }

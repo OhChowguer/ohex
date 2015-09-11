@@ -19,163 +19,66 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+
+import br.com.ohexpress.ohex.model.ItemPedido;
+import br.com.ohexpress.ohex.model.Pedido;
 
 
 public class PedidosActivity extends ActionBarActivity {
 
-
-    private RequestQueue requestQueue;
-    private Map<String, String> params;
-    private String url;
-    private TextView nome;
-    private TextView login;
-    private TextView email;
-    private TextView senha;
+    private TextView totalPedido;
     private Toolbar ohTopBar;
-    private Toolbar ohBaixoBar;
+    private Pedido pedido;
+    private DecimalFormat format;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         ohTopBar = (Toolbar) findViewById(R.id.oh_top_toolbar);
+        totalPedido = (TextView) findViewById(R.id.tv_total_pedido);
+
         setSupportActionBar(ohTopBar);
-
-        ohBaixoBar = (Toolbar) findViewById(R.id.inc_toolbar_baixo);
-        ohBaixoBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-
-            Intent it = null;
-
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-
-                switch (item.getItemId()) {
-
-                    case R.id.item_tb_pedido:
-
-                        Toast.makeText(PedidosActivity.this,"Pedido",Toast.LENGTH_SHORT).show();
-                        break;
-
-                    case R.id.item_tb_favoritos:
-
-                        Toast.makeText(PedidosActivity.this,"Favoritos",Toast.LENGTH_SHORT).show();
-
-                        break;
-
-                    case R.id.item_tb_qrcode:
-                        Toast.makeText(PedidosActivity.this,"Qr Code",Toast.LENGTH_SHORT).show();
-
-
-                        break;
-                    case R.id.item_tb_config:
-
-                        Toast.makeText(PedidosActivity.this,"Configuracoes",Toast.LENGTH_SHORT).show();
-
-                        break;
-
-                }
-
-                return true;
-            }
-        });
-
-        ohBaixoBar.inflateMenu(R.menu.menu_baixo);
-
-        url = "http://10.0.2.2:8080/ohexpress/registroApp";
-
-        nome = (TextView) findViewById(R.id.tvNumeroCard);
-        login = (TextView) findViewById(R.id.tvNomeTitular);
-        email = (TextView) findViewById(R.id.tvEndereco);
-        senha = (TextView) findViewById(R.id.tvDataExpCard);
-
-
-        requestQueue = Volley.newRequestQueue(PedidosActivity.this);
 
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-
 
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-
-            Toast.makeText(this, "Deu certo SILAAAAA", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-
-        if (id == R.id.action_settings2) {
-
-            Toast.makeText(this, "Eh Nois SILAAA", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void add(View view) {
 
-        params = new HashMap<String, String>();
-        params.put("email", email.getText().toString());
-        params.put("nome", nome.getText().toString());
-        params.put("sNome", "Rafael");
-        params.put("senha", senha.getText().toString());
-        params.put("login", login.getText().toString());
+    public double getTotal() {
 
+        double total = 0;
 
-        StringRequest request = new StringRequest(Method.POST, url, new Response.Listener<String>() {
+        for (ItemPedido itens : pedido.getItem()) {
+
+            total = total + itens.getQuantidade() * itens.getProduto().getPreco();
 
 
-            @Override
-            public void onResponse(String response) {
+        }
 
-                Toast.makeText(PedidosActivity.this, "deu certo" + response, Toast.LENGTH_LONG).show();
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(PedidosActivity.this, "deu erro" + error, Toast.LENGTH_LONG).show();
-
-            }
-        }) {
-            @Override
-            public Map<String, String> getParams() throws AuthFailureError {
-
-                params = new HashMap<String, String>();
-                params.put("email", email.getText().toString());
-                params.put("nome", nome.getText().toString());
-                params.put("sNome", "Rafael");
-                params.put("senha", senha.getText().toString());
-                params.put("login", login.getText().toString());
-
-                return (params);
-            }
-
-        };
-
-        request.setTag("tag");
-        requestQueue.add(request);
-
-        Toast.makeText(PedidosActivity.this, "Usuario nao pode ser cadastrado", Toast.LENGTH_LONG).show();
-        return;
+        return total;
     }
+
+
 }

@@ -9,8 +9,8 @@
     android:layout_marginRight="6dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="2dp"
-    app:cardUseCompatPadding="false"
-    app:cardPreventCornerOverlap="true">
+    app:cardUseCompatPadding="true"
+    app:cardPreventCornerOverlap="false">
 
 
 <RelativeLayout
@@ -27,47 +27,86 @@
         android:paddingRight="30dp"
         android:textSize="16sp"
         android:text="Ohexpress"
-        android:layout_marginTop="1dp" />
+        android:layout_marginLeft="3dp"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="3dp" />
 
     <TextView
         android:textColor="#808080"
-        android:layout_below="@+id/tv_nome_loja_lista_pedido"
         android:id="@+id/tv_data_lista_pedido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingRight="30dp"
         android:textSize="14sp"
-        android:text="12/12/15" />
+        android:text="12/12/15"
+        android:layout_above="@+id/tv_status_lista_pedido"
+        android:layout_alignLeft="@+id/tv_nome_loja_lista_pedido"
+        android:layout_alignStart="@+id/tv_nome_loja_lista_pedido" />
 
     <TextView
         android:textColor="#808080"
-        android:layout_below="@+id/tv_data_lista_pedido"
         android:id="@+id/tv_status_lista_pedido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingRight="30dp"
         android:textSize="14sp"
-        android:text="Visa Credito" />
+        android:text="Visa Credito"
+        android:layout_below="@+id/tv_nome_loja_lista_pedido"
+        android:layout_alignLeft="@+id/tv_data_lista_pedido"
+        android:layout_alignStart="@+id/tv_data_lista_pedido"
+        android:layout_marginTop="3dp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="209,99"
         android:id="@+id/tv_total_pedido"
-        android:layout_below="@+id/tv_nome_loja_lista_pedido"
+        android:layout_above="@+id/tv_status_lista_pedido"
+        android:layout_toLeftOf="@+id/fl_item_pedido_status"
+        android:layout_toStartOf="@+id/fl_item_pedido_status"
+        android:layout_marginRight="16dp"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <FrameLayout
+        android:layout_width="100dp"
+        android:layout_height="85dp"
+        android:layout_gravity="right|top"
+        android:background="@color/accent"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="16dp" />
+        android:id="@+id/fl_item_pedido_status">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_ico_item_pedido"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_help_circle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Em Aprovação"
+            android:id="@+id/tv_status_item_pedido"
+            android:layout_gravity="center_horizontal|bottom"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp" />
+    </FrameLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aberto"
-        android:id="@+id/tv_status_ped"
+        android:text="R$"
+        android:id="@+id/textView3"
         android:layout_alignTop="@+id/tv_total_pedido"
         android:layout_toLeftOf="@+id/tv_total_pedido"
         android:layout_toStartOf="@+id/tv_total_pedido"
-        android:layout_marginRight="16dp" />
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="3dp"
+        android:textSize="10sp" />
 
 
 </RelativeLayout>

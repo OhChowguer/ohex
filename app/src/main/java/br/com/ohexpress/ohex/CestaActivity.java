@@ -64,8 +64,6 @@ public class CestaActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cesta);
-
-
         user = ((MyApplication) getApplication()).getUser();
         pedido = ((MyApplication) getApplication()).getMyPedido();
         mAccountManager = AccountManager.get(CestaActivity.this);
@@ -77,24 +75,17 @@ public class CestaActivity extends ActionBarActivity {
         DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.GERMAN);
         otherSymbols.setDecimalSeparator(',');
         otherSymbols.setGroupingSeparator('.');
-        format = new DecimalFormat("###0.00", otherSymbols);tvTotalCesta = (TextView) findViewById(R.id.tv_total_cesta);
+        format = new DecimalFormat("###0.00", otherSymbols);
+        tvTotalCesta = (TextView) findViewById(R.id.tv_total_cesta);
         tvTotalCesta.setText(format.format(getTotal()));
         tvTotalCesta = (TextView) findViewById(R.id.tv_total_cesta);
         tvTotalCesta.setText(format.format(getTotal()));
         tvLabelTotalCesta = (TextView) findViewById(R.id.tv_label_total_cesta);
         tvLabelSifrao = (TextView) findViewById(R.id.tv_label_sifrao);
         saparator = (View) findViewById(R.id.item_separator);
-
-
         if (cesta.isEmpty()){
-
             limpaActivity();
         }
-
-
-
-
-
         // FRAGMENT
         frag = (ItensCestaFragment) getSupportFragmentManager().findFragmentByTag("mainFragCesta");
         if (frag == null) {
@@ -103,10 +94,7 @@ public class CestaActivity extends ActionBarActivity {
             ft.replace(R.id.rl_fragment_container_cesta, frag, "mainFragCesta");
             ft.commit();
         }
-
-
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 

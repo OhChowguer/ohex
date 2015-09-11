@@ -14,7 +14,10 @@ import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
+import java.util.Locale;
 
 import br.com.ohexpress.ohex.dao.DatabaseHelper;
 import br.com.ohexpress.ohex.dao.ItemPedidoDao;
@@ -34,12 +37,8 @@ public class PedidoActivity extends ActionBarActivity {
 
     private Toolbar ohTopBar;
     private Pedido pedido;
-    private TextView tvNomeProduto;
-    public SimpleDraweeView imageProduto;
-    private ItemPedidoDao ipDao;
-    private ProdutoDao prodDao;
-    private DatabaseHelper dh;
-    private List<ItemPedido> itens;
+    private TextView totalPedido;
+    private DecimalFormat format;
 
 
     @Override
@@ -47,11 +46,16 @@ public class PedidoActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido);
 
-        dh = new DatabaseHelper(PedidoActivity.this);
 
         pedido =  getIntent().getExtras().getParcelable("pedido");
-        itens = pedido.getItem();
         ohTopBar = (Toolbar) findViewById(R.id.oh_top_toolbar);
+        DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.GERMAN);
+        otherSymbols.setDecimalSeparator(',');
+        otherSymbols.setGroupingSeparator('.');
+        format = new DecimalFormat("###0.00", otherSymbols);
+        totalPedido = (TextView) findViewById(R.id.tv_total_pedido);
+        totalPedido.setText(format.format(getTotal()));
+
         setSupportActionBar(ohTopBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -87,24 +91,6 @@ public class PedidoActivity extends ActionBarActivity {
         }
 
 
-        if (id == R.id.action_settings) {
-
-            //Toast.makeText(this, loja.getImgLoja(), Toast.LENGTH_SHORT).show();
-            return true;
-        }
-
-        if (id == R.id.action_settings2) {
-
-            Toast.makeText(this, itens.size()+"", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-
-        if (id == R.id.action_menu_registrar) {
-
-            Intent it = new Intent(PedidoActivity.this, RegistrarActivity.class);
-            startActivity(it);
-            return true;
-        }
 
 
         return super.onOptionsItemSelected(item);
@@ -153,8 +139,24 @@ public class PedidoActivity extends ActionBarActivity {
     public List<ItemPedido> getItemPedido(){
 
 
-        return itens;
+        return pedido.getItem();
     }
+
+
+    public double getTotal() {
+
+        double total = 0;
+
+        for (ItemPedido itens : pedido.getItem()) {
+
+            total = total + itens.getQuantidade() * itens.getProduto().getPreco();
+
+
+        }
+
+        return total;
+    }
+
 
 
 
