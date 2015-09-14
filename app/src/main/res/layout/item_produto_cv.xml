@@ -9,8 +9,8 @@
     android:layout_marginRight="5dp"
     app:cardCornerRadius="2dp"
     app:cardElevation="3dp"
-    app:cardUseCompatPadding="false"
-    app:cardPreventCornerOverlap="true">
+    app:cardUseCompatPadding="true"
+    app:cardPreventCornerOverlap="false">
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -80,15 +80,13 @@
         android:layout_toStartOf="@+id/tv_preco_produto" />
 
     <ImageView
-        android:layout_width="17dp"
-        android:layout_height="17dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:id="@+id/iv_add_cesta"
-        android:src="@drawable/ic_mais_amarelo"
+        android:src="@drawable/add_cesta_item"
         android:layout_below="@+id/tv_preco_produto"
-        android:layout_alignRight="@+id/tv_preco_produto"
-        android:layout_alignEnd="@+id/tv_preco_produto"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="3dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>

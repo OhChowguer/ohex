@@ -58,6 +58,9 @@ public class LojasAdapter extends RecyclerView.Adapter<LojasAdapter.MyViewHolder
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
         Uri uri = Uri.parse(listaLojas.get(position).getImgLoja());
+        if (position !=2) {
+            holder.destaque.setVisibility(View.GONE);
+        }
         holder.tvNomeLoja.setText(listaLojas.get(position).getNome());
         holder.tvCategoriaLoja.setText(listaLojas.get(position).getCategoria().get(0).getNome());
         holder.tvEnderecoLoja.setText(listaLojas.get(position).getEndereco().getBairro()+", "+
@@ -120,12 +123,13 @@ public class LojasAdapter extends RecyclerView.Adapter<LojasAdapter.MyViewHolder
     }
 
     public class  MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public SimpleDraweeView imageLoja;
-        public TextView tvNomeLoja;
+        public  SimpleDraweeView imageLoja;
+        public  TextView tvNomeLoja;
         public  TextView tvCategoriaLoja;
         public  TextView tvEnderecoLoja;
         public  TextView tvDistanciaLoja;
-        public ImageView heartFav;
+        public  ImageView heartFav;
+        public  ImageView destaque;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -136,6 +140,8 @@ public class LojasAdapter extends RecyclerView.Adapter<LojasAdapter.MyViewHolder
             tvEnderecoLoja = (TextView) itemView.findViewById(R.id.tv_endLoja);
             tvDistanciaLoja = (TextView) itemView.findViewById(R.id.tv_distancia_loja);
             heartFav = (ImageView) itemView.findViewById(R.id.iv_heart_loja);
+            heartFav = (ImageView) itemView.findViewById(R.id.iv_heart_loja);
+            destaque = (ImageView) itemView.findViewById(R.id.iv_destaque_item);
             itemView.setOnClickListener(this);
         }
 

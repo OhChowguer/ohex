@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class BodyPedidoFragment extends Fragment implements RecyclerViewOnClickL
 
     private RecyclerView mRecyclerView;
     private List<ItemPedido> lista = new ArrayList<ItemPedido>();
+    private ProgressBar progressBar;
 
 
     @Override
@@ -32,6 +34,7 @@ public class BodyPedidoFragment extends Fragment implements RecyclerViewOnClickL
         View view = inflater.inflate(R.layout.fragment_cesta, container, false);
 
         lista = ((PedidoActivity)this.getActivity()).getItemPedido();
+
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_itens_cesta_act);
         mRecyclerView.setHasFixedSize(true);

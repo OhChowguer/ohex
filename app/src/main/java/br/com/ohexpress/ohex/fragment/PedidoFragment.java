@@ -40,8 +40,9 @@ public class PedidoFragment extends Fragment implements RecyclerViewOnClickListe
         View view = inflater.inflate(R.layout.fragment_pedidos, container, false);
 
 ;
-        progressBar = (ProgressBar) view.findViewById(R.id.progressBar1);
+        progressBar = (ProgressBar) view.findViewById(R.id.progressbar_pedidos);
         progressBar.setVisibility(View.VISIBLE);
+
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_lista_pedido);
         mRecyclerView.setHasFixedSize(true);
 
@@ -98,7 +99,6 @@ public class PedidoFragment extends Fragment implements RecyclerViewOnClickListe
 
     public void loadPedidos(List<Pedido> pedidos){
 
-
         listaPedido = pedidos;
         PedidoAdapter adapter = new PedidoAdapter(getActivity(), listaPedido);
         adapter.setRecyclerViewOnClickListenerHack(this);
@@ -108,8 +108,6 @@ public class PedidoFragment extends Fragment implements RecyclerViewOnClickListe
     }
 
     public void removeProgress(){
-
-
 
         progressBar.setVisibility(View.GONE);
 

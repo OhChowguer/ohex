@@ -4,11 +4,11 @@
 
 
 
-    <item android:id="@+id/action_cesta_loja"
-        android:title="Cesta"
+    <item android:id="@+id/action_lista_pedido"
+        android:title="Lista"
         android:orderInCategory="100"
         app:showAsAction="always"
-        android:icon="@drawable/ic_cesta"
+        android:icon="@drawable/ic_refresh_white_24dp"
         />
 
 

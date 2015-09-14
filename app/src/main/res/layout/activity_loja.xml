@@ -12,10 +12,6 @@
     android:outlineProvider="paddedBounds">
 
 
-
-
-
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,12 +20,11 @@
         android:textColor="#000000"
         android:textSize="16sp"
         android:nestedScrollingEnabled="true"
-        android:layout_below="@+id/rl_loja_lay"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        />
+        android:layout_below="@+id/cv_loja"
+        android:layout_alignLeft="@+id/tv_label_categoria_loja"
+        android:layout_alignStart="@+id/tv_label_categoria_loja"
+        android:layout_toLeftOf="@+id/ic_heart_fav_loja"
+        android:layout_toStartOf="@+id/ic_heart_fav_loja" />
 
     <RelativeLayout
         android:id="@+id/rl_fragment_container_loja"
@@ -37,9 +32,9 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:layout_below="@+id/tv_lb_bairro_loja"
-        android:layout_marginTop="60dp"
-        android:layout_alignParentBottom="true">
+        android:layout_marginTop="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/tv_lb_bairro_loja">
 
     </RelativeLayout>
 
@@ -53,7 +48,9 @@
         android:layout_alignParentStart="true"
         android:textSize="12sp"
         android:layout_marginLeft="20dp"
-        android:textColor="@color/OH_CINZA_ESCURO" />
+        android:textColor="@color/OH_CINZA_ESCURO"
+        android:layout_toLeftOf="@+id/ic_heart_fav_loja"
+        android:layout_toStartOf="@+id/ic_heart_fav_loja" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -75,9 +72,10 @@
         android:textSize="9sp"
         android:layout_below="@+id/tv_label_categoria_loja"
         android:layout_toRightOf="@+id/tv_lb_bairro_loja"
-        android:layout_toEndOf="@+id/tv_lb_bairro_loja"
         android:layout_marginLeft="5dp"
-        android:textColor="@color/OH_CINZA_ESCURO" />
+        android:textColor="@color/OH_CINZA_ESCURO"
+        android:layout_toLeftOf="@+id/imageView5"
+        android:layout_toStartOf="@+id/imageView5" />
 
 
     <com.software.shell.fab.ActionButton
@@ -141,7 +139,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="8dp" />
 
-        <ImageView
+        <!--ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/iv_open_drawer_right"
@@ -149,7 +147,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8dp" /-->
     </RelativeLayout>
 
     <com.facebook.drawee.view.SimpleDraweeView
@@ -163,7 +161,6 @@
         app:failureImageScaleType="centerInside"
         app:retryImage="@drawable/ic_fav"
         app:roundAsCircle="true"
-        app:roundingBorderWidth="2dp"
         app:roundingBorderColor="#FFFFFF"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -187,7 +184,18 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:src="@drawable/ic_heart_36_vazio"
-        android:layout_margin="16dp" />
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp" />
+
+    <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:id="@+id/imageView5"
+        android:src="@drawable/open_loja"
+        android:layout_alignStart="@+id/ic_heart_fav_loja"
+        android:layout_below="@+id/ic_heart_fav_loja"
+        android:layout_marginTop="3dp" />
 
 
     <!--<include

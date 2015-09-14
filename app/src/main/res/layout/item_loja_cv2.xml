@@ -12,12 +12,9 @@
     app:cardUseCompatPadding="true"
     app:cardPreventCornerOverlap="false">
 
-
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
-
-
 
         <LinearLayout
             android:orientation="horizontal"
@@ -33,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/iv_heart_loja"
-                android:src="@drawable/ic_heart_24_wellow"
+                android:src="@drawable/ic_heart_24_white"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="3dp"
@@ -43,14 +40,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageView6"
-                android:src="@drawable/ic_heart_24_white"
+                android:src="@drawable/abc_ic_menu_share_mtrl_alpha"
                 android:layout_margin="3dp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageView7"
-                android:src="@drawable/abc_ic_voice_search_api_mtrl_alpha"
+                android:src="@drawable/ic_local_xx_branco"
                 android:layout_margin="3dp" />
 
         </LinearLayout>
@@ -76,14 +73,15 @@
         <TextView
             android:textColor="#000000"
             android:id="@+id/tv_item_pedido"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingRight="30dp"
             android:textSize="16sp"
             android:text="Nome Loja"
             android:layout_alignTop="@+id/iv_img_listLoja"
             android:layout_toRightOf="@+id/iv_img_listLoja"
-            android:layout_toEndOf="@+id/iv_img_listLoja" />
+            android:layout_toLeftOf="@+id/tv_distancia_loja"
+            android:layout_toStartOf="@+id/tv_distancia_loja" />
 
         <TextView
             android:textColor="@color/OH_CINZA_ESCURO"
@@ -93,9 +91,10 @@
             android:paddingRight="30dp"
             android:textSize="10sp"
             android:text="Categoria"
-            android:layout_below="@+id/tv_item_pedido"
             android:layout_toRightOf="@+id/iv_img_listLoja"
-            android:layout_toEndOf="@+id/iv_img_listLoja" />
+            android:layout_alignTop="@+id/textView2"
+            android:layout_toLeftOf="@+id/tv_distancia_loja"
+            android:layout_toStartOf="@+id/tv_distancia_loja" />
 
         <TextView
             android:textColor="@color/OH_CINZA_ESCURO"
@@ -107,7 +106,8 @@
             android:text="Endereço"
             android:layout_below="@+id/tv_catLoja"
             android:layout_toRightOf="@+id/iv_img_listLoja"
-            android:layout_toEndOf="@+id/iv_img_listLoja" />
+            android:layout_toLeftOf="@+id/tv_distancia_loja"
+            android:layout_toStartOf="@+id/tv_distancia_loja" />
 
         <!--TextView
             android:textColor="@color/OH_CINZA_ESCURO"
@@ -139,17 +139,17 @@
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:id="@+id/imageView"
+            android:id="@+id/iv_destaque_item"
             android:src="@drawable/dest"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="48dp"
+            android:layout_width="55dp"
+            android:layout_height="58dp"
             android:id="@+id/imageView4"
-            android:src="@drawable/door_close"
+            android:src="@drawable/enter_open"
             android:layout_alignBottom="@+id/linearLayout"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />

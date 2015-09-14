@@ -1,14 +1,22 @@
 package br.com.ohexpress.ohex;
 
 
+import android.accounts.AccountManager;
+import android.accounts.AccountManagerCallback;
+import android.accounts.AccountManagerFuture;
+import android.accounts.AuthenticatorException;
+import android.accounts.OperationCanceledException;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,12 +40,15 @@ public class LojasFavoritasActivity extends ActionBarActivity {
     private LojaFragment fragment;
     private List<Loja> listLj = new ArrayList<Loja>(0);
     private Usuario user;
+    private AccountManager mAccountManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_loja_pesq);
         user = ((MyApplication) getApplication()).getUser();
+        mAccountManager = AccountManager.get(LojasFavoritasActivity.this);
+        getAccounts(null);
 
         //listLj = getIntent().getParcelableArrayListExtra("lojas");
         ohTopBar = (Toolbar) findViewById(R.id.oh_top_toolbar);
@@ -52,7 +63,7 @@ public class LojasFavoritasActivity extends ActionBarActivity {
             ft.commit();
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getLojas();
+        //getLojas();
 
 
     }
@@ -60,8 +71,22 @@ public class LojasFavoritasActivity extends ActionBarActivity {
     @Override
     public void onResume(){
         super.onResume();
-        getLojas ();
+        if (user.getToken() != null){
+        //getLojas ();
+        }
 
+    }
+
+    @Override
+    public void onRestart(){
+        super.onStart();
+        if(mAccountManager.getAccountsByType(Constant.ACCOUNT_TYPE).length == 0){
+            finish();
+        }
+
+
+
+        Log.i("Script", "onRestart()");
     }
 
     @Override
@@ -140,6 +165,42 @@ public class LojasFavoritasActivity extends ActionBarActivity {
 
         }
         return lojas;
+    }
+
+    public void getAccounts(View view) {
+
+        mAccountManager.getAuthTokenByFeatures(Constant.ACCOUNT_TYPE,
+                Constant.ACCOUNT_TOKEN_TYPE_COMPRADOR,
+                null,
+                LojasFavoritasActivity.this,
+                null,
+                null,
+                new AccountManagerCallback<Bundle>() {
+                    @Override
+                    public void run(AccountManagerFuture<Bundle> future) {
+                        try {
+                            Bundle bundle = future.getResult();
+                            //Log.i("Script", "MainActivity.getAccounts()");
+                            //Log.i("Script", "MainActivity.getAccounts() : AccountType = "+bundle.getString(AccountManager.KEY_ACCOUNT_TYPE));
+                            //Log.i("Script", "MainActivity.getAccounts() : AccountName = "+bundle.getString(AccountManager.KEY_ACCOUNT_NAME));
+                            //Log.i("Script", "MainActivity.getAccounts() : Token = "+bundle.getString(AccountManager.KEY_AUTHTOKEN));
+
+                            user.setAccountType(bundle.getString(AccountManager.KEY_ACCOUNT_TYPE));
+                            user.setAccountName(bundle.getString(AccountManager.KEY_ACCOUNT_NAME));
+                            user.setToken(bundle.getString(AccountManager.KEY_AUTHTOKEN));
+                            getLojas();
+
+                            //setUserDataFromServer();
+                        } catch (OperationCanceledException e) {
+                            e.printStackTrace();
+                        } catch (AuthenticatorException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                null);
     }
 
 

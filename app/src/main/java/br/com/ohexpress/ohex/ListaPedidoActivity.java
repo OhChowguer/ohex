@@ -50,15 +50,8 @@ public class ListaPedidoActivity extends ActionBarActivity {
         mAccountManager = AccountManager.get(ListaPedidoActivity.this);
         getAccounts(null);
 
-
-
-
         ohTopBar = (Toolbar) findViewById(R.id.oh_top_toolbar);
         setSupportActionBar(ohTopBar);
-
-
-
-
 
         // FRAGMENT
         frag = (PedidoFragment) getSupportFragmentManager().findFragmentByTag("mainFragLPed");
@@ -77,8 +70,6 @@ public class ListaPedidoActivity extends ActionBarActivity {
 
     @Override
     public void onStart(){
-
-
         super.onStart();
         //if(mAccountManager.getAccountsByType(Constant.ACCOUNT_TYPE).length == 0){
         //    finish();
@@ -88,11 +79,12 @@ public class ListaPedidoActivity extends ActionBarActivity {
 
     @Override
     public void onRestart(){
+        super.onStart();
         if(mAccountManager.getAccountsByType(Constant.ACCOUNT_TYPE).length == 0){
             finish();
         }
 
-        super.onStart();
+
 
         Log.i("Script", "onRestart()");
     }
@@ -119,7 +111,7 @@ public class ListaPedidoActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu_pesq_lojas, menu);
+        getMenuInflater().inflate(R.menu.menu_lista_pedido, menu);
         return true;
     }
 
@@ -134,17 +126,12 @@ public class ListaPedidoActivity extends ActionBarActivity {
             return true;
         }
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_lista_pedido) {
 
-
+            getPedidos();
             return true;
         }
 
-        if (id == R.id.action_settings2) {
-
-
-            return true;
-        }
 
 
         return super.onOptionsItemSelected(item);

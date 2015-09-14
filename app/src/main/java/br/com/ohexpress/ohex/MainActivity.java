@@ -203,39 +203,7 @@ public class MainActivity extends ActionBarActivity {
                 //ServerUtil serverUtil = new ServerUtil();
                 //serverUtil.getUser(user,MainActivity.this);
 
-                RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
 
-                UserService userService = restAdapterPedido.create(UserService.class);
-
-                userService.getuser(user.getToken(),
-                        new Callback<Usuario>() {
-
-
-                            @Override
-                            public void success(Usuario usuario, Response response) {
-
-                                ((MyApplication) getApplication()).setUser(usuario);
-                                user = usuario;
-                                //listaPedido = (ArrayList<Pedido>) pedidos;
-                                //Intent itLProx = new Intent(MainActivity.this, EstabelecimentoMainActivity.class);
-                                //itLProx.putParcelableArrayListExtra("pedidos", listaPedido);
-                                //tartActivity(itLProx);
-
-                                Toast.makeText(MainActivity.this, user.getToken(), Toast.LENGTH_SHORT).show();
-
-
-                            }
-
-                            @Override
-                            public void failure(RetrofitError error) {
-
-                                Toast.makeText(MainActivity.this, "Deu errado" + error, Toast.LENGTH_LONG).show();
-
-
-                            }
-                        }
-
-                );
             }
             else{
                 //Toast.makeText(MainActivity.this, user.getCreditCard().get(0).getNomeTitular(), Toast.LENGTH_SHORT).show();
@@ -517,13 +485,13 @@ public class MainActivity extends ActionBarActivity {
                             Bundle bundle = future.getResult();
                             Log.i("Script", "MainActivity.getAccounts()");
 
-                            if(accHeaderBuilder.getProfiles().isEmpty() && accs.length>0){
+                            if (accHeaderBuilder.getProfiles().isEmpty() && accs.length > 0) {
                                 accHeaderBuilder.addProfile(new ProfileDrawerItem().
                                         withName(bundle.getString(AccountManager.KEY_ACCOUNT_NAME)).withEmail(bundle.getString(AccountManager.KEY_AUTHTOKEN))
                                         .withIcon(getResources().getDrawable(R.drawable.img_avatar)), 0);
                             }
 
-                            //setUserDataFromServer();
+                            getUser(bundle.getString(AccountManager.KEY_AUTHTOKEN));
                         } catch (OperationCanceledException e) {
                             e.printStackTrace();
                         } catch (AuthenticatorException e) {
@@ -538,7 +506,39 @@ public class MainActivity extends ActionBarActivity {
 
 
 
+    public void getUser(String token){
 
+
+        RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
+
+        UserService userService = restAdapterPedido.create(UserService.class);
+
+        userService.getuser(token,
+                new Callback<Usuario>() {
+
+
+                    @Override
+                    public void success(Usuario usuario, Response response) {
+
+                        ((MyApplication) getApplication()).setUser(usuario);
+                        user = usuario;
+
+
+                        //Toast.makeText(context, user.getToken(), Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+
+                        //Toast.makeText(context, "Deu errado" + error, Toast.LENGTH_LONG).show();
+
+
+                    }
+                }
+
+        );
+    }
 }
 
 

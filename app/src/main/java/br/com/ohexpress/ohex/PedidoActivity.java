@@ -45,8 +45,6 @@ public class PedidoActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido);
-
-
         pedido =  getIntent().getExtras().getParcelable("pedido");
         ohTopBar = (Toolbar) findViewById(R.id.oh_top_toolbar);
         DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.GERMAN);
@@ -55,7 +53,6 @@ public class PedidoActivity extends ActionBarActivity {
         format = new DecimalFormat("###0.00", otherSymbols);
         totalPedido = (TextView) findViewById(R.id.tv_total_pedido);
         totalPedido.setText(format.format(getTotal()));
-
         setSupportActionBar(ohTopBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -68,8 +65,6 @@ public class PedidoActivity extends ActionBarActivity {
             ft.replace(R.id.rl_fragment_container_pedido, frag, "mainFragCestaPed");
             ft.commit();
         }
-
-
     }
 
    @Override
@@ -89,10 +84,6 @@ public class PedidoActivity extends ActionBarActivity {
             finish();
             return true;
         }
-
-
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -138,7 +129,6 @@ public class PedidoActivity extends ActionBarActivity {
 
     public List<ItemPedido> getItemPedido(){
 
-
         return pedido.getItem();
     }
 
@@ -150,14 +140,10 @@ public class PedidoActivity extends ActionBarActivity {
         for (ItemPedido itens : pedido.getItem()) {
 
             total = total + itens.getQuantidade() * itens.getProduto().getPreco();
-
-
         }
 
         return total;
     }
-
-
 
 
 }
