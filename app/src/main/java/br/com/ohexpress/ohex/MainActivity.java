@@ -21,12 +21,17 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,7 +86,20 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
         setContentView(R.layout.activity_main);
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+        RelativeLayout rl = (RelativeLayout) findViewById(R.id.rl_main_lay);
+
+        rl.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getWindow().getCurrentFocus().getWindowToken(), 0);
+                return false;
+
+            }
+        });
 
         //List<CreditCard> cards = new ArrayList<CreditCard>(0);
 
@@ -169,10 +187,12 @@ public class MainActivity extends ActionBarActivity {
                 return true;
             }
         });
-        TextView textView = (TextView) searchView.findViewById(R.id.search_src_text);
+        final TextView textView = (TextView) searchView.findViewById(R.id.search_src_text);
         textView.setTextColor(getResources().getColor(R.color.accent));
         textView.setHintTextColor(Color.LTGRAY);
         setnDrawerLeft(false);
+
+
 
 
 
