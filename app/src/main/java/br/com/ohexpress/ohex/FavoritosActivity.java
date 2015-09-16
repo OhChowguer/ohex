@@ -86,10 +86,10 @@ public class FavoritosActivity extends ActionBarActivity {
 
         url = "http://10.0.2.2:8080/ohexpress/registroApp";
 
-        nome = (TextView) findViewById(R.id.tvNumeroCard);
-        login = (TextView) findViewById(R.id.tvNomeTitular);
-        email = (TextView) findViewById(R.id.tvEndereco);
-        senha = (TextView) findViewById(R.id.tvDataExpCard);
+        nome = (TextView) findViewById(R.id.et_nome);
+        login = (TextView) findViewById(R.id.et_login);
+        email = (TextView) findViewById(R.id.et_email);
+        senha = (TextView) findViewById(R.id.et_senha);
 
 
         requestQueue = Volley.newRequestQueue(FavoritosActivity.this);

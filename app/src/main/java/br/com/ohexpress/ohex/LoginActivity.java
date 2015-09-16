@@ -4,7 +4,6 @@ package br.com.ohexpress.ohex;
 import android.accounts.Account;
 import android.accounts.AccountAuthenticatorActivity;
 import android.accounts.AccountManager;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -45,7 +44,7 @@ public class LoginActivity extends AccountAuthenticatorActivity  {
 
 
 
-        senha = (EditText) findViewById(R.id.tvDataExpCard);
+        senha = (EditText) findViewById(R.id.et_senha);
         login = (EditText) findViewById(R.id.et_login_act);
         //login.color;
         user = ((MyApplication) getApplication()).getUser();
@@ -69,15 +68,6 @@ public class LoginActivity extends AccountAuthenticatorActivity  {
                 finish();
             }
         });
-        login.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
-                    InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    in.hideSoftInputFromWindow(login.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                }
-                return false;
-            }
-        });
 
 
 
@@ -98,7 +88,7 @@ public class LoginActivity extends AccountAuthenticatorActivity  {
 
         findViewById(R.id.bt_login).setEnabled(false);
         user.setLogin(((EditText) findViewById(R.id.et_login_act)).getText().toString());
-        user.setSenha(((EditText) findViewById(R.id.tvDataExpCard)).getText().toString());
+        user.setSenha(((EditText) findViewById(R.id.et_senha)).getText().toString());
 
         RestAdapter restAdapterUser = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
 

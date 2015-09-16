@@ -10,9 +10,10 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
     android:id="@+id/rl_main_lay"
     tools:context=".MainActivity">
-
 
 
     <android.support.v7.widget.Toolbar

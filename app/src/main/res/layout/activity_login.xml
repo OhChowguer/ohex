@@ -22,13 +22,13 @@
         android:textColorHint="#FFFFFF"
         android:textSize="15sp"
         android:password="false"
-        android:layout_above="@+id/tvDataExpCard"
+        android:layout_above="@+id/et_senha"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="8dp" />
 
 
     <EditText
-        android:id="@+id/tvDataExpCard"
+        android:id="@+id/et_senha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_senha"
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:text="Ainda não tem uma conta? Registre-se aqui"
         android:id="@+id/tv_clique_aqui"
-        android:layout_below="@+id/tvDataExpCard"
+        android:layout_below="@+id/et_senha"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:textColor="@color/fab_material_white"

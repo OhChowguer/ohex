@@ -19,7 +19,7 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Novo cadastro"
@@ -32,13 +32,14 @@
 
     <EditText
 
-        android:id="@+id/tvNumeroCard"
+        android:id="@+id/et_nome"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/tv_title"
         android:layout_marginTop="56dp"
         android:autoText="false"
-        android:drawableLeft="@drawable/ic_nome"
+        android:drawableLeft="@drawable/ic_account_circle"
+        android:drawablePadding="20dp"
         android:editable="false"
         android:ems="10"
         android:hint="Nome"
@@ -48,14 +49,16 @@
         android:textSize="13dp"
         android:paddingLeft="15dp"
         android:gravity="bottom"
-        android:layout_alignWithParentIfMissing="false" />
+        android:layout_alignWithParentIfMissing="false"
+        android:textColorHighlight="@color/OH_CINZA_CLARO" />
 
     <EditText
-        android:id="@+id/tvNomeTitular"
+        android:id="@+id/et_login"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvNumeroCard"
-        android:drawableLeft="@drawable/ic_useracc"
+        android:layout_below="@+id/et_nome"
+        android:drawableLeft="@drawable/ic_login"
+        android:drawablePadding="20dp"
         android:editable="true"
         android:ems="10"
         android:hint="Login"
@@ -64,14 +67,16 @@
         android:textColorHint="#FFFFFF"
         android:textSize="13dp"
         android:paddingLeft="15dp"
-        android:gravity="bottom" />
+        android:gravity="bottom"
+        android:textColorHighlight="@color/OH_CINZA_CLARO" />
 
     <EditText
-        android:id="@+id/tvEndereco"
+        android:id="@+id/et_email"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvNomeTitular"
-        android:drawableLeft="@drawable/ic_email"
+        android:layout_below="@+id/et_login"
+        android:drawableLeft="@drawable/ic_email_resg"
+        android:drawablePadding="20dp"
         android:editable="true"
         android:ems="10"
         android:hint="Email"
@@ -81,16 +86,17 @@
         android:textSize="13dp"
         android:paddingLeft="15dp"
         android:layout_alignWithParentIfMissing="false"
-        android:layout_centerInParent="true" />
+        android:textColorHighlight="@color/OH_CINZA_CLARO"
+        android:layout_centerVertical="true" />
 
     <EditText
-        android:id="@+id/tvDataExpCard"
+        android:id="@+id/et_senha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/tvEndereco"
-        android:drawableLeft="@drawable/ic_senha"
+        android:layout_below="@+id/et_email"
+        android:drawableLeft="@drawable/ic_key"
+        android:drawablePadding="20dp"
         android:editable="false"
         android:ems="10"
         android:hint="Senha"
@@ -102,17 +108,18 @@
         android:password="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="false"
-        android:layout_alignParentRight="true"
         android:elegantTextHeight="false"
         android:paddingLeft="15dp"
-        android:gravity="bottom" />
+        android:gravity="bottom"
+        android:textColorHighlight="@color/OH_CINZA_CLARO"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:id="@+id/bt_login"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#EDC951"
-        android:onClick="add"
         android:text="Cadastrar"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
@@ -124,7 +131,7 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Já tem conta? Faça seu login aqui"
         android:id="@+id/tv_reg_aqui"
@@ -135,6 +142,27 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_resenha"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_key_plus"
+        android:drawablePadding="20dp"
+        android:editable="false"
+        android:ems="10"
+        android:hint="Confirmar senha"
+        android:inputType="textPassword"
+        android:singleLine="false"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="13dp"
+        android:password="true"
+        android:elegantTextHeight="false"
+        android:paddingLeft="15dp"
+        android:gravity="bottom"
+        android:layout_below="@+id/et_senha"
+        android:textColorHighlight="@color/OH_CINZA_CLARO" />
 
 
 </RelativeLayout>

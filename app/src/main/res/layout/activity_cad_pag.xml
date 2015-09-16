@@ -47,7 +47,7 @@
                 android:layout_alignParentStart="true" />
 
             <EditText
-                android:id="@+id/tvNumeroCard"
+                android:id="@+id/et_nome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_nome"
@@ -60,7 +60,7 @@
 
 
             <EditText
-                android:id="@+id/tvDataExpCard"
+                android:id="@+id/et_senha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_senha"
@@ -70,11 +70,11 @@
                 android:textColorHint="#FFFFFF"
                 android:textSize="13sp"
                 android:password="true"
-                android:layout_below="@+id/tvNumeroCard" />
+                android:layout_below="@+id/et_nome" />
 
 
             <EditText
-                android:id="@+id/tvNomeTitular"
+                android:id="@+id/et_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_useracc"
@@ -83,7 +83,7 @@
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF"
                 android:textSize="13sp"
-                android:layout_below="@+id/tvDataExpCard"/>
+                android:layout_below="@+id/et_senha"/>
 
 
             <TextView
@@ -93,7 +93,7 @@
                 android:text="Endereço de cobrança"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                android:layout_below="@+id/tvNomeTitular"/>
+                android:layout_below="@+id/et_login"/>
 
 
             <EditText
