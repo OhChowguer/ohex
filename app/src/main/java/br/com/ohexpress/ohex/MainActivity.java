@@ -390,9 +390,10 @@ public class MainActivity extends ActionBarActivity {
                     new DividerDrawerItem(),
                     new SecondaryDrawerItem().withName("Cesta de compras").withIcon(R.drawable.ic_cesto_amarelo),
                     new DividerDrawerItem(),
-                    new SecondaryDrawerItem().withName("Configurações").withIcon(R.drawable.ic_usuario_amarelo),
+                    new SecondaryDrawerItem().withName("Entrar").withIcon(R.drawable.ic_off_amarelo),
                     new DividerDrawerItem(),
-                    new SecondaryDrawerItem().withName("Entrar").withIcon(R.drawable.ic_off_amarelo));
+                    new SecondaryDrawerItem().withName("Registrar").withIcon(R.drawable.ic_account_plus_yellow));
+
             nDrawerLeft.setOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
                 public boolean onItemClick(AdapterView<?> adapterView, View view, int position, long l, IDrawerItem iDrawerItem) {
@@ -408,11 +409,12 @@ public class MainActivity extends ActionBarActivity {
                             startActivity(itLProx);
                             break;
                         case 6:
-                            //Config
-                            break;
-                        case 8:
                             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                             startActivity(intent);
+                            break;
+                        case 8:
+                            Intent intentReg = new Intent(MainActivity.this, RegistrarActivity.class);
+                            startActivity(intentReg);
                             break;
 
                     }
