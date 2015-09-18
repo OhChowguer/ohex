@@ -1,6 +1,7 @@
 package br.com.ohexpress.ohex;
 
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -113,21 +115,38 @@ public class ProdutoActivity extends ActionBarActivity {
 
     public boolean AddCesta(View view) {
 
-
-        Loja loja = new Loja();
         if (pedido.getLoja().getId() == ((MyApplication) getApplication()).getMyLoja().getId() || pedido.getLoja().getId() == null) {
-            itemPedido = new ItemPedido();
-            itemPedido.setProduto(produto);
-            itemPedido.setAdicionais(adicionais);
-            itemPedido.setOpcionais(opcinais);
-            itemPedido.setQuantidade(Integer.parseInt(tvQtdProduto.getText().toString()));
-            pedido.getItem().add(itemPedido);
-            loja.setId(((MyApplication) getApplication()).getMyLoja().getId());
-            pedido.setLoja(loja);
-            Toast.makeText(ProdutoActivity.this, "Item adicionado", Toast.LENGTH_SHORT).show();
-            finish();
+            addProduto();
 
             return true;
+        }
+        else{
+            final Dialog dialog = new Dialog(ProdutoActivity.this);
+
+            dialog.setContentView(R.layout.dialog_pedido_add_card);
+            dialog.setTitle("Adicionar produto");
+            TextView text = (TextView) dialog.findViewById(R.id.tv_nome_loga_dialog_pedido);
+            text.setText("Sua cesta possui itens de outra loja, para adicionar produtos dessa loja e necessario exclui-los," +
+                    "deseja excluir?");
+            Button dialogButtonSim = (Button) dialog.findViewById(R.id.bt_emite_ped_dialog_sim);
+            Button dialogButtonNao = (Button) dialog.findViewById(R.id.bt_emite_ped_dialog_nao);
+            dialogButtonSim.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    ((MyApplication) mContext.getApplicationContext()).setMyPedido(new Pedido(true));
+                    addProduto();
+                    dialog.dismiss();
+
+                }
+            });
+            dialogButtonNao.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
         }
 
         return true;
@@ -235,6 +254,23 @@ public class ProdutoActivity extends ActionBarActivity {
         }
 
 
+    }
+
+    private void addProduto(){
+
+        pedido = ((MyApplication) getApplication()).getMyPedido();
+
+        Loja loja = new Loja();
+        itemPedido = new ItemPedido();
+        itemPedido.setProduto(produto);
+        itemPedido.setAdicionais(adicionais);
+        itemPedido.setOpcionais(opcinais);
+        itemPedido.setQuantidade(Integer.parseInt(tvQtdProduto.getText().toString()));
+        pedido.getItem().add(itemPedido);
+        loja.setId(((MyApplication) getApplication()).getMyLoja().getId());
+        pedido.setLoja(loja);
+        Toast.makeText(ProdutoActivity.this, "Item adicionado", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }
 

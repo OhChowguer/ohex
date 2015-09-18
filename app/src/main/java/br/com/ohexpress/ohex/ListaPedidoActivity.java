@@ -34,11 +34,12 @@ import retrofit.client.Response;
 
 public class ListaPedidoActivity extends ActionBarActivity {
 
-    private Usuario user;
+   // private Usuario user;
     private PedidoFragment frag;
     private AccountManager mAccountManager;
     private Toolbar ohTopBar;
     private ArrayList<Pedido> listPedido = new ArrayList<Pedido>(0);
+    private MyApplication mApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,8 @@ public class ListaPedidoActivity extends ActionBarActivity {
         setContentView(R.layout.activity_lista_pedido);
 
         //listPedido = getIntent().getParcelableArrayListExtra("pedidos");
-        user = ((MyApplication) getApplication()).getUser();
+        //user = ((MyApplication) getApplication()).getUser();
+        mApp  = (MyApplication) getApplication();
         mAccountManager = AccountManager.get(ListaPedidoActivity.this);
         getAccounts(null);
 
@@ -128,7 +130,8 @@ public class ListaPedidoActivity extends ActionBarActivity {
 
         if (id == R.id.action_lista_pedido) {
 
-            getPedidos();
+            mApp.getUser().setEmail("chowm");
+            //getPedidos();
             return true;
         }
 
@@ -161,9 +164,9 @@ public class ListaPedidoActivity extends ActionBarActivity {
                             //Log.i("Script", "MainActivity.getAccounts() : AccountName = "+bundle.getString(AccountManager.KEY_ACCOUNT_NAME));
                             //Log.i("Script", "MainActivity.getAccounts() : Token = "+bundle.getString(AccountManager.KEY_AUTHTOKEN));
 
-                            user.setAccountType(bundle.getString(AccountManager.KEY_ACCOUNT_TYPE));
-                            user.setAccountName(bundle.getString(AccountManager.KEY_ACCOUNT_NAME));
-                            user.setToken(bundle.getString(AccountManager.KEY_AUTHTOKEN));
+                            mApp.getUser().setAccountType(bundle.getString(AccountManager.KEY_ACCOUNT_TYPE));
+                            mApp.getUser().setAccountName(bundle.getString(AccountManager.KEY_ACCOUNT_NAME));
+                            mApp.getUser().setToken(bundle.getString(AccountManager.KEY_AUTHTOKEN));
                             getPedidos();
 
                             //setUserDataFromServer();
@@ -185,7 +188,7 @@ public class ListaPedidoActivity extends ActionBarActivity {
         RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
         PedidoService pedidoService = restAdapterPedido.create(PedidoService.class);
 
-        pedidoService.listarPedidoPorComprador(user.getToken(),
+        pedidoService.listarPedidoPorComprador(mApp.getUser().getToken(),
                 new Callback<List<Pedido>>() {
 
 

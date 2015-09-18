@@ -58,7 +58,8 @@ public class LojaActivity extends ActionBarActivity {
     private SimpleDraweeView imageLoja;
     private ActionButton fab;
     private float scale;
-    private Usuario user;
+    //private Usuario user;
+    private MyApplication mApp;
     private Drawer nDrawerLeft;
     private Drawer nDrawerRight;
     private AccountHeader accHeaderBuilder;
@@ -70,10 +71,11 @@ public class LojaActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loja);
         mContext = this;
+        mApp = (MyApplication) getApplication();
         loja = getIntent().getExtras().getParcelable("loja");
         ((MyApplication) getApplication()).getMyLoja().setId(loja.getId());
         scale = mContext.getResources().getDisplayMetrics().density;
-        user = ((MyApplication) getApplication()).getUser();
+        //user = ((MyApplication) getApplication()).getUser();
         fab = (ActionButton) findViewById(R.id.fab_menu);
         imageLoja = (SimpleDraweeView) findViewById(R.id.cv_loja);
         Uri uri = Uri.parse(loja.getImgLoja());
@@ -90,12 +92,12 @@ public class LojaActivity extends ActionBarActivity {
         heartFav = (ImageView) findViewById(R.id.ic_heart_fav_loja);
 
 
-        if (user.getId() == null){
+        if (mApp.getUser().getId() == null){
             //fabFav.dismiss();
             heartFav.setImageResource(R.drawable.ic_heart_36_vazio);
         }
 
-        else if (user.findFav(loja.getId())){
+        else if (mApp.getUser().findFav(loja.getId())){
             //fabFav.setButtonColor(getResources().getColor(R.color.grey));
             heartFav.setImageResource(R.drawable.ic_heart_36_cheio);
             heartFav.setOnClickListener(new View.OnClickListener() {
@@ -148,7 +150,7 @@ public class LojaActivity extends ActionBarActivity {
                 .build();
 
         accHeaderBuilder.addProfiles(new ProfileDrawerItem().
-                withName(user.getAccountName()).withEmail("chowman@gmail.com")
+                withName(mApp.getUser().getAccountName()).withEmail("chowman@gmail.com")
                 .withIcon(getResources().getDrawable(R.drawable.img_avatar)));
 
 
@@ -299,7 +301,7 @@ public class LojaActivity extends ActionBarActivity {
 
         UserService userService = restAdapter.create(UserService.class);
 
-        userService.actionfavoritas(user.getToken(), loja.getId(),
+        userService.actionfavoritas(mApp.getUser().getToken(), loja.getId(),
                 new Callback<String>() {
 
 
@@ -311,7 +313,7 @@ public class LojaActivity extends ActionBarActivity {
 
                             Toast.makeText(LojaActivity.this, callback, Toast.LENGTH_SHORT).show();
                             ServerUtil serverUtil = new ServerUtil();
-                            serverUtil.getUser(user, LojaActivity.this);
+                            serverUtil.getUser(mApp.getUser(), LojaActivity.this);
                             if (act == 1){
 
                                 //fabFav.setButtonColor(R.color.accent);

@@ -33,6 +33,7 @@ import java.util.Locale;
 import br.com.ohexpress.ohex.adapters.CestaDialogAdapter;
 import br.com.ohexpress.ohex.fragment.ItensCestaFragment;
 import br.com.ohexpress.ohex.interfaces.PedidoService;
+import br.com.ohexpress.ohex.interfaces.UserService;
 import br.com.ohexpress.ohex.model.CreditCard;
 import br.com.ohexpress.ohex.model.ItemPedido;
 import br.com.ohexpress.ohex.model.Pedido;
@@ -50,7 +51,8 @@ public class CestaActivity extends ActionBarActivity {
     private TextView tvLabelTotalCesta;
     private TextView tvLabelSifrao;
     private View saparator;
-    private Usuario user;
+    //private Usuario user;
+    private MyApplication mApp;
     private AccountManager mAccountManager;
     private List<ItemPedido> cesta;
     private Pedido pedido;
@@ -64,9 +66,10 @@ public class CestaActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cesta);
-        user = ((MyApplication) getApplication()).getUser();
+        //user = ((MyApplication) getApplication()).getUser();
         pedido = ((MyApplication) getApplication()).getMyPedido();
         mAccountManager = AccountManager.get(CestaActivity.this);
+        mApp = ((MyApplication) getApplication());
         //cesta = ((MyApplication) getApplication()).getMyCesta();
         cesta = pedido.getItem();
         ohTopBar = (Toolbar) findViewById(R.id.oh_top_toolbar);
@@ -126,14 +129,10 @@ public class CestaActivity extends ActionBarActivity {
 
     public void EmitirPedido(View view) {
         Account[] accs = mAccountManager.getAccountsByType(Constant.ACCOUNT_TYPE);
-        final Dialog dialog = new Dialog(this);
-        //Toast.makeText(CestaActivity.this,user.getCreditCard().get(0).getNomeTitular(),Toast.LENGTH_SHORT).show();
-
+        final Dialog dialog = new Dialog(this);;
         if (accs.length == 0) {
             getAccounts(null);
-        } else if (user.getCreditCard().size() == 0) {
-
-
+        } else if (mApp.getUser().getCreditCard().size() == 0) {
             dialog.setContentView(R.layout.dialog_pedido_add_card);
             dialog.setTitle("Forma de pagamento");
             TextView text = (TextView) dialog.findViewById(R.id.tv_nome_loga_dialog_pedido);
@@ -184,7 +183,7 @@ public class CestaActivity extends ActionBarActivity {
 
             List<String> list = new ArrayList<String>();
 
-            for (CreditCard card: user.getCreditCard()){
+            for (CreditCard card: mApp.getUser().getCreditCard()){
             list.add(card.getNome()+" - ****.****."+card.getNumeroCard().substring(7));
           }
 
@@ -196,7 +195,7 @@ public class CestaActivity extends ActionBarActivity {
 
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    card = user.getCreditCard().get(position);
+                    card = mApp.getUser().getCreditCard().get(position);
 
                 }
             });
@@ -263,9 +262,11 @@ public class CestaActivity extends ActionBarActivity {
                         try {
                             Bundle bundle = future.getResult();
 
-                            user.setAccountType(bundle.getString(AccountManager.KEY_ACCOUNT_TYPE));
-                            user.setAccountName(bundle.getString(AccountManager.KEY_ACCOUNT_NAME));
-                            user.setToken(bundle.getString(AccountManager.KEY_AUTHTOKEN));
+                            mApp.getUser().setAccountType(bundle.getString(AccountManager.KEY_ACCOUNT_TYPE));
+                            mApp.getUser().setAccountName(bundle.getString(AccountManager.KEY_ACCOUNT_NAME));
+                            mApp.getUser().setToken(bundle.getString(AccountManager.KEY_AUTHTOKEN));
+                            getUser(mApp.getUser().getToken());
+
 
                             //setUserDataFromServer();
                         } catch (OperationCanceledException e) {
@@ -289,7 +290,7 @@ public class CestaActivity extends ActionBarActivity {
 
         PedidoService pedidoService = restAdapter.create(PedidoService.class);
 
-        pedidoService.addPedido(user.getToken(), pedido,
+        pedidoService.addPedido(mApp.getUser().getToken(), pedido,
                 new Callback<Pedido>() {
 
 
@@ -340,6 +341,40 @@ public class CestaActivity extends ActionBarActivity {
             frag.getView().setVisibility(View.GONE);
 
         }
+    }
+
+    public void getUser(String token){
+
+
+        RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
+
+        UserService userService = restAdapterPedido.create(UserService.class);
+
+        userService.getuser(token,
+                new Callback<Usuario>() {
+
+
+                    @Override
+                    public void success(Usuario usuario, Response response) {
+
+                        //((MyApplication) getApplication()).setUser(usuario);
+                        mApp.setUser(usuario);
+
+
+                        //Toast.makeText(context, user.getToken(), Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+
+                        //Toast.makeText(context, "Deu errado" + error, Toast.LENGTH_LONG).show();
+
+
+                    }
+                }
+
+        );
     }
 
 

@@ -76,15 +76,17 @@ public class MainActivity extends ActionBarActivity {
     private Toolbar ohPesqBar;
     private Drawer nDrawerLeft;
     private AccountHeader accHeaderBuilder;
-    private Usuario user;
+    //private Usuario user;
     private AccountManager mAccountManager;
     private Account[] accs;
+    private MyApplication mApp;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
+        mApp = (MyApplication) getApplication();
         setContentView(R.layout.activity_main);
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -106,7 +108,7 @@ public class MainActivity extends ActionBarActivity {
         //CreditCard card = new CreditCard("99999999999","Visa",1,"DEBITO",new Date(),"Diego");
         //cards.add(card);
 
-        user = ((MyApplication) getApplication()).getUser();
+       //user = ((MyApplication) getApplication()).getUser();
         //user.setCreditCard(cards);
         mAccountManager = AccountManager.get(MainActivity.this);
 
@@ -218,7 +220,9 @@ public class MainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
 
-            if (user.getId()==null) {
+           Toast.makeText(this, mApp.getUser().getEmail(),Toast.LENGTH_LONG).show();
+
+            if (mApp.getUser().getId()==null) {
 
                 //ServerUtil serverUtil = new ServerUtil();
                 //serverUtil.getUser(user,MainActivity.this);
@@ -359,7 +363,7 @@ public class MainActivity extends ActionBarActivity {
                         startActivity(itLProx);
                         break;
                     case 8:
-                        myPedidos(null);
+                        mApp.getUser().setEmail("teste");
                         break;
                     case 10:
                         myFavoritas(null);
@@ -371,7 +375,7 @@ public class MainActivity extends ActionBarActivity {
                             public void run(AccountManagerFuture<Boolean> future) {
                                 accHeaderBuilder.clear();
                                 ((MyApplication) getApplication()).setUser(new Usuario());
-                                user = new Usuario();
+                                mApp.setUser(new Usuario());
                                 setnDrawerLeft(true);
                             }
                         }, null);
@@ -409,8 +413,7 @@ public class MainActivity extends ActionBarActivity {
                             startActivity(itLProx);
                             break;
                         case 6:
-                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                            startActivity(intent);
+                            getAccounts(null);
                             break;
                         case 8:
                             Intent intentReg = new Intent(MainActivity.this, RegistrarActivity.class);
@@ -422,16 +425,6 @@ public class MainActivity extends ActionBarActivity {
                 }
             });
         }
-
-
-
-
-
-
-
-
-
-
 
     }
 
@@ -542,8 +535,8 @@ public class MainActivity extends ActionBarActivity {
                     @Override
                     public void success(Usuario usuario, Response response) {
 
-                        ((MyApplication) getApplication()).setUser(usuario);
-                        user = usuario;
+                        //((MyApplication) getApplication()).setUser(usuario);
+                        mApp.setUser(usuario);
 
 
                         //Toast.makeText(context, user.getToken(), Toast.LENGTH_SHORT).show();

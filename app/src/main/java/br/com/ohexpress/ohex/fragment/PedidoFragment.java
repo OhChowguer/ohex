@@ -114,6 +114,4 @@ public class PedidoFragment extends Fragment implements RecyclerViewOnClickListe
     }
 
 
-
-
 }

@@ -45,7 +45,8 @@ public class EmitePedidoActivity extends ActionBarActivity {
     private TextView tvNomeProduto;
     public SimpleDraweeView imageProduto;
     private List<ItemPedido> cesta;
-    private Usuario user;
+    //private Usuario user;
+    private MyApplication mApp;
     private AccountManager mAccountManager;
     private Spinner mSpinner;
 
@@ -58,6 +59,7 @@ public class EmitePedidoActivity extends ActionBarActivity {
         cesta = ((MyApplication) getApplication()).getMyCesta();
         pedido = new Pedido();
         pedido.setItem(cesta);
+        mApp = (MyApplication) getApplication();
 
         //dh = new DatabaseHelper(EmitePedidoActivity.this);
 
@@ -67,7 +69,7 @@ public class EmitePedidoActivity extends ActionBarActivity {
         setSupportActionBar(ohTopBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        user = ((MyApplication) getApplication()).getUser();
+        //user = ((MyApplication) getApplication()).getUser();
         mAccountManager = AccountManager.get(EmitePedidoActivity.this);
         getAccounts(null);
         if(mAccountManager.getAccountsByType(Constant.ACCOUNT_TYPE).length == 0){
@@ -144,7 +146,7 @@ public class EmitePedidoActivity extends ActionBarActivity {
 
         PedidoService pedidoService = restAdapter.create(PedidoService.class);
 
-        pedidoService.addPedido(user.getToken(), pedido,
+        pedidoService.addPedido(mApp.getUser().getToken(), pedido,
                 new Callback<Pedido>(){
 
 
@@ -191,9 +193,9 @@ public class EmitePedidoActivity extends ActionBarActivity {
                         try {
                             Bundle bundle = future.getResult();
 
-                            user.setAccountType(bundle.getString(AccountManager.KEY_ACCOUNT_TYPE));
-                            user.setAccountName(bundle.getString(AccountManager.KEY_ACCOUNT_NAME));
-                            user.setToken(bundle.getString(AccountManager.KEY_AUTHTOKEN));
+                            mApp.getUser().setAccountType(bundle.getString(AccountManager.KEY_ACCOUNT_TYPE));
+                            mApp.getUser().setAccountName(bundle.getString(AccountManager.KEY_ACCOUNT_NAME));
+                            mApp.getUser().setToken(bundle.getString(AccountManager.KEY_AUTHTOKEN));
 
                             //setUserDataFromServer();
                         } catch (OperationCanceledException e) {

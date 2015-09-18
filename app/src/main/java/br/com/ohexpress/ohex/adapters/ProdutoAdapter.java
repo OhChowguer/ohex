@@ -1,11 +1,13 @@
 package br.com.ohexpress.ohex.adapters;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,23 +62,41 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
             @Override
             public void onClick(View v) {
 
-                Pedido pedido = ((MyApplication) context.getApplicationContext()).getMyPedido();
-                Loja loja = new Loja();
-
-
+                final Pedido pedido = ((MyApplication) context.getApplicationContext()).getMyPedido();
+                final Loja loja = new Loja();
 
                 if (pedido.getLoja().getId() == ((MyApplication) context.getApplicationContext()).getMyLoja().getId() || pedido.getLoja().getId() == null) {
 
-                    ItemPedido itemPedido = new ItemPedido();
-                    itemPedido.setProduto(listaProduto.get(position));
-                    itemPedido.setQuantidade(1);
-                    loja.setId(((MyApplication) context.getApplicationContext()).getMyLoja().getId());
-                    pedido.setLoja(loja);
-                    pedido.getItem().add(itemPedido);
-                    Toast.makeText(context, "Item adicionado", Toast.LENGTH_SHORT).show();
+                    addProduto(loja, position);
 
+                }else{
 
+                    final Dialog dialog = new Dialog(context);
 
+                    dialog.setContentView(R.layout.dialog_pedido_add_card);
+                    dialog.setTitle("Adicionar produto");
+                    TextView text = (TextView) dialog.findViewById(R.id.tv_nome_loga_dialog_pedido);
+                    text.setText("Sua cesta possui itens de outra loja, para adicionar produtos dessa loja e necessario exclui-los," +
+                            "deseja excluir?");
+                    Button dialogButtonSim = (Button) dialog.findViewById(R.id.bt_emite_ped_dialog_sim);
+                    Button dialogButtonNao = (Button) dialog.findViewById(R.id.bt_emite_ped_dialog_nao);
+                    dialogButtonSim.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            ((MyApplication) context.getApplicationContext()).setMyPedido(new Pedido(true));
+                            addProduto(loja, position);
+                            dialog.dismiss();
+
+                        }
+                    });
+                    dialogButtonNao.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.show();
                 }
             }
         });
@@ -131,5 +151,19 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
             }
 
         }
+    }
+
+    private void addProduto(Loja loja, int position){
+
+        Pedido pedido = ((MyApplication) context.getApplicationContext()).getMyPedido();
+
+        ItemPedido itemPedido = new ItemPedido();
+        itemPedido.setProduto(listaProduto.get(position));
+        itemPedido.setQuantidade(1);
+        loja.setId(((MyApplication) context.getApplicationContext()).getMyLoja().getId());
+        pedido.setLoja(loja);
+        pedido.getItem().add(itemPedido);
+
+        Toast.makeText(context, "Item adicionado", Toast.LENGTH_SHORT).show();
     }
 }
