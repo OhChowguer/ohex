@@ -300,7 +300,7 @@ public class RegistrarActivity extends ActionBarActivity implements View.OnClick
     public void add() {
 
         btLogin.setClickable(false);
-        Usuario usuario = new Usuario(login.getText().toString(),nome.getText().toString(),email.getText().toString());
+        Usuario usuario = new Usuario(login.getText().toString().trim(),nome.getText().toString().trim(),email.getText().toString().trim());
 
         RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
 

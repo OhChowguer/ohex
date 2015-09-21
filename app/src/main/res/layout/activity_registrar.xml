@@ -33,6 +33,7 @@
     <EditText
 
         android:id="@+id/et_nome"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456890"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_title"
@@ -54,6 +55,7 @@
 
     <EditText
         android:id="@+id/et_login"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456890"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_nome"
@@ -72,6 +74,7 @@
 
     <EditText
         android:id="@+id/et_email"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456890@."
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_login"
