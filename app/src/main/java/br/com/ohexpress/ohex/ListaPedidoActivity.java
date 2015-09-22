@@ -23,6 +23,7 @@ import java.util.List;
 
 import br.com.ohexpress.ohex.fragment.PedidoFragment;
 import br.com.ohexpress.ohex.interfaces.PedidoService;
+import br.com.ohexpress.ohex.model.Loja;
 import br.com.ohexpress.ohex.model.Pedido;
 import br.com.ohexpress.ohex.model.Usuario;
 import br.com.ohexpress.ohex.util.Constant;
@@ -40,13 +41,14 @@ public class ListaPedidoActivity extends ActionBarActivity {
     private Toolbar ohTopBar;
     private ArrayList<Pedido> listPedido = new ArrayList<Pedido>(0);
     private MyApplication mApp;
+    private Boolean filtro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_pedido);
 
-        //listPedido = getIntent().getParcelableArrayListExtra("pedidos");
+        filtro = getIntent().getBooleanExtra("filtro", false);
         //user = ((MyApplication) getApplication()).getUser();
         mApp  = (MyApplication) getApplication();
         mAccountManager = AccountManager.get(ListaPedidoActivity.this);
@@ -195,8 +197,28 @@ public class ListaPedidoActivity extends ActionBarActivity {
                     @Override
                     public void success(List<Pedido> pedidos, Response response) {
 
-                        listPedido = (ArrayList<Pedido>) pedidos;
-                        frag.loadPedidos(pedidos);
+
+                        if (filtro) {
+
+                            listPedido = (ArrayList<Pedido>) pedidos;
+                            Loja loja = ((MyApplication) getApplication()).getMyLoja();
+
+                            List<Pedido> lista = new ArrayList<Pedido>(0);
+
+                            for (Pedido ped:pedidos){
+
+                                if(ped.getLoja().getId() == loja.getId()){
+                                    lista.add(ped);
+                                }
+                            }
+
+                            frag.loadPedidos(lista);
+
+
+                        }else{
+
+                            frag.loadPedidos(pedidos);
+                        }
 
 
 

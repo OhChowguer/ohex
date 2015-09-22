@@ -85,6 +85,11 @@
         </activity>
 
         <activity
+            android:name=".ConfiguracaoActivity"
+            android:label="" >
+        </activity>
+
+        <activity
             android:name=".LojasFavoritasActivity"
             android:label="" >
         </activity>

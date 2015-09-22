@@ -110,7 +110,7 @@ public class MainActivity extends ActionBarActivity {
 
        //user = ((MyApplication) getApplication()).getUser();
         //user.setCreditCard(cards);
-        mAccountManager = AccountManager.get(MainActivity.this);
+        mAccountManager = AccountManager.get(this);
 
         /*
         if(mAccountManager.getAccountsByType(Constant.ACCOUNT_TYPE).length == 0){
@@ -220,22 +220,8 @@ public class MainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
 
-           Toast.makeText(this, mApp.getUser().getEmail(),Toast.LENGTH_LONG).show();
-
-            if (mApp.getUser().getId()==null) {
-
-                //ServerUtil serverUtil = new ServerUtil();
-                //serverUtil.getUser(user,MainActivity.this);
-
-
-            }
-            else{
-                //Toast.makeText(MainActivity.this, user.getCreditCard().get(0).getNomeTitular(), Toast.LENGTH_SHORT).show();
-            }
-
-            //PedidosUtil pUtil = new PedidosUtil();
-
-            //pUtil.getPedidos(this,user);
+            Intent itConfig = new Intent(MainActivity.this, ConfiguracaoActivity.class);
+            startActivity(itConfig);
 
             return true;
         }
@@ -363,10 +349,12 @@ public class MainActivity extends ActionBarActivity {
                         startActivity(itLProx);
                         break;
                     case 8:
-                        mApp.getUser().setEmail("teste");
+                        Intent itPedido = new Intent(MainActivity.this, ListaPedidoActivity.class);
+                        startActivity(itPedido);
                         break;
                     case 10:
-                        myFavoritas(null);
+                        Intent itConfig = new Intent(MainActivity.this, ConfiguracaoActivity.class);
+                        startActivity(itConfig);
                         break;
                     case 12:
                         Account account = accs[0];

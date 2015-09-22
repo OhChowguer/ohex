@@ -136,7 +136,7 @@ public class LoginActivity extends AccountAuthenticatorActivity  {
 
         UserService userService = restAdapterUser.create(UserService.class);
 
-        userService.gettoken(mApp.getUser().getLogin(),mApp.getUser().getSenha(),
+        userService.gettoken(mApp.getUser().getLogin(), mApp.getUser().getSenha(),
                 new Callback<String>() {
 
 
@@ -144,16 +144,16 @@ public class LoginActivity extends AccountAuthenticatorActivity  {
                     public void success(String token, Response response) {
 
                         //
-                            if(token != null) {
-                                it.putExtra(AccountManager.KEY_ACCOUNT_TYPE, Constant.ACCOUNT_TYPE);
-                                it.putExtra(AccountManager.KEY_ACCOUNT_NAME, mApp.getUser().getLogin());
-                                it.putExtra(AccountManager.KEY_AUTHTOKEN, token);
-                                finish(it);
-                            }else {
-                                btLogin.setEnabled(true);
-                                progressBar.setVisibility(View.GONE);
-                                Toast.makeText(LoginActivity.this, "Usuario ou senha incorretos", Toast.LENGTH_SHORT).show();
-                            }
+                        if (token != null) {
+                            it.putExtra(AccountManager.KEY_ACCOUNT_TYPE, Constant.ACCOUNT_TYPE);
+                            it.putExtra(AccountManager.KEY_ACCOUNT_NAME, mApp.getUser().getLogin());
+                            it.putExtra(AccountManager.KEY_AUTHTOKEN, token);
+                            finish(it);
+                        } else {
+                            btLogin.setEnabled(true);
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(LoginActivity.this, "Usuario ou senha incorretos", Toast.LENGTH_SHORT).show();
+                        }
 
 
                         //listaPedido = (ArrayList<Pedido>) pedidos;
@@ -205,13 +205,45 @@ public class LoginActivity extends AccountAuthenticatorActivity  {
         mAccountManager.setAuthToken(account, mApp.getUser().getAuthTokenType(), token);
 
         setAccountAuthenticatorResult(it.getExtras());
-        finish();
 
-        if(countAccounts == 0){
-            //startActivity(new Intent(LoginActivity.this, MainActivity.class));
-        }
+        getUser(token);
+
+
     }
+    public void getUser(String token){
 
+
+        RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
+
+        UserService userService = restAdapterPedido.create(UserService.class);
+
+        userService.getuser(token,
+                new Callback<Usuario>() {
+
+
+                    @Override
+                    public void success(Usuario usuario, Response response) {
+
+                        //((MyApplication) getApplication()).setUser(usuario);
+                        mApp.setUser(usuario);
+                        finish();
+
+
+                        //Toast.makeText(context, user.getToken(), Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+
+                        //Toast.makeText(context, "Deu errado" + error, Toast.LENGTH_LONG).show();
+
+
+                    }
+                }
+
+        );
+    }
 
 
 }

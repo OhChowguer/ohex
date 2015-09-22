@@ -88,8 +88,9 @@
         app:elevation="4dp"
         app:fabSize="normal"
         app:button_color="@color/colorAccent"
-        android:layout_below="@+id/tv_lb_cidade_loja"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/rl_fragment_container_loja"
+        android:layout_marginTop="-46dp" />
 
     <com.software.shell.fab.ActionButton
         app:button_color="@color/colorAccent"

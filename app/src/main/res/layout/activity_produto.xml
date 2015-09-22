@@ -220,9 +220,9 @@
         fresco:button_color="@color/fab_material_green_900"
         fresco:fabSize="normal"
         fresco:image="@drawable/fab_plus_icon"
-        android:layout_alignTop="@+id/textView"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
+        android:layout_alignTop="@+id/tv_center"
+        android:layout_toRightOf="@+id/tv_center"
+        android:layout_toEndOf="@+id/tv_center"
         android:layout_marginLeft="50dp" />
 
 
@@ -236,9 +236,9 @@
         fresco:button_color="@color/fab_material_red_900"
         fresco:fabSize="normal"
         fresco:image="@drawable/ic_fechar_36_white"
-        android:layout_alignTop="@+id/textView"
-        android:layout_toLeftOf="@+id/textView"
-        android:layout_toStartOf="@+id/textView"
+        android:layout_alignTop="@+id/tv_center"
+        android:layout_toLeftOf="@+id/tv_center"
+        android:layout_toStartOf="@+id/tv_center"
         android:layout_marginRight="50dp" />
 
 

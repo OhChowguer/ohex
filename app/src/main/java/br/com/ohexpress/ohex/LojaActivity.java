@@ -178,8 +178,8 @@ public class LojaActivity extends ActionBarActivity {
                         new SecondaryDrawerItem().withName("Pedidos em "+loja.getNome()).withIcon(R.drawable.ic_lista_amarelo),
                         new DividerDrawerItem(),
                         new SecondaryDrawerItem().withName("Configurações").withIcon(R.drawable.ic_usuario_amarelo),
-                        new DividerDrawerItem(),
-                        new SecondaryDrawerItem().withName("Sair").withIcon(R.drawable.ic_off_amarelo))
+                        new DividerDrawerItem())
+                        //,new SecondaryDrawerItem().withName("Sair").withIcon(R.drawable.ic_off_amarelo))
 
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -203,10 +203,14 @@ public class LojaActivity extends ActionBarActivity {
                             case 6:
 
                                 Intent it = new Intent(LojaActivity.this, ListaPedidoActivity.class);
+                                it.putExtra("filtro",true);
                                 startActivity(it);
 
                                 break;
                             case 8:
+
+                                Intent itConfig = new Intent(LojaActivity.this, ConfiguracaoActivity.class);
+                                startActivity(itConfig);
 
                                 break;
                             case 10:
