@@ -115,6 +115,11 @@
             android:label="" >
         </activity>
 
+        <activity
+            android:name=".EstabelecimentoPedidosActivity"
+            android:label="" >
+        </activity>
+        EstabelecimentoPedidosActivity
         <service
             android:name=".AccountAuthenticatorService"
             android:label="AccountAuthenticatorService" >

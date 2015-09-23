@@ -11,17 +11,14 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -29,42 +26,27 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import br.com.ohexpress.ohex.fragment.MainFragment;
-import br.com.ohexpress.ohex.interfaces.LojaService;
 import br.com.ohexpress.ohex.interfaces.UserService;
-import br.com.ohexpress.ohex.model.CreditCard;
 import br.com.ohexpress.ohex.model.Loja;
 import br.com.ohexpress.ohex.model.LojaPorDistancia;
-import br.com.ohexpress.ohex.model.Pedido;
 import br.com.ohexpress.ohex.model.Usuario;
-import br.com.ohexpress.ohex.util.PedidosUtil;
 import br.com.ohexpress.ohex.util.Constant;
-import br.com.ohexpress.ohex.util.ServerUtil;
 import retrofit.Callback;
-
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -76,12 +58,9 @@ public class MainActivity extends ActionBarActivity {
     private Toolbar ohPesqBar;
     private Drawer nDrawerLeft;
     private AccountHeader accHeaderBuilder;
-    //private Usuario user;
     private AccountManager mAccountManager;
     private Account[] accs;
     private MyApplication mApp;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -193,14 +172,6 @@ public class MainActivity extends ActionBarActivity {
         textView.setTextColor(getResources().getColor(R.color.accent));
         textView.setHintTextColor(Color.LTGRAY);
         setnDrawerLeft(false);
-
-
-
-
-
-
-
-
     }
 
     @Override
@@ -228,14 +199,14 @@ public class MainActivity extends ActionBarActivity {
 
         if (id == R.id.action_settings2) {
 
-            Intent it = new Intent(MainActivity.this, CadFormaDePagamentoActivity.class);
+            Intent it = new Intent(MainActivity.this, EstabelecimentoMainActivity.class);
             startActivity(it);
             return true;
         }
 
         if (id == R.id.action_menu_registrar) {
 
-            Intent it = new Intent(MainActivity.this, RegistrarActivity.class);
+            Intent it = new Intent(MainActivity.this, EstabelecimentoPedidosActivity.class);
             startActivity(it);
             return true;
         }
@@ -277,37 +248,6 @@ public class MainActivity extends ActionBarActivity {
 
         Intent itLProx = new Intent(MainActivity.this, LojasFavoritasActivity.class);
         startActivity(itLProx);
-
-        /*RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
-        UserService userService = restAdapterPedido.create(UserService.class);
-
-        userService.listarfavoritas(user.getToken(),
-                new Callback<List<LojaPorDistancia>>() {
-
-
-                    @Override
-                    public void success(List<LojaPorDistancia> lojas, Response response) {
-
-
-                        lista = (ArrayList<Loja>) setDistancia(lojas);
-                        Intent itLProx = new Intent(MainActivity.this, LojasProximasActivity.class);
-                        itLProx.putParcelableArrayListExtra("lojas", lista);
-                        startActivity(itLProx);
-
-
-                    }
-
-                    @Override
-                    public void failure(RetrofitError error) {
-
-                        Toast.makeText(MainActivity.this, "Deu errado" + error, Toast.LENGTH_LONG).show();
-
-
-                    }
-                }
-
-        );*/
-
 
     }
 
@@ -422,40 +362,6 @@ public class MainActivity extends ActionBarActivity {
         Intent itLProx = new Intent(MainActivity.this, LojasProximasActivity.class);
         startActivity(itLProx);
 
-
-                /*RestAdapter restAdapterDist = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
-
-                LojaService lojaServiceDist = restAdapterDist.create(LojaService.class);
-
-                lojaServiceDist.listarLojasDist(
-                        new Callback<List<LojaPorDistancia>>() {
-
-
-                            @Override
-                            public void success(List<LojaPorDistancia> lojas, Response response) {
-
-                                lista = (ArrayList<Loja>) setDistancia(lojas);
-                                Intent itLProx = new Intent(MainActivity.this, LojasProximasActivity.class);
-                                itLProx.putParcelableArrayListExtra("lojas", lista);
-                                startActivity(itLProx);
-
-
-                            }
-
-                            @Override
-                            public void failure(RetrofitError error) {
-
-                                Toast.makeText(MainActivity.this, "Deu errado" + error, Toast.LENGTH_LONG).show();
-
-
-                            }
-                        }
-
-                );*/
-
-
-
-
         return true;
     }
 
@@ -543,142 +449,3 @@ public class MainActivity extends ActionBarActivity {
         );
     }
 }
-
-
-
-
-                /*
-
-                 switch (item.getItemId()) {
-
-
-                    case R.id.item_tb_prox:
-
-                    RestAdapter restAdapterDist = new RestAdapter.Builder().setEndpoint("http://10.0.3.2:8080/ohexpress/phone/listalojaproxima").build();
-
-                    LojaService lojaServiceDist = restAdapterDist.create(LojaService.class);
-
-                    lojaServiceDist.listarLojasDist(
-                            new Callback<List<LojaPorDistancia>>() {
-
-
-                                @Override
-                                public void success(List<LojaPorDistancia> lojas, Response response) {
-
-                                    lista = (ArrayList<Loja>) setDistancia(lojas);
-                                    Intent itLProx = new Intent(MainActivity.this, LojasProximasActivity.class);
-                                    itLProx.putParcelableArrayListExtra("lojas", lista);
-                                    startActivity(itLProx);
-
-
-                                }
-
-                                @Override
-                                public void failure(RetrofitError error) {
-
-                                    Toast.makeText(MainActivity.this, "Deu errado" + error, Toast.LENGTH_LONG).show();
-
-
-                                }
-                            }
-
-                    );
-                        break;
-
-                    case R.id.item_tb_pedido:
-                        //nDrawerLeft.openDrawer();
-                        RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint("http://10.0.3.2:8080/ohexpress/phone").build();
-
-                        PedidoService pedidoService = restAdapterPedido.create(PedidoService.class);
-
-                        pedidoService.listarPedido(
-                                new Callback<List<Pedido>>() {
-
-
-                                    @Override
-                                    public void success(List<Pedido> pedidos, Response response) {
-
-                                        listaPedido = (ArrayList<Pedido>) pedidos;
-                                        Intent itLProx = new Intent(MainActivity.this, ListaPedidoActivity.class);
-                                        itLProx.putParcelableArrayListExtra("pedidos", listaPedido);
-                                        startActivity(itLProx);
-
-
-                                    }
-
-                                    @Override
-                                    public void failure(RetrofitError error) {
-
-                                        //Toast.makeText(getActivity(), "Deu errado" + error, Toast.LENGTH_LONG).show();
-
-
-                                    }
-                                }
-
-                        );
-
-
-
-
-                        break;
-
-                    case R.id.item_tb_favoritos:
-
-
-
-                        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("http://10.0.3.2:8080/ohexpress/phone/lojas").build();
-
-                        LojaService lojaService = restAdapter.create(LojaService.class);
-
-                        lojaService.listarLojas(
-                                new Callback<List<Loja>>() {
-
-
-                                    @Override
-                                    public void success(List<Loja> lojas, Response response) {
-
-                                        lista = (ArrayList<Loja>) lojas;
-                                        Intent itLProx = new Intent(MainActivity.this, LojasProximasActivity.class);
-                                        itLProx.putParcelableArrayListExtra("lojas", lista);
-                                        startActivity(itLProx);
-
-
-                                    }
-
-                                    @Override
-                                    public void failure(RetrofitError error) {
-
-                                        //Toast.makeText(getActivity(), "Deu errado" + error, Toast.LENGTH_LONG).show();
-
-
-                                    }
-                                }
-
-                        );
-
-
-                        break;
-
-                    case R.id.item_tb_qrcode:
-
-
-
-
-                        break;
-                    case R.id.item_tb_config:
-
-                        Intent itLProx = new Intent(MainActivity.this, MapaActivity.class);
-
-                        startActivity(itLProx);
-
-                        break;
-
-                }
-
-                return true;
-            }
-        });
-
-
-*/
-

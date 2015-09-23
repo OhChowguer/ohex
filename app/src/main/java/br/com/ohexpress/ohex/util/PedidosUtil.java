@@ -106,7 +106,7 @@ public class PedidosUtil {
 
                         listaPedido = (ArrayList<Pedido>) pedidos;
 
-                        ((EstabelecimentoMainActivity) context).getFrag(pedidos);
+                        //((EstabelecimentoMainActivity) context).getFrag(pedidos);
 
 
                     }

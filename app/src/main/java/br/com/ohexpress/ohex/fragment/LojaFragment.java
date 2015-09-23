@@ -13,6 +13,7 @@ import br.com.ohexpress.ohex.model.LojaPorDistancia;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,8 +70,12 @@ public class LojaFragment extends Fragment implements RecyclerViewOnClickListene
 
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(llm);
+
+
+        //mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
 //        lista = ((LojasProximasActivity) getActivity()).getSetLojaList();
         //lista = ((LojasFavoritasActivity) getActivity()).getSetLojaList();
         LojasAdapter adapter = new LojasAdapter(getActivity(), lista);

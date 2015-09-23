@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    tools:context="br.com.ohexpress.ohex.fragment.MainFragment">
+    tools:context="br.com.ohexpress.ohex.fragment.EstMainFragment">
 
 
 </FrameLayout>

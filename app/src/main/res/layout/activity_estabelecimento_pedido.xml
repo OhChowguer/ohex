@@ -9,11 +9,6 @@
     android:paddingTop="0dp"
     tools:context=".EstabelecimentoMainActivity"
     android:outlineProvider="paddedBounds">
-
-
-
-
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/oh_top_toolbar"
         android:layout_width='match_parent'
@@ -26,7 +21,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/rl_fragment_container_main_est"
+        android:id="@+id/rl_fragment_container_pedido_est"
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:layout_alignParentBottom="true"

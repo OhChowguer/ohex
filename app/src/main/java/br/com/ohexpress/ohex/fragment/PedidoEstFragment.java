@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.ohexpress.ohex.EstabelecimentoMainActivity;
+import br.com.ohexpress.ohex.EstabelecimentoPedidosActivity;
 import br.com.ohexpress.ohex.ListaPedidoActivity;
 import br.com.ohexpress.ohex.PedidoActivity;
 import br.com.ohexpress.ohex.R;
@@ -38,6 +39,7 @@ public class PedidoEstFragment extends Fragment implements RecyclerViewOnClickLi
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_lista_pedido_est);
         mRecyclerView.setHasFixedSize(true);
+        /*
         mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -60,7 +62,7 @@ public class PedidoEstFragment extends Fragment implements RecyclerViewOnClickLi
                 }
 
             }
-        });
+        });*/
 
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -83,7 +85,7 @@ public class PedidoEstFragment extends Fragment implements RecyclerViewOnClickLi
         lista.add(pedido4);*/
 
 
-       lista = ((EstabelecimentoMainActivity) getActivity()).getSetPedidosList();
+       //lista = ((EstabelecimentoPedidosActivity) getActivity()).getSetPedidosList();
        // lista = ((EstabelecimentoMainActivity) getActivity()).filterForStatus1(((EstabelecimentoMainActivity) getActivity()).getSetPedidosList(),1);
         PedidoEstAdapter adapter = new PedidoEstAdapter(getActivity(), lista);
         adapter.setRecyclerViewOnClickListenerHack(this);
@@ -108,6 +110,16 @@ public class PedidoEstFragment extends Fragment implements RecyclerViewOnClickLi
         PedidoEstAdapter adapter = new PedidoEstAdapter(getActivity(), pedidos);
         mRecyclerView.setAdapter(adapter);
 
+
+    }
+
+    public void loadPedidosPorLoja(List<Pedido> pedidos){
+
+        lista = pedidos;
+        PedidoEstAdapter adapter = new PedidoEstAdapter(getActivity(), lista);
+        adapter.setRecyclerViewOnClickListenerHack(this);
+        mRecyclerView.setAdapter(adapter);
+        //progressBar.setVisibility(View.GONE);
 
     }
 

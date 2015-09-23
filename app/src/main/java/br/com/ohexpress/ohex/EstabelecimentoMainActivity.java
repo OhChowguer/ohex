@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.ohexpress.ohex.adapters.EstMainAdapter;
+import br.com.ohexpress.ohex.fragment.EstMainFragment;
 import br.com.ohexpress.ohex.fragment.PedidoEstFragment;
 import br.com.ohexpress.ohex.model.Pedido;
 
@@ -22,7 +24,7 @@ public class EstabelecimentoMainActivity extends ActionBarActivity {
     private Toolbar ohTopBar;
     private List<Pedido> pedidos = new ArrayList<Pedido>(0);
     private float scale;
-    private PedidoEstFragment frag;
+    private EstMainFragment frag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +41,15 @@ public class EstabelecimentoMainActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        // FRAGMENT
-        frag = (PedidoEstFragment) getSupportFragmentManager().findFragmentByTag("pedidoEstFrag");
+
+        frag = (EstMainFragment) getSupportFragmentManager().findFragmentByTag("EstMainFrag");
         if (frag == null) {
-            frag = new PedidoEstFragment();
+            frag = new EstMainFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.rl_fragment_container_pedidos_est, frag, "mainFragLoja");
+            ft.replace(R.id.rl_fragment_container_main_est, frag, "EstMainFrag");
             ft.commit();
         }
 
-        // mTitle = (TextView) ohTopBar.findViewById(R.id.toolbar_title);
-        // mTitle.setText(loja.getNome());
 
 
     }
@@ -80,19 +80,19 @@ public class EstabelecimentoMainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_f1) {
 
-            frag.setNewListaPedidos(filterForStatus1(pedidos,1));
+
             return true;
         }
 
         if (id == R.id.action_f2) {
 
-            frag.setNewListaPedidos(filterForStatus1(pedidos, 2));
+
             return true;
         }
 
         if (id == R.id.action_f3) {
 
-            frag.setNewListaPedidos(filterForStatus1(pedidos, 3));
+
             return true;
         }
 
@@ -108,27 +108,4 @@ public class EstabelecimentoMainActivity extends ActionBarActivity {
     }
 
 
-    public List<Pedido> filterForStatus1(List<Pedido> lista, int ped){
-
-        List<Pedido> listaAux= new ArrayList<Pedido>(0);
-
-        for (Pedido peds:lista){
-
-            if (peds.getStatus() == ped){
-
-                listaAux.add(peds);
-            }
-
-        }
-
-        return(listaAux);
-    }
-
-    public void getFrag(List<Pedido> peds) {
-
-        frag.setNewListaPedidos(peds);
-        pedidos = peds;
-
-
-    }
 }
