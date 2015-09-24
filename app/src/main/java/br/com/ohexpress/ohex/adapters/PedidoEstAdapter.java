@@ -5,7 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.software.shell.fab.ActionButton;
 import com.software.shell.fab.ActionButton.Animations;
@@ -13,10 +15,17 @@ import com.software.shell.fab.ActionButton.Animations;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.ohexpress.ohex.EstabelecimentoPedidosActivity;
 import br.com.ohexpress.ohex.R;
+import br.com.ohexpress.ohex.interfaces.PedidoService;
 import br.com.ohexpress.ohex.interfaces.RecyclerViewOnClickListenerHack;
 import br.com.ohexpress.ohex.model.Pedido;
+import br.com.ohexpress.ohex.util.Constant;
 import br.com.ohexpress.ohex.util.PedidosUtil;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyViewHolder> {
 
@@ -65,7 +74,15 @@ public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyVi
 
                 if (listaPedido.get(position).getStatus() == 1){
                     holder.tvIdTetPedido.setText(listaPedido.get(position).getId()+"1");
-                    holder.fabL.setImageResource(R.drawable.ic_busca);
+                    holder.btLeft.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_red_500));
+                    holder.btRight.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_green_500));
+                    holder.btRight.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            setStatusPedidos(listaPedido.get(position).getId(),4);
+                        }
+                    });
+                    /*holder.fabL.setImageResource(R.drawable.ic_busca);
                     holder.fabL.setButtonColor(ct.getResources().getColor(R.color.fab_material_orange_500));
                     holder.fabR.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -80,9 +97,18 @@ public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyVi
                     holder.fabL.setShowAnimation(Animations.JUMP_FROM_DOWN);
                     holder.fabR.setButtonColor(ct.getResources().getColor(R.color.fab_material_blue_500));
 
+*/
                 }else if (listaPedido.get(position).getStatus() == 2){
                     holder.tvIdTetPedido.setText(listaPedido.get(position).getId()+"2");
-
+                    holder.btLeft.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_yellow_500));
+                    holder.btRight.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_blue_500));
+                    holder.btRight.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            setStatusPedidos(listaPedido.get(position).getId(), 3);
+                        }
+                    });
+/*
                     holder.fabL.setImageResource(R.drawable.ic_qrcode);
                     holder.fabL.setButtonColor(ct.getResources().getColor(R.color.fab_material_blue_500));
                     holder.fabL.setShowAnimation(Animations.SCALE_UP);
@@ -99,10 +125,18 @@ public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyVi
                     });
                     holder.fabR.setImageResource(R.drawable.ic_busca);
                     holder.fabR.setButtonColor(ct.getResources().getColor(R.color.fab_material_yellow_500));
-
+*/
                 }else if (listaPedido.get(position).getStatus() == 3){
                     holder.tvIdTetPedido.setText(listaPedido.get(position).getId()+"3");
-
+                    holder.btLeft.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_green_500));
+                    holder.btRight.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_grey_500));
+                    holder.btRight.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            setStatusPedidos(listaPedido.get(position).getId(), 2);
+                        }
+                    });
+/*
                     holder.fabL.setImageResource(R.drawable.ic_cart);
                     holder.fabL.setButtonColor(ct.getResources().getColor(R.color.fab_material_green_500));
                     holder.fabL.setOnClickListener(new View.OnClickListener() {
@@ -117,10 +151,18 @@ public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyVi
                     });
                     holder.fabR.setImageResource(R.drawable.ic_busca);
                     holder.fabR.setButtonColor(ct.getResources().getColor(R.color.fab_material_red_500));
-
+*/
                 }else if (listaPedido.get(position).getStatus() == 4){
                     holder.tvIdTetPedido.setText(listaPedido.get(position).getId()+"4");
-
+                    holder.btLeft.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_blue_500));
+                    holder.btRight.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_blue_500));
+                    holder.btRight.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            setStatusPedidos(listaPedido.get(position).getId(), 1);
+                        }
+                    });
+/*
                     holder.fabL.setImageResource(R.drawable.ic_circle);
                     holder.fabL.setButtonColor(ct.getResources().getColor(R.color.fab_material_red_500));
                     holder.fabL.setOnClickListener(new View.OnClickListener() {
@@ -135,8 +177,16 @@ public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyVi
                     });
                     holder.fabR.setImageResource(R.drawable.ic_busca);
                     holder.fabR.setButtonColor(ct.getResources().getColor(R.color.fab_material_green_500));
-
+*/
                 }else if (listaPedido.get(position).getStatus() == 5){
+                    holder.btLeft.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_green_500));
+                    holder.btRight.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_yellow_500));
+                    holder.btRight.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            setStatusPedidos(listaPedido.get(position).getId(), 4);
+                        }
+                    });
 
                 }
 
@@ -170,16 +220,18 @@ public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyVi
         //public SimpleDraweeView imagePedido;
         public ActionButton fabL;
         public ActionButton fabR;
-
+        public Button btLeft;
+        public Button btRight;
         public TextView tvItemPedido;
         public  TextView tvIdPedido;
         public  TextView tvIdTetPedido;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-
-            fabL = (ActionButton) itemView.findViewById(R.id.fab_left_est);
-            fabR = (ActionButton) itemView.findViewById(R.id.fab_right_est);
+            btLeft = (Button) itemView.findViewById(R.id.bt_left);
+            btRight = (Button) itemView.findViewById(R.id.bt_right);
+            //fabL = (ActionButton) itemView.findViewById(R.id.fab_left_est);
+            //fabR = (ActionButton) itemView.findViewById(R.id.fab_right_est);
             //imagePedido = (SimpleDraweeView) itemView.findViewById(R.id.iv_img_lista_pedido);
             tvItemPedido = (TextView) itemView.findViewById(R.id.tv_item1_est_ped);
             tvIdPedido = (TextView) itemView.findViewById(R.id.tv_item3_ped);
@@ -199,5 +251,41 @@ public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyVi
             }
 
         }
+    }
+
+
+    public List<Pedido> setStatusPedidos(Long id, int status){
+
+        RestAdapter restAdapterPedido = new RestAdapter.Builder().setEndpoint(Constant.SERVER_URL).build();
+        PedidoService pedidoService = restAdapterPedido.create(PedidoService.class);
+
+        pedidoService.setarStatusPedido(id,status,
+                new Callback<List<Pedido>>() {
+
+
+                    @Override
+                    public void success(List<Pedido> pedidos, Response response) {
+
+                        listaPedido = (ArrayList<Pedido>) pedidos;
+
+                        ((EstabelecimentoPedidosActivity) ct).SetPedidosList(pedidos);
+
+
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+
+                        Toast.makeText(ct, "Deu errado " + error, Toast.LENGTH_LONG).show();
+
+
+                    }
+                }
+
+        );
+
+
+
+        return listaPedido;
     }
 }

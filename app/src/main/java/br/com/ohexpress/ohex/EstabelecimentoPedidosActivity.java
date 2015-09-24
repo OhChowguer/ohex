@@ -121,6 +121,12 @@ public class EstabelecimentoPedidosActivity extends ActionBarActivity {
         return(pedidos);
     }
 
+    public void SetPedidosList(List<Pedido> peds){
+
+        frag.setNewListaPedidos(peds);
+    }
+
+
 
     public void getPedidoPorLoja() {
 
@@ -149,12 +155,12 @@ public class EstabelecimentoPedidosActivity extends ActionBarActivity {
                                 }
                             }
 
-                            frag.loadPedidosPorLoja(lista);
+                            frag.setNewListaPedidos(lista);
 
 
                         } else {
 
-                            frag.loadPedidosPorLoja(pedidos);
+                            frag.setNewListaPedidos(pedidos);
                         }
 
 

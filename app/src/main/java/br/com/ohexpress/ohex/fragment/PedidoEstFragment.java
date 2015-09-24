@@ -117,7 +117,7 @@ public class PedidoEstFragment extends Fragment implements RecyclerViewOnClickLi
 
         lista = pedidos;
         PedidoEstAdapter adapter = new PedidoEstAdapter(getActivity(), lista);
-        adapter.setRecyclerViewOnClickListenerHack(this);
+        //adapter.setRecyclerViewOnClickListenerHack(this);
         mRecyclerView.setAdapter(adapter);
         //progressBar.setVisibility(View.GONE);
 
