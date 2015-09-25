@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.software.shell.fab.ActionButton;
-import com.software.shell.fab.ActionButton.Animations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,6 @@ import br.com.ohexpress.ohex.interfaces.PedidoService;
 import br.com.ohexpress.ohex.interfaces.RecyclerViewOnClickListenerHack;
 import br.com.ohexpress.ohex.model.Pedido;
 import br.com.ohexpress.ohex.util.Constant;
-import br.com.ohexpress.ohex.util.PedidosUtil;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -71,7 +69,7 @@ public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyVi
     @Override
     public void onBindViewHolder(MyViewHolder holder,  final int position) {
         //final  int pos = position;
-
+/*
                 if (listaPedido.get(position).getStatus() == 1){
                     holder.tvIdTetPedido.setText(listaPedido.get(position).getId()+"1");
                     holder.btLeft.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_red_500));
@@ -98,6 +96,7 @@ public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyVi
                     holder.fabR.setButtonColor(ct.getResources().getColor(R.color.fab_material_blue_500));
 
 */
+        /*
                 }else if (listaPedido.get(position).getStatus() == 2){
                     holder.tvIdTetPedido.setText(listaPedido.get(position).getId()+"2");
                     holder.btLeft.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_yellow_500));
@@ -126,6 +125,7 @@ public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyVi
                     holder.fabR.setImageResource(R.drawable.ic_busca);
                     holder.fabR.setButtonColor(ct.getResources().getColor(R.color.fab_material_yellow_500));
 */
+        /*
                 }else if (listaPedido.get(position).getStatus() == 3){
                     holder.tvIdTetPedido.setText(listaPedido.get(position).getId()+"3");
                     holder.btLeft.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_green_500));
@@ -152,6 +152,7 @@ public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyVi
                     holder.fabR.setImageResource(R.drawable.ic_busca);
                     holder.fabR.setButtonColor(ct.getResources().getColor(R.color.fab_material_red_500));
 */
+        /*
                 }else if (listaPedido.get(position).getStatus() == 4){
                     holder.tvIdTetPedido.setText(listaPedido.get(position).getId()+"4");
                     holder.btLeft.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_blue_500));
@@ -178,6 +179,7 @@ public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyVi
                     holder.fabR.setImageResource(R.drawable.ic_busca);
                     holder.fabR.setButtonColor(ct.getResources().getColor(R.color.fab_material_green_500));
 */
+        /*
                 }else if (listaPedido.get(position).getStatus() == 5){
                     holder.btLeft.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_green_500));
                     holder.btRight.setBackgroundColor(ct.getResources().getColor(R.color.fab_material_yellow_500));
@@ -196,7 +198,7 @@ public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyVi
         holder.tvIdPedido.setText(listaPedido.get(position).getId()+"");
         //holder.imagePedido.setImageURI(uri);
 
-
+*/
     }
 
     public void removeItem(int position){
@@ -228,12 +230,12 @@ public class PedidoEstAdapter extends RecyclerView.Adapter<PedidoEstAdapter.MyVi
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            btLeft = (Button) itemView.findViewById(R.id.bt_left);
-            btRight = (Button) itemView.findViewById(R.id.bt_right);
+           // btLeft = (Button) itemView.findViewById(R.id.bt_left);
+            //btRight = (Button) itemView.findViewById(R.id.bt_right);
             //fabL = (ActionButton) itemView.findViewById(R.id.fab_left_est);
             //fabR = (ActionButton) itemView.findViewById(R.id.fab_right_est);
             //imagePedido = (SimpleDraweeView) itemView.findViewById(R.id.iv_img_lista_pedido);
-            tvItemPedido = (TextView) itemView.findViewById(R.id.tv_item1_est_ped);
+            tvItemPedido = (TextView) itemView.findViewById(R.id.tv_item_est_ped);
             tvIdPedido = (TextView) itemView.findViewById(R.id.tv_item3_ped);
             tvIdTetPedido = (TextView) itemView.findViewById(R.id.tv_item4_ped);
             //tvStatusPedido = (TextView) itemView.findViewById(R.id.tv_status_lista_pedido);

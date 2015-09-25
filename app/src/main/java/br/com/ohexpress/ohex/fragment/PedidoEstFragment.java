@@ -20,8 +20,11 @@ import br.com.ohexpress.ohex.PedidoActivity;
 import br.com.ohexpress.ohex.R;
 import br.com.ohexpress.ohex.adapters.PedidoAdapter;
 import br.com.ohexpress.ohex.adapters.PedidoEstAdapter;
+import br.com.ohexpress.ohex.adapters.PedidoEstProdAdapter;
 import br.com.ohexpress.ohex.interfaces.RecyclerViewOnClickListenerHack;
+import br.com.ohexpress.ohex.model.ItemPedido;
 import br.com.ohexpress.ohex.model.Pedido;
+import br.com.ohexpress.ohex.model.Produto;
 
 
 public class PedidoEstFragment extends Fragment implements RecyclerViewOnClickListenerHack {
@@ -107,8 +110,28 @@ public class PedidoEstFragment extends Fragment implements RecyclerViewOnClickLi
 
     public void setNewListaPedidos(List<Pedido> pedidos) {
 
+        lista = pedidos;
         PedidoEstAdapter adapter = new PedidoEstAdapter(getActivity(), pedidos);
         mRecyclerView.setAdapter(adapter);
+
+
+    }
+
+    public void trocarAdapter(int tipo) {
+
+        if (tipo == 1){
+
+            PedidoEstAdapter adapter = new PedidoEstAdapter(getActivity(), lista);
+            mRecyclerView.setAdapter(adapter);
+
+        }
+        if (tipo == 2){
+
+            PedidoEstAdapter adapter = new PedidoEstAdapter(getActivity(), lista);
+            mRecyclerView.setAdapter(adapter);
+
+        }
+
 
 
     }
@@ -123,6 +146,25 @@ public class PedidoEstFragment extends Fragment implements RecyclerViewOnClickLi
 
     }
 
+    public void listarProdutosConfec(){
+
+        List<Produto> produtos = new ArrayList<Produto>();
+
+        for (Pedido pedido:lista){
+
+            for (ItemPedido itemPedido:pedido.getItem()){
+                produtos.add(itemPedido.getProduto());
+            }
+
+        }
+        PedidoEstProdAdapter adapter = new PedidoEstProdAdapter(getActivity(), produtos);
+        //adapter.setRecyclerViewOnClickListenerHack(this);
+        mRecyclerView.setAdapter(adapter);
+
+
+
+
+    }
 
 
 

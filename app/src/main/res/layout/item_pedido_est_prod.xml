@@ -1,0 +1,112 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="2dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginLeft="6dp"
+    android:layout_marginRight="6dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true"
+    app:cardPreventCornerOverlap="false">
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mostarda"
+        android:id="@+id/tv_item_est_ped"
+        android:layout_alignTop="@+id/iv_icon_item_produto"
+        android:layout_toRightOf="@+id/iv_icon_item_produto"
+        android:layout_toEndOf="@+id/iv_icon_item_produto" />
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_left"
+        android:src="@drawable/ic_seta_left_24"
+        android:layout_below="@+id/tv_item_est_ped"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_right"
+        android:src="@drawable/ic_seta_right_24"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/iv_left" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/iv_icon_item_produto"
+        android:src="@drawable/ic_arrow_up_bold"
+        android:layout_below="@+id/ll_info_produto"
+        android:layout_toRightOf="@+id/iv_left"
+        android:layout_toEndOf="@+id/iv_left"
+        android:layout_marginTop="8dp" />
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/fab_material_green_500"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/ll_info_produto">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1x Hamburguer tipo 1"
+            android:id="@+id/tv_nome_prod"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N° 000012454"
+            android:id="@+id/textView22"
+            android:layout_alignTop="@+id/tv_nome_prod"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01 de 10"
+            android:id="@+id/textView23"
+            android:layout_alignTop="@+id/tv_nome_prod"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="8dp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/iv_centro"
+        android:src="@drawable/iv_completo"
+        android:layout_below="@+id/ll_info_produto"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"/>
+
+
+</RelativeLayout>
+</android.support.v7.widget.CardView>

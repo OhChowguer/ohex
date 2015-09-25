@@ -94,13 +94,13 @@ public class EstabelecimentoPedidosActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_f1) {
 
-
+            frag.listarProdutosConfec();
             return true;
         }
 
         if (id == R.id.action_f2) {
 
-
+            frag.trocarAdapter(1);
             return true;
         }
 

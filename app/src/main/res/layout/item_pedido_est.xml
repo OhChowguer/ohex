@@ -16,7 +16,8 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    >
 
 
 
@@ -57,78 +58,369 @@
 
 
         /-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mostarda"
+        android:id="@+id/tv_item_est_ped"
+        android:layout_alignTop="@+id/iv_icon_item_produto"
+        android:layout_toRightOf="@+id/iv_icon_item_produto"
+        android:layout_toEndOf="@+id/iv_icon_item_produto" />
 
     <TextView
-        android:textColor="#000000"
         android:id="@+id/tv_item_pedido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingRight="30dp"
-        android:textSize="16sp"
-        android:text="Itens Pedido"
-        android:layout_below="@+id/tv_item1_est_ped"
-        android:layout_alignLeft="@+id/tv_item1_est_ped"
+        android:text="Maionese"
+        android:layout_below="@+id/tv_item_est_ped"
+        android:layout_alignLeft="@+id/tv_item_est_ped"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/tv_item1_est_ped"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/bt_left"
-        android:layout_toEndOf="@+id/bt_left" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="Batata"
         android:id="@+id/tv_item3_ped"
         android:layout_below="@+id/tv_item_pedido"
         android:layout_alignLeft="@+id/tv_item_pedido"
-        android:layout_alignStart="@+id/tv_item_pedido" />
+        android:layout_alignStart="@+id/tv_item_pedido"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="Sal"
         android:id="@+id/tv_item2_est_ped"
-        android:layout_below="@+id/tv_item3_ped"
-        android:layout_alignLeft="@+id/tv_item3_ped"
-        android:layout_alignStart="@+id/tv_item3_ped" />
+        android:layout_alignTop="@+id/tv_item_est_ped"
+        android:layout_toRightOf="@+id/tv_item_pedido"
+        android:layout_toEndOf="@+id/tv_item_pedido" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="Pimenta"
         android:id="@+id/tv_item4_ped"
         android:layout_below="@+id/tv_item2_est_ped"
         android:layout_alignLeft="@+id/tv_item2_est_ped"
         android:layout_alignStart="@+id/tv_item2_est_ped" />
 
-    <Button
+    <!--Button
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:text=">"
         android:id="@+id/bt_right"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:background="@android:color/holo_green_light"
-        android:layout_alignBottom="@+id/tv_item4_ped"
-        android:layout_marginLeft="8dp" />
+        android:drawableRight="@drawable/ic_seta_right"
+        android:drawableLeft="@drawable/ic_alert_circle"
+        android:paddingLeft="20dip"
+        android:paddingRight="-10dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/bt_left"
+        android:layout_toEndOf="@+id/bt_left" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:text="&lt;"
+        android:drawableLeft="@drawable/ic_seta_left"
         android:id="@+id/bt_left"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:background="@android:color/holo_blue_dark"
-        android:layout_alignBottom="@+id/tv_item4_ped"
-        android:layout_marginRight="8dp" />
+        android:drawableRight="@drawable/ic_alert_circle"
+        android:paddingRight="20dp"
+        android:paddingLeft="-10dip"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" /-->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_left"
+        android:src="@drawable/ic_seta_left_24"
+        android:layout_below="@+id/tv_item_est_ped"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_right"
+        android:src="@drawable/ic_seta_right_24"
+        android:layout_below="@+id/tv_item2_est_ped"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/iv_icon_item_produto"
+        android:src="@drawable/ic_arrow_up_bold"
+        android:layout_below="@+id/ll_info_produto"
+        android:layout_toRightOf="@+id/iv_left"
+        android:layout_toEndOf="@+id/iv_left"
+        android:layout_marginTop="8dp" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView9"
+        android:src="@drawable/ic_arrow_up_bold"
+        android:layout_above="@+id/tv_item3_ped"
+        android:layout_toLeftOf="@+id/tv_item_pedido"
+        android:layout_toStartOf="@+id/tv_item_pedido" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView10"
+        android:src="@drawable/ic_arrow_up_bold"
+        android:layout_alignBottom="@+id/tv_item3_ped"
+        android:layout_toRightOf="@+id/iv_left"
+        android:layout_toEndOf="@+id/iv_left" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView11"
+        android:src="@drawable/ic_arrow_down_bold"
+        android:layout_alignTop="@+id/tv_item2_est_ped"
+        android:layout_toLeftOf="@+id/tv_item2_est_ped"
+        android:layout_toStartOf="@+id/tv_item2_est_ped" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView12"
+        android:src="@drawable/ic_arrow_down_bold"
+        android:layout_alignBottom="@+id/tv_item_pedido"
+        android:layout_toLeftOf="@+id/tv_item4_ped"
+        android:layout_toStartOf="@+id/tv_item4_ped" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView13"
+        android:src="@drawable/ic_arrow_down_bold"
+        android:layout_alignTop="@+id/tv_item3_ped"
+        android:layout_toLeftOf="@+id/tv_item4_ped"
+        android:layout_toStartOf="@+id/tv_item4_ped" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pimenta"
+        android:id="@+id/textView11"
+        android:layout_alignTop="@+id/imageView13"
+        android:layout_alignLeft="@+id/tv_item4_ped"
+        android:layout_alignStart="@+id/tv_item4_ped" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView14"
+        android:src="@drawable/ic_arrow_down_bold"
+        android:layout_above="@+id/imageView12"
+        android:layout_toRightOf="@+id/tv_item4_ped"
+        android:layout_toEndOf="@+id/tv_item4_ped"
+        android:layout_marginLeft="53dp"
+        android:layout_marginStart="53dp" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView15"
+        android:src="@drawable/ic_arrow_down_bold"
+        android:layout_below="@+id/tv_item2_est_ped"
+        android:layout_alignLeft="@+id/imageView14"
+        android:layout_alignStart="@+id/imageView14" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView16"
+        android:src="@drawable/ic_arrow_down_bold"
+        android:layout_alignTop="@+id/textView11"
+        android:layout_alignLeft="@+id/imageView15"
+        android:layout_alignStart="@+id/imageView15" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pimenta"
+        android:id="@+id/textView12"
+        android:layout_alignBottom="@+id/imageView14"
+        android:layout_toRightOf="@+id/imageView14"
+        android:layout_toEndOf="@+id/imageView14" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pimenta"
+        android:id="@+id/textView13"
+        android:layout_above="@+id/imageView10"
+        android:layout_alignLeft="@+id/textView12"
+        android:layout_alignStart="@+id/textView12" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pimenta"
+        android:id="@+id/textView14"
+        android:layout_below="@+id/imageView15"
+        android:layout_toRightOf="@+id/imageView15"
+        android:layout_toEndOf="@+id/imageView15" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView17"
+        android:src="@drawable/ic_arrow_up_bold"
+        android:layout_above="@+id/textView13"
+        android:layout_toRightOf="@+id/textView12"
+        android:layout_toEndOf="@+id/textView12"
+        android:layout_marginLeft="59dp"
+        android:layout_marginStart="59dp" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView18"
+        android:src="@drawable/ic_arrow_up_bold"
+        android:layout_alignBottom="@+id/textView13"
+        android:layout_alignLeft="@+id/imageView17"
+        android:layout_alignStart="@+id/imageView17" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView19"
+        android:src="@drawable/ic_arrow_up_bold"
+        android:layout_below="@+id/textView13"
+        android:layout_alignLeft="@+id/imageView18"
+        android:layout_alignStart="@+id/imageView18" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pimenta"
+        android:id="@+id/textView15"
+        android:layout_above="@+id/imageView18"
+        android:layout_toRightOf="@+id/imageView17"
+        android:layout_toEndOf="@+id/imageView17" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pimenta"
+        android:id="@+id/textView16"
+        android:layout_below="@+id/textView15"
+        android:layout_alignLeft="@+id/textView15"
+        android:layout_alignStart="@+id/textView15" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pimenta"
+        android:id="@+id/textView17"
+        android:layout_below="@+id/imageView18"
+        android:layout_toRightOf="@+id/imageView18"
+        android:layout_toEndOf="@+id/imageView18" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView20"
+        android:src="@drawable/ic_arrow_down_bold"
+        android:layout_alignTop="@+id/textView15"
+        android:layout_toRightOf="@+id/textView15"
+        android:layout_toEndOf="@+id/textView15"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView21"
+        android:src="@drawable/ic_arrow_down_bold"
+        android:layout_alignTop="@+id/textView16"
+        android:layout_alignLeft="@+id/imageView20"
+        android:layout_alignStart="@+id/imageView20" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/imageView22"
+        android:src="@drawable/ic_arrow_down_bold"
+        android:layout_below="@+id/textView16"
+        android:layout_alignLeft="@+id/imageView21"
+        android:layout_alignStart="@+id/imageView21" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pimenta"
+        android:id="@+id/textView18"
+        android:layout_above="@+id/imageView21"
+        android:layout_toRightOf="@+id/imageView20"
+        android:layout_toEndOf="@+id/imageView20" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pimenta"
+        android:id="@+id/textView19"
+        android:layout_below="@+id/textView18"
+        android:layout_toRightOf="@+id/imageView21"
+        android:layout_toEndOf="@+id/imageView21" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pimenta"
+        android:id="@+id/textView20"
+        android:layout_below="@+id/textView19"
+        android:layout_toRightOf="@+id/imageView22"
+        android:layout_toEndOf="@+id/imageView22" />
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/fab_material_green_500"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/ll_info_produto">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1x Hamburguer tipo 1"
+            android:id="@+id/tv_nome_prod"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N° 000012454"
+            android:id="@+id/textView22"
+            android:layout_alignTop="@+id/tv_nome_prod"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01 de 10"
+            android:id="@+id/textView23"
+            android:layout_alignTop="@+id/tv_nome_prod"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="8dp" />
+    </RelativeLayout>
 
 
     <!--TextView
