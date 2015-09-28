@@ -101,6 +101,7 @@ public class MainActivity extends ActionBarActivity {
 
 
         ohTopBar = (Toolbar) findViewById(R.id.oh_top_toolbar);
+        ohTopBar.setTitle("");
         setSupportActionBar(ohTopBar);
 
 

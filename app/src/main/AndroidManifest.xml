@@ -23,8 +23,8 @@
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/ic_ohex"
+        android:label=""
         android:theme="@style/Theme.MyTheme" >
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
@@ -35,7 +35,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:label=""
+            android:label="Oh! Express"
             android:windowSoftInputMode="adjustPan|adjustNothing" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -119,7 +119,6 @@
             android:name=".EstabelecimentoPedidosActivity"
             android:label="" >
         </activity>
-        EstabelecimentoPedidosActivity
         <service
             android:name=".AccountAuthenticatorService"
             android:label="AccountAuthenticatorService" >
